@@ -6,12 +6,13 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/09 20:50:00 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/09 21:35:14 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "incl/push_swap.h"
 
+/*Initialization of main data struct*/
 void	data_init(t_dt *dt)
 {
 	dt->a = NULL;
