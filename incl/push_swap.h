@@ -3,16 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smelicha <smelicha@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:26 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/08 20:23:11 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/09 21:05:37 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
+# include<stdlib.h>
+# include<stdio.h>
 
+typedef struct link {
+	void	*prev;
+	void	*next;
+	int		val;
+}	t_link;
 
 typedef struct dt {
 	t_link	*a;
@@ -22,10 +29,10 @@ typedef struct dt {
 }	t_dt;
 
 
-typedef struct link {
-	t_link	*prev;
-	t_link	*next;
-	int		val;
-}	t_link;
+void	arg_pars(int argc, const char *argv[], t_dt *dt);
+void	list_init(t_dt *dt);
+void	data_init(t_dt *dt);
+
+void	error(int errno, t_dt *dt);
 
 #endif

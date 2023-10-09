@@ -1,6 +1,6 @@
 NAME = push_swap
 
-SRC = push_swap.c
+SRC = push_swap.c src/arg_pars.c src/error.c src/linked_list.c
 
 CC = gcc
 
@@ -13,9 +13,9 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@echo"Linking $@"
+	@echo "Linking $@"
 	@$(CC) $(OBJ) $(FLAGS) -o $(NAME)
-	@echo"Done!"
+	@echo "Done!"
 
 %.o: %.c
 	@echo "Compiling $<"

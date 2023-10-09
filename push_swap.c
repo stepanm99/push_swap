@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smelicha <smelicha@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/08 20:21:56 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/09 20:50:00 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ void	data_init(t_dt *dt)
 {
 	dt->a = NULL;
 	dt->head_a = NULL;
-	write(1, '1', 1);
+	dt->b = NULL;
+	dt->head_b = NULL;
+	printf("test\n");
 }
 
 int	main(int argc, const char *argv[])
