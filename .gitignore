@@ -1,2 +1,4 @@
 *.o
 push_swap
+test.c
+a.out
