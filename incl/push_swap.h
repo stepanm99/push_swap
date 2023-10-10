@@ -6,19 +6,20 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:26 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/09 21:28:54 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/10 16:17:02 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-# include<stdlib.h>
-# include<stdio.h>
+# include <stdlib.h>
+# include <stdio.h>
 
 typedef struct link {
-	void	*prev;
-	void	*next;
-	int		val;
+	void				*prev;
+	void				*next;
+	int					val;
+	unsigned int		index;
 }	t_link;
 
 typedef struct dt {
@@ -30,20 +31,20 @@ typedef struct dt {
 
 /*Data initialization*/
 
-void	list_init(t_dt *dt);
+void	list_init(int val, t_dt *dt);
 void	data_init(t_dt *dt);
 
 /*List manipulating functions*/
 
 void	list_free(t_link *head);
-void	list_init(t_dt *dt);
-t_link	*list_add_link(t_link *link, int val);
+t_link	*list_add_link_a(t_link *link, int val, t_dt *dt);
+t_link	*list_add_link_b(t_link *link, int val, t_dt *dt);
 
-/*Argument parsing*/
+/*Argument parsing and saving to stack*/
 void	arg_pars(int argc, const char *argv[], t_dt *dt);
 
 /*Error functions*/
 
-void	error(int errno, t_dt *dt);
+void	error(t_dt *dt);
 
 #endif
