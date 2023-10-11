@@ -4,9 +4,9 @@ SRC = push_swap.c src/arg_pars.c src/error.c src/linked_list.c
 
 CC = gcc
 
-FLAGS = -Wall -Wextra -Werror -O3
+FLAGS = -Wall -Wextra -Werror -g
 
-DFLAGS = -Wall -Wextra -Werror -g
+DFLAGS = -Wall -Wextra -Werror -g -fsanitize=address -static-libsan
 
 OBJ = $(SRC:.c=.o)
 
@@ -14,7 +14,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@echo "Linking $@"
-	@$(CC) $(OBJ) $(FLAGS) -o $(NAME)
+	@$(CC) $(OBJ) $(DFLAGS) -o $(NAME)
 	@echo "Done!"
 
 %.o: %.c

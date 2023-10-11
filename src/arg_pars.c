@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 20:03:38 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/10 21:55:57 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/11 14:55:37 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,14 +62,18 @@ void	arg_check(const char *arg, t_dt *dt)
 }
 
 /*Parses and checks program argument ans saves the data to list a*/
-void	arg_pars(int argc, const char *argv[], t_dt *dt)
+void	arg_pars(const char *argv[], t_dt *dt)
 {
 	int	i;
 
-	i = 2;
-	while (i <= argc)
+	i = 1;
+	if (argv[i])
 	{
-		arg_check(argv[i], dt);
-		dt
+		while (argv[i])
+		{
+			arg_check(argv[i], dt);
+			dt->a = list_add_link_a(dt->a, ft_atoi(argv[i]), dt);
+			i++;
+		}
 	}
 }

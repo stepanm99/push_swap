@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:26 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/10 16:17:02 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/11 14:55:44 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_link	*list_add_link_a(t_link *link, int val, t_dt *dt);
 t_link	*list_add_link_b(t_link *link, int val, t_dt *dt);
 
 /*Argument parsing and saving to stack*/
-void	arg_pars(int argc, const char *argv[], t_dt *dt);
+void	arg_pars(const char *argv[], t_dt *dt);
 
 /*Error functions*/
 

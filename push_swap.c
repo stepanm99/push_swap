@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/10 16:58:03 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/11 14:56:28 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,13 @@ int	main(int argc, const char *argv[])
 {
 	t_dt	*dt;
 
+	printf("%i\n", argc);
 	dt = malloc(sizeof(dt));
 	if (!dt)
 		return (-1);
 	data_init(dt);
-	arg_pars(argc, argv, dt);
+	list_init(0, dt);
+	arg_pars(argv, dt);
 	print_stacks(dt);
 	return (0);
 }
