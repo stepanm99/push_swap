@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 20:14:46 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/11 16:46:58 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/11 19:44:23 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	list_free(t_link *head)
 	t_link	*temp;
 
 	temp = NULL;
-	while (temp != head)
+	while ((temp != head) && head->prev)
 	{
 		temp = head->prev;
 		head->prev = temp->prev;
