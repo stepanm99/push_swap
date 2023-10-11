@@ -9,8 +9,10 @@
 			"request": "launch",
 			"name": "Debug",
 			"program": "/Users/smelicha/Documents/in_progress/push_swap/push_swap",
-			"args": ["1", "2", "3", "4", "5", "6", "7", "8"],
+			"args": ["1"],
 			"cwd": "/Users/smelicha/Documents/in_progress/push_swap"
 		}
 	]
 }
+
+// "1", "2", "3", "4", "5", "6", "7", "8"
