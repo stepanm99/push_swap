@@ -1,6 +1,6 @@
 NAME = push_swap
 
-SRC = push_swap.c src/arg_pars.c src/error.c src/linked_list.c
+SRC = push_swap.c src/arg_pars.c src/error.c src/linked_list.c leakcheck.c
 
 CC = gcc
 

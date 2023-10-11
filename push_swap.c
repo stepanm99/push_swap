@@ -6,11 +6,13 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/11 16:33:58 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/11 16:47:29 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "incl/push_swap.h"
+
+void	check_leaks();
 
 /*Dev test function to print both stacks and their values*/
 void	print_stack_a(t_dt *dt)
@@ -34,6 +36,16 @@ void	data_init(t_dt *dt)
 	dt->head_b = NULL;
 }
 
+/*Routine to clean all allocated data*/
+void	free_data(t_dt *dt)
+{
+	if (dt->head_a)
+		list_free(dt->head_a);
+	if (dt->head_b)
+		list_free(dt->head_b);
+	free(dt);
+}
+
 int	main(int argc, const char *argv[])
 {
 	t_dt	*dt;
@@ -46,5 +58,7 @@ int	main(int argc, const char *argv[])
 	list_init(0, dt);
 	arg_pars(argv, dt);
 	print_stack_a(dt);
+	free_data(dt);
+	check_leaks();
 	return (0);
 }
