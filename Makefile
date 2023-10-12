@@ -14,7 +14,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@echo "Linking $@"
-	@$(CC) $(OBJ) $(FLAGS) -o $(NAME)
+	@$(CC) $(OBJ) $(FLAGS) incl/libft.a -o $(NAME)
 	@echo "Done!"
 
 %.o: %.c
@@ -33,7 +33,7 @@ leak: $(OBJ)
 
 sanitize: $(OBJ)
 	@echo "Sanitize compiling"
-	@$(CC) $(OBJ) $(DFLAGS) -o $(NAME)
+	@$(CC) $(OBJ) incl/libft.a $(DFLAGS) -o $(NAME)
 	@echo "Done!"
 
 clean:
