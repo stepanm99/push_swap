@@ -6,38 +6,11 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 20:03:38 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/12 17:57:12 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/12 19:26:56 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/push_swap.h"
-
-int	ft_atoi(const char *str)
-{
-	size_t	i;
-	int		negflag;
-	int		n;
-
-	i = 0;
-	n = 0;
-	negflag = 1;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
-		i++;
-	while (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i + 1] == '-' || str[i + 1] == '+')
-			return (0);
-		if (str[i] == '-')
-			negflag = (-1);
-		i++;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		n = n * 10 + (str[i] - '0');
-		i++;
-	}
-	return (n * negflag);
-}
 
 int		integer_test(const char *arg)
 {
@@ -62,17 +35,26 @@ void	arg_check(const char *arg, t_dt *dt)
 }
 
 /*Parses and checks program argument ans saves the data to list a*/
-void	arg_pars(const char *argv[], t_dt *dt)
+void	arg_pars_to_a(const char *argv[], t_dt *dt)
 {
-	int	i;
+	int		i;
+	t_ldt	*ldt;
+	t_list	*temp;
 
+	temp = dt->head_a;
 	i = 1;
 	if (argv[i])
 	{
 		while (argv[i])
 		{
+			ldt = malloc(sizeof(int *));
 			arg_check(argv[i], dt);
-//			dt->a = list_add_link_a(dt->a, ft_atoi(argv[i]), dt);
+			ldt->index = 0;
+			ldt->val = ft_atoi(argv[i]);
+			temp = ft_lstnew(ldt);
+			ft_lstadd_back(&dt->head_a, temp);
+			temp = NULL;
+			ldt = NULL;
 			i++;
 		}
 	}

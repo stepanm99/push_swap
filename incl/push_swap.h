@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:26 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/12 17:54:33 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/12 19:00:51 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ typedef struct dt {
 /*Data initialization*/
 
 /*Argument parsing and saving to stack*/
-void	arg_pars(const char *argv[], t_dt *dt);
+
+void	arg_pars_to_a(const char *argv[], t_dt *dt);
 
 /*Error functions*/
 
