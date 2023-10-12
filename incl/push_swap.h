@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:26 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/12 19:00:51 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/12 19:58:53 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@ typedef struct dt {
 	t_list	*head_b;
 }	t_dt;
 
-/*Data initialization*/
+/*List functions*/
+
+void	free_ldt(void *pointer);
+void	print_val(void *pointer);
 
 /*Argument parsing and saving to stack*/
 

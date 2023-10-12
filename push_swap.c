@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/12 19:24:10 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/12 20:57:15 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,24 +27,41 @@ void	print_val(void *pointer)
 
 void	free_ldt(void *pointer)
 {
-	if (!(t_ldt *)pointer)
+
+	if (!pointer)
 		return ;
-	free((t_ldt *)pointer);
+	// pointer = NULL;
+	free(pointer);
 }
 
 void	data_init(t_dt *dt)
 {
-	dt->a = ft_lstnew(NULL);
-	dt->b = ft_lstnew(NULL);
+	t_ldt	*empty;
+
+	empty = malloc(sizeof(t_ldt));
+	empty->val = 0;
+	empty->index = 0;
+	dt->a = ft_lstnew(empty);
+	dt->b = ft_lstnew(empty);
 	dt->head_a = dt->a;
 	dt->head_b = dt->b;
 }
 void	data_free(t_dt *dt)
 {
-	if (dt->head_a)
-		ft_lstclear(&dt->head_a, &free_ldt);
+	void (*fp_free_ldt)(void *pointer);
+	t_list	*head_a;
+	t_list	*head_b;
+
+	head_a = dt->head_a;
+	head_b = dt->head_b;
+
+	fp_free_ldt = &free_ldt;
+	if (dt->head_a){
+		ft_lstclear(&head_a, fp_free_ldt);
+		//free(head_a);
+		}
 	if (dt->head_b)
-		ft_lstclear(&dt->head_b, &free_ldt);
+		ft_lstclear(&head_b, fp_free_ldt);
 	free(dt);
 }
 
@@ -63,6 +80,6 @@ int	main(int argc, const char *argv[])
 	ft_lstiter(dt->head_a, &print_val);
 	data_free(dt);
 //	check_leaks();
-	system("leaks push_swap");
+//	system("leaks push_swap");
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 20:03:38 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/12 19:26:56 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/12 20:40:24 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	arg_pars_to_a(const char *argv[], t_dt *dt)
 	{
 		while (argv[i])
 		{
-			ldt = malloc(sizeof(int *));
+			ldt = malloc(sizeof(t_ldt));
 			arg_check(argv[i], dt);
 			ldt->index = 0;
 			ldt->val = ft_atoi(argv[i]);
