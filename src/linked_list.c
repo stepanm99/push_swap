@@ -6,23 +6,42 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 20:14:46 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/11 19:44:23 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/12 16:34:21 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/push_swap.h"
 
+int		list_length(t_link *head)
+{
+	int		i;
+	t_link	*temp;
+
+	i = 0;
+	temp = head;
+	while (temp)
+	{
+		temp = temp->next;
+		i++;
+	}
+	return (i - 1);
+}
+
 /*Frees entire list from head*/
 void	list_free(t_link *head)
 {
 	t_link	*temp;
+	int		list_len;
 
+	list_len = list_length(head);
 	temp = NULL;
-	while ((temp != head) && head->prev)
+	while (list_len)
 	{
 		temp = head->prev;
 		head->prev = temp->prev;
 		free(temp);
+		temp = NULL;
+		list_len--;
 	}
 }
 
@@ -60,26 +79,33 @@ t_link	*list_add_link_b(t_link *link, int val, t_dt *dt)
 	return (new_link);
 }
 
-/*Initializes list a and list b*/
+/*Initializes list a and list b
 void	list_init(int val, t_dt *dt)
 {
+	t_link	*a;
+	t_link	*b;
+
+	a = NULL;
+	b = NULL;
 	if (!dt->a)
-		dt->a = malloc(sizeof(t_link));
-	if (!dt->a)
+		a = malloc(sizeof(t_link));
+	if (!a)
 		error(dt);
 	if (!dt->b)
-		dt->b = malloc(sizeof(t_link));
-	if (!dt->b)
+		b = malloc(sizeof(t_link));
+	if (!b)
 		error(dt);
+	dt->a = a;
+	dt->b = b;
 	dt->head_a = dt->a;
+	dt->head_b = dt->b;
 	dt->a->val = val;
 	dt->a->prev = NULL;
 	dt->a->next = NULL;
 	dt->a->index = 0;
-	dt->a->val = val;
-	dt->head_b = dt->b;
 	dt->b->prev = NULL;
 	dt->b->next = NULL;
 	dt->b->index = 0;
 	dt->b->val = 0;
 }
+*/
