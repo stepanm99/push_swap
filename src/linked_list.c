@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 20:14:46 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/14 22:20:01 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/14 22:31:41 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ t_link	*list_add_link_a(t_link *link, int val, t_dt *dt)
 	new_link->prev = link;
 	new_link->next = NULL;
 	new_link->val = val;
-	new_link->index = 0;
-	dt->a_length = dt->a_length + 1;
+	new_link->index = 0U;
+	dt->a_length = dt->a_length + 1U;
 	return (new_link);
 }
 
@@ -78,7 +78,7 @@ t_link	*list_add_link_b(t_link *link, int val, t_dt *dt)
 	new_link->next = NULL;
 	new_link->val = val;
 	new_link->index = 0;
-	dt->b_length = dt->b_length +1;
+	dt->b_length = dt->b_length + 1U;
 	return (new_link);
 }
 

@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/14 22:20:50 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/14 22:23:32 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,8 @@ void	indexer(t_dt *dt)
 
 void	data_init_1(t_dt *dt)
 {
-	dt->a_length = 0;
-	dt->b_length = 0;
+	dt->a_length = (unsigned int)0;
+	dt->b_length = (unsigned int)0;
 }
 
 /*Initialization of main data struct*/
