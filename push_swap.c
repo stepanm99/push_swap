@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: smelicha <smelicha@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/12 21:09:53 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/14 15:38:34 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,80 @@ void	print_stack_a(t_dt *dt)
 	}
 }
 
+/*checks if all links have index value*/
+int	check_index(t_dt *dt)
+{
+	t_link	*temp;
+
+	temp = dt->head_a->next;
+	while (temp != dt->head_a)
+	{
+		if (temp->index == 0)
+			return (0);
+		temp = temp->next;
+	}
+	return (1);
+}
+
+/*Find minimal value in the stack a*/
+int	find_min_val(t_dt *dt)
+{
+	t_link	*temp;
+	int		min_val;
+
+	temp = dt->head_a->next;
+	min_val = 2147483647;
+	while (temp)
+	{
+		if (temp->val < min_val)
+			min_val = temp->val;
+		temp = temp->next;
+	}
+	return (min_val);
+}
+
+/*Checks the values of the list and indexes them with unsigned integer*/
+void	indexer(t_dt *dt)
+{
+	t_link			*temp;
+	t_link			*min;
+	int				min_val;
+	int				last_close_val;
+	unsigned int	i;
+
+	i = 1;
+	min_val = find_min_val(dt);
+	last_close_val = 2147483647;
+	temp = dt->head_a->next;
+	min = NULL;
+	while (!check_index(dt))
+	{
+		temp = dt->head_a->next;
+		while (temp)
+		{
+			if (temp->val < last_close_val && temp->index == 0)
+				last_close_val = temp->val;
+			if (((temp->val >= min_val) && temp->val < last_close_val) && temp->index == 0)
+			{
+				min_val = temp->val;
+				min = temp;
+			}
+			temp = temp->next;
+		}
+		if (min)
+			min->index = i;
+		i++;
+	}
+}
+
 /*Initialization of main data struct*/
 void	data_init(t_dt *dt)
 {
 	t_link	*temp_a;
 	t_link	*temp_b;
 
-	// dt->a = NULL;
-	// dt->head_a = NULL;
-	// dt->b = NULL;
-	// dt->head_b = NULL;
+	temp_a = NULL;
+	temp_b = NULL;
 	temp_a = (t_link*) malloc(sizeof(t_link));
 	temp_a->next = NULL;
 	temp_a->prev = NULL;
@@ -47,9 +111,6 @@ void	data_init(t_dt *dt)
 	temp_b->prev = NULL;
 	if (!temp_b)
 		error(dt);
-	// temp_a = dt->a;
-	// temp_b = dt->b;
-	
 	temp_a->index = 0;
 	temp_b->index = 0;
 	temp_a->val = 0;
@@ -82,6 +143,7 @@ int	main(int argc, const char *argv[])
 		return (-1);
 	data_init(dt);
 	arg_pars(argv, dt);
+	indexer(dt);
 	print_stack_a(dt);
 	free_data(dt);
 //	check_leaks();
