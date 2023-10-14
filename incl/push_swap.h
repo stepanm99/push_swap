@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: smelicha <smelicha@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:26 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/12 15:10:07 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/14 22:13:32 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ typedef struct dt {
 	t_link	*head_a;
 	t_link	*b;
 	t_link	*head_b;
+	unsigned int	a_length;
+	unsigned int	b_length;
 }	t_dt;
 
 /*Data initialization*/

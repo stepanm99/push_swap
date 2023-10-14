@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/14 15:38:34 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/14 22:20:50 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	check_index(t_dt *dt)
 	t_link	*temp;
 
 	temp = dt->head_a->next;
+	printf("temp: %p\n", temp);
 	while (temp != dt->head_a)
 	{
 		if (temp->index == 0)
@@ -52,7 +53,7 @@ int	find_min_val(t_dt *dt)
 	min_val = 2147483647;
 	while (temp)
 	{
-		if (temp->val < min_val)
+		if (temp->val < min_val && !temp->index)
 			min_val = temp->val;
 		temp = temp->next;
 	}
@@ -65,22 +66,17 @@ void	indexer(t_dt *dt)
 	t_link			*temp;
 	t_link			*min;
 	int				min_val;
-	int				last_close_val;
 	unsigned int	i;
 
 	i = 1;
 	min_val = find_min_val(dt);
-	last_close_val = 2147483647;
-	temp = dt->head_a->next;
 	min = NULL;
-	while (!check_index(dt))
+	while (i != (dt->a_length + 1))
 	{
 		temp = dt->head_a->next;
 		while (temp)
 		{
-			if (temp->val < last_close_val && temp->index == 0)
-				last_close_val = temp->val;
-			if (((temp->val >= min_val) && temp->val < last_close_val) && temp->index == 0)
+			if ((temp->val <= min_val) && temp->index == 0)
 			{
 				min_val = temp->val;
 				min = temp;
@@ -89,8 +85,15 @@ void	indexer(t_dt *dt)
 		}
 		if (min)
 			min->index = i;
+		min_val = find_min_val(dt);
 		i++;
 	}
+}
+
+void	data_init_1(t_dt *dt)
+{
+	dt->a_length = 0;
+	dt->b_length = 0;
 }
 
 /*Initialization of main data struct*/
@@ -119,6 +122,7 @@ void	data_init(t_dt *dt)
 	dt->b = temp_b;
 	dt->head_a = temp_a;
 	dt->head_b = temp_b;
+	data_init_1(dt);
 }
 
 /*Routine to clean all allocated data*/

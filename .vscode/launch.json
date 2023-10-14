@@ -9,7 +9,7 @@
 			"request": "launch",
 			"name": "Debug",
 			"program": "/home/stepan/Documents/Programming/push_swap/push_swap",
-			"args": ["1", "2", "3"],
+			"args": ["4", "8", "6"],
 			"cwd": "/home/stepan/Documents/Programming/push_swap"
 		}
 	]
