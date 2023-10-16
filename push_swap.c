@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/16 17:55:31 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/16 18:32:05 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,9 +123,12 @@ void	free_data(t_dt *dt)
 {
 	if (dt->head_a)
 		list_free(dt->head_a);
+	dt->head_a = NULL;
 	if (dt->head_b)
 		list_free(dt->head_b);
+	dt->head_b = NULL;
 	free(dt);
+	dt = NULL;
 }
 
 int	main(int argc, const char *argv[])
@@ -134,7 +137,7 @@ int	main(int argc, const char *argv[])
 
 	dt = NULL;
 	printf("%i\n", argc);
-	dt = malloc(sizeof(dt));
+	dt = malloc(sizeof(t_dt));
 	if (!dt)
 		return (-1);
 	data_init(dt);
