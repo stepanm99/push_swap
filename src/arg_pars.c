@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 20:03:38 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/16 11:00:20 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/16 19:23:06 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,26 +39,18 @@ int	ft_atoi(const char *str)
 	return (n * negflag);
 }
 
-int		integer_test(const char *arg)
-{
-	int	flag;
-	int	i;
-
-	flag = 0;
-	i = 0;
-	while (arg[i])
-	{
-		if (arg[i] > '9' || arg[i] < '0')
-			flag = 1;
-		i++;
-	}
-	return (flag);
-}
 
 void	arg_check(const char *arg, t_dt *dt)
 {
-	if (integer_test(arg))
-		error(dt);
+	int	i;
+
+	i = 0;
+	while (arg[i])
+	{
+		if ((arg[i] > '9' || arg[i] < '0') && arg[i] != '-')
+			error(dt);
+		i++;
+	}
 }
 
 /*Parses and checks program argument ans saves the data to list a*/

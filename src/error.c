@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 20:14:10 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/16 18:22:24 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/16 19:24:03 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,6 @@
 void	error(t_dt *dt)
 {
 	printf("Error\n");
-	if (dt->head_a)
-		list_free(dt->head_a);
-	if (dt->head_b)
-		list_free(dt->head_b);
-	data_init(dt);
+	free_data(dt);
+	exit(-1);
 }

@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/16 18:32:05 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/16 19:10:09 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,11 @@ int	main(int argc, const char *argv[])
 	t_dt	*dt;
 
 	dt = NULL;
-	printf("%i\n", argc);
+	if (argc == 1)
+	{
+		write(2, "Error!\n", 7);
+		return (-1);
+	}
 	dt = malloc(sizeof(t_dt));
 	if (!dt)
 		return (-1);

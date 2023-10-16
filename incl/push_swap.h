@@ -6,13 +6,14 @@
 /*   By: smelicha <smelicha@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:26 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/16 17:55:18 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/16 19:14:42 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include <stdlib.h>
+# include <unistd.h>
 # include <stdio.h>
 
 typedef struct link t_link;
@@ -35,8 +36,8 @@ typedef struct dt {
 
 /*Data initialization*/
 
-void	list_init(int val, t_dt *dt);
 void	data_init(t_dt *dt);
+void	free_data(t_dt *dt);
 
 /*List manipulating functions*/
 
