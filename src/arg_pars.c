@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   arg_pars.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: smelicha <smelicha@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 20:03:38 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/11 14:55:37 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/16 11:00:20 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	arg_pars(const char *argv[], t_dt *dt)
 		while (argv[i])
 		{
 			arg_check(argv[i], dt);
-			dt->a = list_add_link_a(dt->a, ft_atoi(argv[i]), dt);
+			dt->a = list_add_link_a(ft_atoi(argv[i]), dt);
 			i++;
 		}
 	}

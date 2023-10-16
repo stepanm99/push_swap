@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/14 22:23:32 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/16 17:55:31 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,29 +99,22 @@ void	data_init_1(t_dt *dt)
 /*Initialization of main data struct*/
 void	data_init(t_dt *dt)
 {
-	t_link	*temp_a;
-	t_link	*temp_b;
-
-	temp_a = NULL;
-	temp_b = NULL;
-	temp_a = (t_link*) malloc(sizeof(t_link));
-	temp_a->next = NULL;
-	temp_a->prev = NULL;
-	if (!temp_a)
+	dt->head_a = malloc(sizeof(t_link));
+	dt->head_a->next = NULL;
+	dt->head_a->prev = NULL;
+	if (!dt->head_a)
 		error(dt);
-	temp_b = (t_link*) malloc(sizeof(t_link));
-	temp_b->next = NULL;
-	temp_b->prev = NULL;
-	if (!temp_b)
+	dt->head_b = malloc(sizeof(t_link));
+	dt->head_b->next = NULL;
+	dt->head_b->prev = NULL;
+	if (!dt->head_b)
 		error(dt);
-	temp_a->index = 0;
-	temp_b->index = 0;
-	temp_a->val = 0;
-	temp_b->val = 0;
-	dt->a = temp_a;
-	dt->b = temp_b;
-	dt->head_a = temp_a;
-	dt->head_b = temp_b;
+	dt->head_a->index = 0;
+	dt->head_b->index = 0;
+	dt->head_a->val = 0;
+	dt->head_b->val = 0;
+	dt->a = dt->head_a;
+	dt->b = dt->head_b;
 	data_init_1(dt);
 }
 
@@ -132,7 +125,6 @@ void	free_data(t_dt *dt)
 		list_free(dt->head_a);
 	if (dt->head_b)
 		list_free(dt->head_b);
-	printf("%p", dt);
 	free(dt);
 }
 

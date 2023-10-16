@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 20:14:46 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/14 22:31:41 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/16 17:55:10 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,38 +30,40 @@ int		list_length(t_link *head)
 /*Frees entire list from head*/
 void	list_free(t_link *head)
 {
-	t_link	*temp;
-	int		list_len;
+	t_link	*current;
+	t_link	*next;
 
-	list_len = list_length(head);
-	temp = NULL;
-	while (list_len)
+	current = NULL;
+	next = NULL;
+	current = head;
+	while (1)
 	{
-		temp = head->prev;
-		head->prev = temp->prev;
-		free(temp);
-		temp = NULL;
-		list_len--;
+		next = current->next;
+		free(current);
+		current = next;
+		if (next == NULL)
+		{
+			free(current);
+			break ;
+		}
+		next->prev = NULL;
 	}
-	free(head);
 }
 
 /*Adds next link to the list a and returns address of the new link*/
-t_link	*list_add_link_a(t_link *link, int val, t_dt *dt)
+t_link	*list_add_link_a(int val, t_dt *dt)
 {
-	t_link	*new_link;
-
-	new_link = malloc(sizeof(t_link));
-	if (!new_link)
+	dt->a->next = malloc(sizeof(t_link));
+	if (!dt->a->next)
 		error(dt);
-	dt->head_a->prev = new_link;
-	link->next = new_link;
-	new_link->prev = link;
-	new_link->next = NULL;
-	new_link->val = val;
-	new_link->index = 0U;
+	dt->head_a->prev = dt->a->next;
+	dt->a->next->prev = dt->a;
+	dt->a->next->next = NULL;
+	dt->a->next->val = val;
+	dt->a->next->index = 0U;
 	dt->a_length = dt->a_length + 1U;
-	return (new_link);
+	dt->a = dt->a->next;
+	return (dt->a);
 }
 
 /*Adds next link to the list b and returns address of the new link*/
