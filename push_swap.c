@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/18 22:45:19 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/18 23:41:35 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	print_stack_a(t_dt *dt)
 
 	a_temp = dt->head_a->next;
 	b_temp = dt->head_b->next;
-	printf("alength: %u\tblength: %u\n", dt->a_length, dt->b_length);
+	printf("\nalength: %u\tblength: %u\n", dt->a_length, dt->b_length);
 	while ((a_temp != dt->head_a) && a_temp)
 	{
 		printf("a:\t%i\tindex:\t%u\n", a_temp->val, a_temp->index);
@@ -31,7 +31,7 @@ void	print_stack_a(t_dt *dt)
 	printf("---------------------\n");
 	while ((b_temp != dt->head_b) && b_temp)
 	{
-		printf("a:\t%i\tindex:\t%u\n", b_temp->val, b_temp->index);
+		printf("b:\t%i\tindex:\t%u\n", b_temp->val, b_temp->index);
 		b_temp = b_temp->next;
 	}
 }
@@ -99,12 +99,6 @@ void	indexer(t_dt *dt)
 	}
 }
 
-void	data_init_1(t_dt *dt)
-{
-	dt->a_length = (unsigned int)0;
-	dt->b_length = (unsigned int)0;
-}
-
 /*Initialization of main data struct*/
 void	data_init(t_dt *dt)
 {
@@ -124,7 +118,8 @@ void	data_init(t_dt *dt)
 	dt->head_b->val = 0;
 	dt->a = dt->head_a;
 	dt->b = dt->head_b;
-	data_init_1(dt);
+	dt->a_length = (unsigned int)0;
+	dt->b_length = (unsigned int)0;
 }
 
 /*Routine to clean all allocated data*/
@@ -156,7 +151,10 @@ int	main(int argc, const char *argv[])
 	data_init(dt);
 	arg_pars(argv, dt);
 	indexer(dt);
+	push_b(dt);
 	swap_a(dt);
+	push_a(dt);
+	push_a(dt);
 	print_stack_a(dt);
 	free_data(dt);
 //	check_leaks();
