@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/16 19:10:09 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/18 22:45:19 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,21 @@
 void	print_stack_a(t_dt *dt)
 {
 	t_link	*a_temp;
+	t_link	*b_temp;
 
 	a_temp = dt->head_a->next;
+	b_temp = dt->head_b->next;
+	printf("alength: %u\tblength: %u\n", dt->a_length, dt->b_length);
 	while ((a_temp != dt->head_a) && a_temp)
 	{
-		printf("a:\t%i\tindex:\t%i\n", a_temp->val, a_temp->index);
+		printf("a:\t%i\tindex:\t%u\n", a_temp->val, a_temp->index);
 		a_temp = a_temp->next;
+	}
+	printf("---------------------\n");
+	while ((b_temp != dt->head_b) && b_temp)
+	{
+		printf("a:\t%i\tindex:\t%u\n", b_temp->val, b_temp->index);
+		b_temp = b_temp->next;
 	}
 }
 
@@ -147,6 +156,7 @@ int	main(int argc, const char *argv[])
 	data_init(dt);
 	arg_pars(argv, dt);
 	indexer(dt);
+	swap_a(dt);
 	print_stack_a(dt);
 	free_data(dt);
 //	check_leaks();
