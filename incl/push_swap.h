@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:26 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/16 19:14:42 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/18 21:33:43 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,23 @@ void	list_free(t_link *head);
 t_link	*list_add_link_a(int val, t_dt *dt);
 t_link	*list_add_link_b(t_link *link, int val, t_dt *dt);
 
+
+/*Push, swap, rotate operations*/
+
+void	push_a(t_dt *dt);
+void	push_b(t_dt *dt);
+void	swap_a(t_dt *dt);
+void	swap_b(t_dt *dt);
+void	swap_ab(t_dt *dt);
+void	rotate_a(t_dt *dt);
+void	rotate_b(t_dt *dt);
+void	rotate_ab(t_dt *dt);
+void	rev_rotate_a(t_dt *dt);
+void	rev_rotate_b(t_dt *dt);
+void	rev_rotate_ab(t_dt *dt);
+
 /*Argument parsing and saving to stack*/
+
 void	arg_pars(const char *argv[], t_dt *dt);
 
 /*Error functions*/

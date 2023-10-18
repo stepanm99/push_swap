@@ -1,6 +1,8 @@
 NAME = push_swap
 
-SRC = push_swap.c src/arg_pars.c src/error.c src/linked_list.c
+SRC = push_swap.c src/arg_pars.c src/error.c src/linked_list.c \
+	src/push_operations.c src/rev_rotate_operations.c src/rotate_operations.c \
+	swap_operations.c
 
 CC = gcc
 
