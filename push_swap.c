@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/18 23:41:35 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/19 00:23:08 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ void	data_init(t_dt *dt)
 	dt->b = dt->head_b;
 	dt->a_length = (unsigned int)0;
 	dt->b_length = (unsigned int)0;
+	dt->swap_ab_flag = 0;
 }
 
 /*Routine to clean all allocated data*/
@@ -155,6 +156,7 @@ int	main(int argc, const char *argv[])
 	swap_a(dt);
 	push_a(dt);
 	push_a(dt);
+	rotate_a(dt);
 	print_stack_a(dt);
 	free_data(dt);
 //	check_leaks();

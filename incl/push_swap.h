@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:26 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/18 21:33:43 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/18 23:55:17 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,11 @@ struct link {
 typedef struct dt {
 	unsigned int	a_length;
 	unsigned int	b_length;
-	t_link	*a;
-	t_link	*head_a;
-	t_link	*b;
-	t_link	*head_b;
+	int				swap_ab_flag;
+	t_link			*a;
+	t_link			*head_a;
+	t_link			*b;
+	t_link			*head_b;
 }	t_dt;
 
 /*Data initialization*/
