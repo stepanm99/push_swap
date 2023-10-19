@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 20:03:38 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/16 19:23:06 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/19 22:27:20 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int	ft_atoi(const char *str)
 	}
 	return (n * negflag);
 }
-
 
 void	arg_check(const char *arg, t_dt *dt)
 {

@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 21:14:49 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/19 12:59:12 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/19 22:28:21 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,11 @@ void	rotate_a(t_dt *dt)
 	address[2] = dt->head_a->next;
 	address[3] = dt->head_a->next->next;
 	if (address[1] != address[3])
-	{
 		rotate_many(address);
-	}
+	else if (dt->a_length == 3)
+		rotate_three_a(dt);
 	else
-	{
 		rotate_two(address);
-	}
 	if (!dt->ab_flag)
 		write(1, "ra\n", 3);
 }
@@ -63,14 +61,12 @@ void	rotate_b(t_dt *dt)
 	address[2] = dt->head_b->next;
 	address[3] = dt->head_b->next->next;
 	if (address[1] != address[3])
-	{
 		rotate_many(address);
-	}
+	else if (dt->b_length == 3)
+		rotate_three_b(dt);
 	else
-	{
 		rotate_two(address);
-	}
-	if(!dt->ab_flag)
+	if (!dt->ab_flag)
 	{
 		write(1, "rb\n", 3);
 		dt->ab_flag = 0;

@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/19 12:51:50 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/19 18:51:17 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ void	print_stack_a(t_dt *dt)
 	a_temp = dt->head_a->next;
 	b_temp = dt->head_b->next;
 	printf("\nalength: %u\tblength: %u\n", dt->a_length, dt->b_length);
-	while ((a_temp != dt->head_a) && a_temp)
+	while (a_temp)
 	{
 		printf("a:\t%i\tindex:\t%u\n", a_temp->val, a_temp->index);
 		a_temp = a_temp->next;
 	}
 	printf("---------------------\n");
-	while ((b_temp != dt->head_b) && b_temp)
+	while (b_temp)
 	{
 		printf("b:\t%i\tindex:\t%u\n", b_temp->val, b_temp->index);
 		b_temp = b_temp->next;
@@ -120,7 +120,7 @@ void	data_init(t_dt *dt)
 	dt->b = dt->head_b;
 	dt->a_length = (unsigned int)0;
 	dt->b_length = (unsigned int)0;
-	dt->swap_ab_flag = 0;
+	dt->ab_flag = 0;
 }
 
 /*Routine to clean all allocated data*/
@@ -156,6 +156,7 @@ int	main(int argc, const char *argv[])
 	swap_a(dt);
 	push_a(dt);
 	push_a(dt);
+	print_stack_a(dt);
 	rotate_a(dt);
 	print_stack_a(dt);
 	free_data(dt);

@@ -6,13 +6,13 @@
 /*   By: smelicha <smelicha@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 20:14:46 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/18 21:13:25 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/19 22:28:36 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/push_swap.h"
 
-int		list_length(t_link *head)
+int	list_length(t_link *head)
 {
 	int		i;
 	t_link	*temp;
