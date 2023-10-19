@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 21:14:25 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/18 23:58:26 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/19 12:57:53 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	swap_a(t_dt *dt)
 	address[1]->next = address[3];
 	address[2]->prev = address[0];
 	address[2]->next = address[1];
-	if (!dt->swap_ab_flag)
+	if (!dt->ab_flag)
 		write(1, "sa\n", 3);
 }
 
@@ -46,16 +46,16 @@ void	swap_b(t_dt *dt)
 	address[1]->next = address[3];
 	address[2]->prev = address[0];
 	address[2]->next = address[1];
-	if (!dt->swap_ab_flag)
+	if (!dt->ab_flag)
 	{
 		write(1, "sb\n", 3);
-		dt->swap_ab_flag = 0;
+		dt->ab_flag = 0;
 	}
 }
 
 void	swap_ab(t_dt *dt)
 {
-	dt->swap_ab_flag = 1;
+	dt->ab_flag = 1;
 	swap_a(dt);
 	swap_b(dt);
 	write(1, "ss\n", 3);

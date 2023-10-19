@@ -6,37 +6,81 @@
 /*   By: smelicha <smelicha@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 21:14:49 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/19 00:21:19 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/19 12:59:12 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/push_swap.h"
 
-void	rotate_a(t_dt *dt)
+static void	rotate_many(t_link *address[])
 {
-	t_link	*address[4];
-
-	address[0] = dt->head_a;
-	address[1] = dt->head_a->prev;
-	address[2] = dt->head_a->next;
-	address[3] = dt->head_a->next->next;
 	address[0]->prev = address[2];
 	address[0]->next = address[3];
 	address[1]->next = address[2];
 	address[2]->prev = address[1];
 	address[2]->next = NULL;
 	address[3]->prev = address[0];
-	write(1, "ra\n", 3);
+}
+
+static void	rotate_two(t_link *address[])
+{
+	address[0]->prev = address[2];
+	address[0]->next = address[1];
+	address[1]->next = address[2];
+	address[2]->next = NULL;
+}
+
+void	rotate_a(t_dt *dt)
+{
+	t_link	*address[4];
+
+	if (dt->a_length == 1)
+		return ;
+	address[0] = dt->head_a;
+	address[1] = dt->head_a->prev;
+	address[2] = dt->head_a->next;
+	address[3] = dt->head_a->next->next;
+	if (address[1] != address[3])
+	{
+		rotate_many(address);
+	}
+	else
+	{
+		rotate_two(address);
+	}
+	if (!dt->ab_flag)
+		write(1, "ra\n", 3);
 }
 
 void	rotate_b(t_dt *dt)
 {
-	dt->a_length = dt->a_length;
-	write(1, "rb\n", 3);
+	t_link	*address[4];
+
+	if (dt->b_length == 1)
+		return ;
+	address[0] = dt->head_b;
+	address[1] = dt->head_b->prev;
+	address[2] = dt->head_b->next;
+	address[3] = dt->head_b->next->next;
+	if (address[1] != address[3])
+	{
+		rotate_many(address);
+	}
+	else
+	{
+		rotate_two(address);
+	}
+	if(!dt->ab_flag)
+	{
+		write(1, "rb\n", 3);
+		dt->ab_flag = 0;
+	}
 }
 
 void	rotate_ab(t_dt *dt)
 {
-	dt->a_length = dt->a_length;
+	dt->ab_flag = 1;
+	rotate_a(dt);
+	rotate_b(dt);
 	write(1, "rr\n", 3);
 }
