@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/19 18:51:17 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/20 23:04:08 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,37 @@
 
 //void	check_leaks();
 
+/*Dev test function to print stack elements and their neighbors in list*/
+void	print_stacks_with_neigbors(t_dt *dt)
+{
+	t_link	*a_temp;
+	t_link	*b_temp;
+
+	a_temp = dt->head_a->next;
+	b_temp = dt->head_b->next;
+	while (a_temp)
+	{
+		if (a_temp->prev)
+			printf("prev val:\t%i\tindex:\t%u\n", a_temp->prev->val, a_temp->prev->index);
+		printf("a:\t%i\tindex:\t%u\n", a_temp->val, a_temp->index);
+		if (a_temp->next)
+			printf("next val:\t%i\tindex:\t%u\n", a_temp->next->val, a_temp->next->index);
+		a_temp = a_temp->next;
+	}
+	printf("---------------------\n");
+	while (b_temp)
+	{
+		if (b_temp->prev)
+			printf("prev val:\t%i\tindex:\t%u\n", b_temp->prev->val, b_temp->prev->index);
+		printf("b:\t%i\tindex:\t%u\n", b_temp->val, b_temp->index);
+		if (b_temp->next)
+			printf("next val:\t%i\tindex:\t%u\n", b_temp->next->val, b_temp->next->index);
+		b_temp = b_temp->next;
+	}
+}
+
 /*Dev test function to print both stacks and their values*/
-void	print_stack_a(t_dt *dt)
+void	print_stacks(t_dt *dt)
 {
 	t_link	*a_temp;
 	t_link	*b_temp;
@@ -152,13 +181,16 @@ int	main(int argc, const char *argv[])
 	data_init(dt);
 	arg_pars(argv, dt);
 	indexer(dt);
+//	push_b(dt);
+//	swap_a(dt);
+//	push_a(dt);
+//	push_a(dt);
+	print_stacks_with_neigbors(dt);
 	push_b(dt);
 	swap_a(dt);
 	push_a(dt);
 	push_a(dt);
-	print_stack_a(dt);
-	rotate_a(dt);
-	print_stack_a(dt);
+	print_stacks_with_neigbors(dt);
 	free_data(dt);
 //	check_leaks();
 	return (0);

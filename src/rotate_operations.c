@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 21:14:49 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/19 22:28:21 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/20 22:43:01 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,30 @@
 
 static void	rotate_many(t_link *address[])
 {
-	address[0]->prev = address[2];
+	/*address[0]->prev = address[2];
 	address[0]->next = address[3];
 	address[1]->next = address[2];
 	address[2]->prev = address[1];
 	address[2]->next = NULL;
+	address[3]->prev = address[0];*/
+	address[0]->next = address[3];
+	address[1]->next = address[2];
+	address[2]->next = NULL;
+//	address[3]->next = address[];
+	address[0]->prev = address[2];
+//	address[1]->prev = address[];
+	address[2]->prev = address[1];
 	address[3]->prev = address[0];
 }
 
 static void	rotate_two(t_link *address[])
 {
-	address[0]->prev = address[2];
 	address[0]->next = address[1];
 	address[1]->next = address[2];
 	address[2]->next = NULL;
+	address[0]->prev = address[2];
+	address[1]->prev = address[0];
+	address[2]->prev = address[1];
 }
 
 void	rotate_a(t_dt *dt)
