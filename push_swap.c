@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/20 23:04:08 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/22 20:49:31 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	print_stacks_with_neigbors(t_dt *dt)
 			printf("next val:\t%i\tindex:\t%u\n", b_temp->next->val, b_temp->next->index);
 		b_temp = b_temp->next;
 	}
+	printf("---------------------\n");
 }
 
 /*Dev test function to print both stacks and their values*/
@@ -187,8 +188,13 @@ int	main(int argc, const char *argv[])
 //	push_a(dt);
 	print_stacks_with_neigbors(dt);
 	push_b(dt);
+	push_b(dt);
+//	push_b(dt);
+//	push_b(dt);
 	swap_a(dt);
-	push_a(dt);
+//	push_a(dt);
+//	push_a(dt);
+//	push_a(dt);
 	push_a(dt);
 	print_stacks_with_neigbors(dt);
 	free_data(dt);
