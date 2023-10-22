@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:26 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/19 22:30:10 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/22 21:31:49 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,18 @@ void	rotate_b(t_dt *dt);
 void	rotate_three_b(t_dt *dt);
 void	rotate_ab(t_dt *dt);
 void	rev_rotate_a(t_dt *dt);
+void	rev_rotate_three_a(t_dt *dt);
 void	rev_rotate_b(t_dt *dt);
+void	rev_rotate_three_b(t_dt *dt);
 void	rev_rotate_ab(t_dt *dt);
 
 /*Argument parsing and saving to stack*/
 
 void	arg_pars(const char *argv[], t_dt *dt);
+
+/*Sorting functions*/
+
+void	sort(t_dt *dt);
 
 /*Error functions*/
 

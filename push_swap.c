@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/22 20:49:31 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/22 21:44:17 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,19 +182,10 @@ int	main(int argc, const char *argv[])
 	data_init(dt);
 	arg_pars(argv, dt);
 	indexer(dt);
-//	push_b(dt);
-//	swap_a(dt);
-//	push_a(dt);
-//	push_a(dt);
 	print_stacks_with_neigbors(dt);
+	rev_rotate_a(dt);
 	push_b(dt);
-	push_b(dt);
-//	push_b(dt);
-//	push_b(dt);
-	swap_a(dt);
-//	push_a(dt);
-//	push_a(dt);
-//	push_a(dt);
+	rotate_a(dt);
 	push_a(dt);
 	print_stacks_with_neigbors(dt);
 	free_data(dt);
