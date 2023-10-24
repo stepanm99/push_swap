@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/22 21:44:17 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/24 16:35:43 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	print_stacks_with_neigbors(t_dt *dt)
 
 	a_temp = dt->head_a->next;
 	b_temp = dt->head_b->next;
+	printf("\nalength: %u\tblength: %u\n", dt->a_length, dt->b_length);
 	while (a_temp)
 	{
 		if (a_temp->prev)
@@ -151,6 +152,8 @@ void	data_init(t_dt *dt)
 	dt->a_length = (unsigned int)0;
 	dt->b_length = (unsigned int)0;
 	dt->ab_flag = 0;
+	dt->a_sorted_flag = 0;
+	dt->b_sorted_flag = 0;
 }
 
 /*Routine to clean all allocated data*/
@@ -183,10 +186,7 @@ int	main(int argc, const char *argv[])
 	arg_pars(argv, dt);
 	indexer(dt);
 	print_stacks_with_neigbors(dt);
-	rev_rotate_a(dt);
-	push_b(dt);
-	rotate_a(dt);
-	push_a(dt);
+	sort(dt);
 	print_stacks_with_neigbors(dt);
 	free_data(dt);
 //	check_leaks();
