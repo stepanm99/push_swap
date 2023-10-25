@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 20:53:18 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/25 00:45:59 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/25 02:50:10 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,27 +67,26 @@ static void	sort_three(t_dt *dt)
 	dt->a_length = dt->a_length;
 }
 
-/*
+
 static void	stalin_sort(t_dt *dt)
 {
-	unsigned int	limit;
+	unsigned int	prev_index;
 
-	limit = dt->a_length;
-	while (limit)
+	prev_index = dt->head_a->next->index;
+	while (dt->head_a->next->val != -2)
 	{
-		if (dt->head_a->next->next->index < dt->head_a->next->index)
+		if (prev_index < dt->head_a->next->index)
 		{
-			rotate_a(dt);
+			prev_index = dt->head_a->next->index;
 			push_b(dt);
-			limit = limit - 2U;
 		}
 		else
 		{
+			prev_index = dt->head_a->next->index;
 			rotate_a(dt);
-			limit--;
 		}
 	}
-}*/
+}
 
 /*
 NOT WORKING!!!
@@ -158,7 +157,7 @@ void	sort(t_dt *dt)
 		sort_three(dt);
 	else
 	{
-		bubble_sort(dt);
+		stalin_sort(dt);
 	}
 	check_sort(dt);
 }

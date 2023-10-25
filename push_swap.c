@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/24 16:35:43 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/25 02:46:07 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,6 +169,20 @@ void	free_data(t_dt *dt)
 	dt = NULL;
 }
 
+static void	mark_links(t_dt *dt)
+{
+	t_link	*link;
+
+	link = dt->head_a->next;
+	link->val = -1;
+	while (link->next)
+	{
+		link = link->next;
+		link->val = 0;
+	}
+	link->val = -2;
+}
+
 int	main(int argc, const char *argv[])
 {
 	t_dt	*dt;
@@ -186,6 +200,7 @@ int	main(int argc, const char *argv[])
 	arg_pars(argv, dt);
 	indexer(dt);
 	print_stacks_with_neigbors(dt);
+	mark_links(dt);
 	sort(dt);
 	print_stacks_with_neigbors(dt);
 	free_data(dt);
