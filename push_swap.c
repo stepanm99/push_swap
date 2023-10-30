@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/30 18:15:56 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/30 19:50:25 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,6 +169,7 @@ void	free_data(t_dt *dt)
 	dt = NULL;
 }
 
+/*
 static void	mark_links(t_dt *dt)
 {
 	t_link	*link;
@@ -181,7 +182,7 @@ static void	mark_links(t_dt *dt)
 		link->val = 0;
 	}
 	link->val = -2;
-}
+}*/
 
 int	main(int argc, const char *argv[])
 {
@@ -200,21 +201,39 @@ int	main(int argc, const char *argv[])
 	arg_pars(argv, dt);
 	indexer(dt);
 	print_stacks_with_neigbors(dt);
-	mark_links(dt);
+//	mark_links(dt);
 //	sort(dt);
+
+
 	rev_rotate_a(dt);
+	print_stacks_with_neigbors(dt);
 	swap_a(dt);
+	print_stacks_with_neigbors(dt);
 	rev_rotate_a(dt);
+	print_stacks_with_neigbors(dt);
 	swap_a(dt);
+	print_stacks_with_neigbors(dt);
 	rev_rotate_a(dt);
+	print_stacks_with_neigbors(dt);
 	swap_a(dt);
+	print_stacks_with_neigbors(dt);
 	rev_rotate_a(dt);
+	print_stacks_with_neigbors(dt);
 	swap_a(dt);
+	print_stacks_with_neigbors(dt);
 	rev_rotate_a(dt);
+	print_stacks_with_neigbors(dt);
 	swap_a(dt);
+	print_stacks_with_neigbors(dt);
 	rev_rotate_a(dt);
+	print_stacks_with_neigbors(dt);
 	swap_a(dt);
+	print_stacks_with_neigbors(dt);
 	rev_rotate_a(dt);
+	print_stacks_with_neigbors(dt);
+	rev_rotate_a(dt);
+
+
 	print_stacks_with_neigbors(dt);
 	free_data(dt);
 //	check_leaks();
