@@ -6,11 +6,105 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 20:53:18 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/30 18:08:55 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/30 21:44:18 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/push_swap.h"
+
+
+
+/*Find place of minimal index in the stack a*/
+unsigned int	find_min_index(t_dt *dt)
+{
+	t_link			*temp;
+	unsigned int	min_index;
+	unsigned int	position;
+	unsigned int	limit;
+	unsigned int	i;
+
+	temp = dt->head_a->next;
+	limit = dt->a_length;
+	min_index = 4294967295;
+	position = 0;
+	i = 0;
+	while (limit)
+	{
+		if (temp->index < min_index && limit)
+		{
+			min_index = temp->index;
+			position = i;
+		}
+		temp = temp->next;
+		i++;
+		limit--;
+	}
+	return (position);
+}
+
+/*Find place of minimal index in the stack a from back*/
+unsigned int	find_min_index_rev(t_dt *dt)
+{
+	t_link			*temp;
+	unsigned int	min_index;
+	unsigned int	position;
+	unsigned int	limit;
+	unsigned int	i;
+
+	temp = dt->head_a->prev;
+	limit = dt->a_length;
+	min_index = 4294967295;
+	position = 0;
+	i = 0;
+	while (limit)
+	{
+		if (temp->index < min_index && limit)
+		{
+			min_index = temp->index;
+			position = i;
+		}
+		temp = temp->prev;
+		i++;
+		limit--;
+	}
+	return (position);
+}
+
+static void	sort_to_b(t_dt *dt)
+{
+	unsigned int	forward_pos;
+	unsigned int	backward_pos;
+
+	forward_pos = 0;
+	backward_pos = 0;
+	while (dt->a_length > 2)
+	{
+		forward_pos = find_min_index(dt);
+		backward_pos = find_min_index_rev(dt);
+		if (forward_pos < backward_pos)
+		{
+			while (forward_pos)
+			{
+				rotate_a(dt);
+				forward_pos--;
+			}
+		}
+		else if (backward_pos < forward_pos)
+		{
+			while (backward_pos)
+			{
+				rev_rotate_a(dt);
+				backward_pos--;
+			}
+		}
+		printf("index to move to b: %u\n", dt->head_a->next->index);
+		push_b(dt);
+	}
+	if (dt->head_a->next->index > dt->head_a->next->next->index)
+		swap_a(dt);
+//	while (dt->b_length)
+//		push_a(dt);
+}
 
 /*Dev function to check if stacks are sorted*/
 static void	check_sort(t_dt *dt)
@@ -65,6 +159,7 @@ static void	sort_two(t_dt *dt)
 		swap_a(dt);
 }
 
+/*
 static void	bubble(t_dt *dt)
 {
 	while (!dt->a_sorted_flag)
@@ -80,7 +175,7 @@ static void	bubble(t_dt *dt)
 			rev_rotate_a(dt);
 	}
 
-}
+}*/
 
 /*Function to sort stack with three elements*/
 static void	sort_three(t_dt *dt)
@@ -123,7 +218,9 @@ void	sort(t_dt *dt)
 	else
 	{
 //		stalin_sort(dt);
-		bubble(dt);
+//		bubble(dt);
+		sort_to_b(dt);
+//		push_all_to_a(dt);
 	}
 	check_sort(dt);
 }

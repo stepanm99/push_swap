@@ -4,3 +4,5 @@ test.c
 a.out
 .DS_Store
 output
+visualizer
+imgui.ini

@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/30 19:50:25 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/30 21:29:51 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,7 @@ void	data_init(t_dt *dt)
 	dt->a_length = (unsigned int)0;
 	dt->b_length = (unsigned int)0;
 	dt->ab_flag = 0;
+	dt->stack_div = 1;
 	dt->a_sorted_flag = 0;
 	dt->b_sorted_flag = 0;
 }
@@ -202,38 +203,8 @@ int	main(int argc, const char *argv[])
 	indexer(dt);
 	print_stacks_with_neigbors(dt);
 //	mark_links(dt);
-//	sort(dt);
 
-
-	rev_rotate_a(dt);
-	print_stacks_with_neigbors(dt);
-	swap_a(dt);
-	print_stacks_with_neigbors(dt);
-	rev_rotate_a(dt);
-	print_stacks_with_neigbors(dt);
-	swap_a(dt);
-	print_stacks_with_neigbors(dt);
-	rev_rotate_a(dt);
-	print_stacks_with_neigbors(dt);
-	swap_a(dt);
-	print_stacks_with_neigbors(dt);
-	rev_rotate_a(dt);
-	print_stacks_with_neigbors(dt);
-	swap_a(dt);
-	print_stacks_with_neigbors(dt);
-	rev_rotate_a(dt);
-	print_stacks_with_neigbors(dt);
-	swap_a(dt);
-	print_stacks_with_neigbors(dt);
-	rev_rotate_a(dt);
-	print_stacks_with_neigbors(dt);
-	swap_a(dt);
-	print_stacks_with_neigbors(dt);
-	rev_rotate_a(dt);
-	print_stacks_with_neigbors(dt);
-	rev_rotate_a(dt);
-
-
+	sort(dt);
 	print_stacks_with_neigbors(dt);
 	free_data(dt);
 //	check_leaks();
