@@ -8,9 +8,9 @@
 			"type": "lldb",
 			"request": "launch",
 			"name": "Debug",
-			"program": "/home/stepan/Documents/Programming/push_swap/push_swap",
-			"args": ["9", "2", "3", "5", "5"],
-			"cwd": "/home/stepan/Documents/Programming/push_swap"
+			"program": "/Users/smelicha/Documents/in_progress/push_swap/push_swap",
+			"args": ["1", "2", "3", "4", "3", "6", "2"],
+			"cwd": "/Users/smelicha/Documents/in_progress/push_swap"
 		}
 	]
 }

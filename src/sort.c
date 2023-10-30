@@ -6,12 +6,13 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 20:53:18 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/30 17:48:50 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/30 18:08:55 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/push_swap.h"
 
+/*Dev function to check if stacks are sorted*/
 static void	check_sort(t_dt *dt)
 {
 	t_link	*current_a;
@@ -57,17 +58,36 @@ static void	check_sort(t_dt *dt)
 		printf("Stack b sorted :)\n");
 }
 
+/*Function to sort stack with only two elelemnts*/
 static void	sort_two(t_dt *dt)
 {
 	if (dt->head_a->next->index > dt->head_a->prev->index)
 		swap_a(dt);
 }
 
+static void	bubble(t_dt *dt)
+{
+	while (!dt->a_sorted_flag)
+	{
+		while (dt->head_a->next->index != 1)
+		{
+			if (dt->head_a->next->index > dt->head_a->next->next->index)
+				swap_a(dt);
+			rev_rotate_a(dt);
+		}
+		check_sort(dt);
+		if (!dt->a_sorted_flag)
+			rev_rotate_a(dt);
+	}
+
+}
+
+/*Function to sort stack with three elements*/
 static void	sort_three(t_dt *dt)
 {
 	dt->a_length = dt->a_length;
 }
-
+/*
 static void	stalin_sort(t_dt *dt)
 {
 	unsigned int	max_index;
@@ -89,68 +109,9 @@ static void	stalin_sort(t_dt *dt)
 			limit--;
 		}
 	}
-//	rotate_a(dt);
-}
-
-/*
-NOT WORKING!!!
-static void	bubble_sort(t_dt *dt)
-{
-	unsigned int	limit;
-	int				i;
-
-	i = 0;
-	while (!dt->a_sorted_flag && i < 10)
-	{
-		limit = dt->a_length;
-		while (limit != 0)
-		{
-			if (dt->head_a->next->index < dt->head_a->next->next->index)
-			{
-				swap_a(dt);
-				rotate_a(dt);
-				rotate_a(dt);
-				limit--;
-			}
-			else
-				rotate_a(dt);
-			limit--;
-			i++;
-			printf("%u\n", limit);
-		}
-		printf("%u %i\n", limit, i);
-		check_sort(dt);
-	}
-}
-*/
-
-/*
-OLD
-
-static void	stalin_sort(t_dt *dt)
-{
-	unsigned int	limit;
-	unsigned int	max_index;
-
-	limit = dt->a_length;
-	max_index = dt->head_a->next->index;
-	while (limit)
-	{
-		if (dt->head_a->next->index < max_index)
-		{
-			max_index = dt->head_a->next->index;
-			push_b(dt);
-		}
-		else
-		{
-			max_index = dt->head_a->next->index;
-			rotate_a(dt);
-		}
-		limit--;
-	}
-	rotate_a(dt);
 }*/
 
+/*Main sorting function, decides what should be done*/
 void	sort(t_dt *dt)
 {
 	if (dt->a_length == 1)
@@ -161,7 +122,8 @@ void	sort(t_dt *dt)
 		sort_three(dt);
 	else
 	{
-		stalin_sort(dt);
+//		stalin_sort(dt);
+		bubble(dt);
 	}
 	check_sort(dt);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smelicha <smelicha@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/25 02:46:07 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/30 18:15:56 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,7 +201,20 @@ int	main(int argc, const char *argv[])
 	indexer(dt);
 	print_stacks_with_neigbors(dt);
 	mark_links(dt);
-	sort(dt);
+//	sort(dt);
+	rev_rotate_a(dt);
+	swap_a(dt);
+	rev_rotate_a(dt);
+	swap_a(dt);
+	rev_rotate_a(dt);
+	swap_a(dt);
+	rev_rotate_a(dt);
+	swap_a(dt);
+	rev_rotate_a(dt);
+	swap_a(dt);
+	rev_rotate_a(dt);
+	swap_a(dt);
+	rev_rotate_a(dt);
 	print_stacks_with_neigbors(dt);
 	free_data(dt);
 //	check_leaks();
