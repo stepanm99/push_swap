@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smelicha <smelicha@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 20:53:18 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/26 22:14:29 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/30 17:48:50 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void	check_sort(t_dt *dt)
 			current_b = current_b->next;
 		}
 	}
-	if (!dt->a_sorted_flag)
+	if (!dt->a_sorted_flag && dt->a_length != 1)
 		printf("Stack a not sorted :(\n");
 	else
 		printf("Stack a sorted :)\n");
@@ -68,26 +68,28 @@ static void	sort_three(t_dt *dt)
 	dt->a_length = dt->a_length;
 }
 
-
 static void	stalin_sort(t_dt *dt)
 {
-	unsigned int	prev_index;
+	unsigned int	max_index;
+	unsigned int	limit;
 
-	prev_index = dt->head_a->next->index;
-	while (dt->head_a->next->val != -2)
+	max_index = dt->head_a->next->index;
+	limit = dt->a_length;
+	while (limit)
 	{
-		if (prev_index > dt->head_a->next->index)
+		if (max_index > dt->head_a->next->index)
 		{
-			prev_index = dt->head_a->next->index;
 			push_b(dt);
+			limit--;
 		}
 		else
 		{
-			prev_index = dt->head_a->next->index;
+			max_index = dt->head_a->next->index;
 			rotate_a(dt);
+			limit--;
 		}
 	}
-	rotate_a(dt);
+//	rotate_a(dt);
 }
 
 /*
@@ -128,20 +130,20 @@ OLD
 static void	stalin_sort(t_dt *dt)
 {
 	unsigned int	limit;
-	unsigned int	prev_index;
+	unsigned int	max_index;
 
 	limit = dt->a_length;
-	prev_index = dt->head_a->next->index;
+	max_index = dt->head_a->next->index;
 	while (limit)
 	{
-		if (dt->head_a->next->index < prev_index)
+		if (dt->head_a->next->index < max_index)
 		{
-			prev_index = dt->head_a->next->index;
+			max_index = dt->head_a->next->index;
 			push_b(dt);
 		}
 		else
 		{
-			prev_index = dt->head_a->next->index;
+			max_index = dt->head_a->next->index;
 			rotate_a(dt);
 		}
 		limit--;

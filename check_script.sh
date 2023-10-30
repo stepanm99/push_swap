@@ -1,9 +1,10 @@
-#! /usr/bin/bash
+##! /usr/bin/bash #linux
+#! /bin/bash #OSX
 
 string=""
 #read -p "Number of numbers: " number
 #read -p "Maximum number: " max
-number=2
+number=5
 max=10
 
 while [[ "$number" != '0' ]];
