@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 20:53:18 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/31 13:30:16 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/31 19:07:23 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ unsigned int	find_min_index(t_dt *dt)
 	unsigned int	i;
 
 	temp = dt->head_a->next;
-	limit = (dt->a_length / 2U) + 1U;
+	limit = dt->a_length;
 	i = 0;
 	while (limit)
 	{
@@ -63,7 +63,7 @@ unsigned int	find_min_index_rev(t_dt *dt)
 	unsigned int	i;
 
 	temp = dt->head_a->prev;
-	limit = (dt->a_length / 2U) + 1U;
+	limit = dt->a_length;
 	i = 1;
 	while (limit)
 	{
@@ -80,15 +80,20 @@ static void	sort_to_b(t_dt *dt)
 {
 	unsigned int	forward_pos;
 	unsigned int	backward_pos;
+	int				i;
 
 	forward_pos = 4294967295;
 	backward_pos = 4294967295;
-	while (dt->a_length > 2)
+	i = 20;
+	while (dt->a_length && i)
 	{
 		min_index(dt);
 		forward_pos = find_min_index(dt);
 		backward_pos = find_min_index_rev(dt);
-		if (forward_pos < backward_pos && dt->head_a->next->index != dt->min_index)
+		if (forward_pos == backward_pos)
+			backward_pos = 4294967295;
+		printf("forward_pos: %u\nbackward_pos: %u\n", forward_pos, backward_pos);
+		if ((forward_pos < backward_pos) && (dt->head_a->next->index != dt->min_index))
 		{
 			while (forward_pos)
 			{
@@ -96,7 +101,7 @@ static void	sort_to_b(t_dt *dt)
 				forward_pos--;
 			}
 		}
-		else if (backward_pos < forward_pos && dt->head_a->next->index != dt->min_index)
+		else if ((backward_pos < forward_pos) && (dt->head_a->next->index != dt->min_index))
 		{
 			while (backward_pos)
 			{
@@ -106,9 +111,10 @@ static void	sort_to_b(t_dt *dt)
 		}
 		printf("index to move to b: %u\n", dt->head_a->next->index);
 		push_b(dt);
+		i--;
 	}
-	if (dt->head_a->next->index > dt->head_a->next->next->index)
-		swap_a(dt);
+//	if (dt->head_a->next->index > dt->head_a->next->next->index)
+//		swap_a(dt);
 	while (dt->b_length)
 		push_a(dt);
 }
