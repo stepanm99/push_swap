@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/31 16:32:53 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/31 17:47:49 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 //void	check_leaks();
 
 /*Compares two strings, if they are same, returns length of those strings,
-if strings are different returns 0*/
+if strings are different returns 0
 int	ft_match(const char *str1, const char *str2)
 {
 	int	i;
@@ -37,7 +37,7 @@ int	ft_match(const char *str1, const char *str2)
 		return (i);
 	else
 		return (0);
-}
+}*/
 
 /*Dev test function to print stack elements and their neighbors in list*/
 void	print_stacks_with_neigbors(t_dt *dt)
@@ -50,8 +50,10 @@ void	print_stacks_with_neigbors(t_dt *dt)
 	printf("\nalength: %u\tblength: %u\n", dt->a_length, dt->b_length);
 	while (a_temp)
 	{
-		if (a_temp->prev)
+		if (a_temp->prev && a_temp->prev != dt->head_a)
 			printf("prev val:\t%i\tindex:\t%u\n", a_temp->prev->val, a_temp->prev->index);
+		else
+			printf("HEAD_A\n");
 		printf("a:\t%i\tindex:\t%u\n", a_temp->val, a_temp->index);
 		if (a_temp->next)
 			printf("next val:\t%i\tindex:\t%u\n", a_temp->next->val, a_temp->next->index);
@@ -60,8 +62,10 @@ void	print_stacks_with_neigbors(t_dt *dt)
 	printf("---------------------\n");
 	while (b_temp)
 	{
-		if (b_temp->prev)
+		if (b_temp->prev && b_temp->prev != dt->head_b)
 			printf("prev val:\t%i\tindex:\t%u\n", b_temp->prev->val, b_temp->prev->index);
+		else
+			printf("HEAD_B\n");
 		printf("b:\t%i\tindex:\t%u\n", b_temp->val, b_temp->index);
 		if (b_temp->next)
 			printf("next val:\t%i\tindex:\t%u\n", b_temp->next->val, b_temp->next->index);
@@ -214,7 +218,7 @@ static void	mark_links(t_dt *dt)
 int	main(int argc, const char *argv[])
 {
 	t_dt	*dt;
-	char	input[10];
+//	char	input[10];		//for interactive test
 
 	dt = NULL;
 	if (argc == 1)
@@ -231,6 +235,9 @@ int	main(int argc, const char *argv[])
 	print_stacks_with_neigbors(dt);
 //	mark_links(dt);
 
+
+
+/* interactive
 	while (1)
 	{
 		scanf("%s", input);
@@ -260,9 +267,10 @@ int	main(int argc, const char *argv[])
 			rev_rotate_ab(dt);
 		print_stacks_with_neigbors(dt);
 	}
+*/
 
-//	sort(dt);
-//	print_stacks_with_neigbors(dt);
+	sort(dt);
+	print_stacks_with_neigbors(dt);
 	free_data(dt);
 //	check_leaks();
 	return (0);

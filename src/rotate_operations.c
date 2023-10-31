@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 21:14:49 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/31 16:06:26 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/31 16:53:52 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	rotate_b(t_dt *dt)
 	address[1] = dt->head_b->prev;
 	address[2] = dt->head_b->next;
 	address[3] = dt->head_b->next->next;
-	if (dt->a_length > 3)
+	if (dt->b_length > 3)
 		rotate_many(address);
 	else if (dt->b_length == 3)
 		rotate_three_b(dt);

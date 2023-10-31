@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 21:20:47 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/31 16:05:09 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/31 17:44:59 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,15 @@ void	rev_rotate_b(t_dt *dt)
 {
 	t_link	*address[4];
 
-	if (dt->a_length == 1)
+	if (dt->b_length == 1)
 		return ;
-	address[0] = dt->head_a;
-	address[1] = dt->head_a->prev->prev;
-	address[2] = dt->head_a->prev;
-	address[3] = dt->head_a->next;
+	address[0] = dt->head_b;
+	address[1] = dt->head_b->prev->prev;
+	address[2] = dt->head_b->prev;
+	address[3] = dt->head_b->next;
 	if (dt->b_length > 3)
 		rev_rotate_many(address);
-	else if (dt->a_length == 3)
+	else if (dt->b_length == 3)
 		rev_rotate_three_b(dt);
 	else
 		rev_rotate_two(address);
