@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 20:53:18 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/31 19:07:23 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/31 19:34:45 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,12 +80,10 @@ static void	sort_to_b(t_dt *dt)
 {
 	unsigned int	forward_pos;
 	unsigned int	backward_pos;
-	int				i;
 
 	forward_pos = 4294967295;
 	backward_pos = 4294967295;
-	i = 20;
-	while (dt->a_length && i)
+	while (dt->a_length)
 	{
 		min_index(dt);
 		forward_pos = find_min_index(dt);
@@ -111,7 +109,6 @@ static void	sort_to_b(t_dt *dt)
 		}
 		printf("index to move to b: %u\n", dt->head_a->next->index);
 		push_b(dt);
-		i--;
 	}
 //	if (dt->head_a->next->index > dt->head_a->next->next->index)
 //		swap_a(dt);

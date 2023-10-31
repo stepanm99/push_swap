@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/31 17:47:49 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/31 19:35:43 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,21 @@ int	ft_match(const char *str1, const char *str2)
 	else
 		return (0);
 }*/
+
+void	checksum(t_dt *dt)
+{
+	unsigned int	i;
+	t_link	*temp;
+
+	temp = dt->head_a->next;
+	i = 1;
+	while (temp->next)
+	{
+		i++;
+		temp = temp->next;
+	}
+	printf("a_length: %u, real: %u\n", dt->a_length, i);
+}
 
 /*Dev test function to print stack elements and their neighbors in list*/
 void	print_stacks_with_neigbors(t_dt *dt)
@@ -232,7 +247,7 @@ int	main(int argc, const char *argv[])
 	data_init(dt);
 	arg_pars(argv, dt);
 	indexer(dt);
-	print_stacks_with_neigbors(dt);
+//	print_stacks_with_neigbors(dt);
 //	mark_links(dt);
 
 
@@ -270,7 +285,8 @@ int	main(int argc, const char *argv[])
 */
 
 	sort(dt);
-	print_stacks_with_neigbors(dt);
+//	print_stacks_with_neigbors(dt);
+//	checksum(dt);
 	free_data(dt);
 //	check_leaks();
 	return (0);
