@@ -6,13 +6,38 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/30 21:29:51 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/31 16:32:53 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "incl/push_swap.h"
 
 //void	check_leaks();
+
+/*Compares two strings, if they are same, returns length of those strings,
+if strings are different returns 0*/
+int	ft_match(const char *str1, const char *str2)
+{
+	int	i;
+	int	j;
+	int	k;
+
+	if (str1 == NULL || str2 == NULL)
+		return (0);
+	i = 0;
+	j = 0;
+	k = 0;
+	while (str1[j] != '\0')
+		j++;
+	while (str2[k] != '\0')
+		k++;
+	while ((str1[i] == str2[i]) && (str1[i] != '\0' || str2[i] != '\0'))
+		i++;
+	if (j == k && j == i)
+		return (i);
+	else
+		return (0);
+}
 
 /*Dev test function to print stack elements and their neighbors in list*/
 void	print_stacks_with_neigbors(t_dt *dt)
@@ -155,6 +180,7 @@ void	data_init(t_dt *dt)
 	dt->stack_div = 1;
 	dt->a_sorted_flag = 0;
 	dt->b_sorted_flag = 0;
+	dt->min_index = 0;
 }
 
 /*Routine to clean all allocated data*/
@@ -188,6 +214,7 @@ static void	mark_links(t_dt *dt)
 int	main(int argc, const char *argv[])
 {
 	t_dt	*dt;
+	char	input[10];
 
 	dt = NULL;
 	if (argc == 1)
@@ -204,8 +231,38 @@ int	main(int argc, const char *argv[])
 	print_stacks_with_neigbors(dt);
 //	mark_links(dt);
 
-	sort(dt);
-	print_stacks_with_neigbors(dt);
+	while (1)
+	{
+		scanf("%s", input);
+		if (ft_match(input, "x"))
+			break ;
+		if (ft_match(input, "sa"))
+			swap_a(dt);
+		if (ft_match(input, "sb"))
+			swap_b(dt);
+		if (ft_match(input, "ss"))
+			swap_ab(dt);
+		if (ft_match(input, "pa"))
+			push_a(dt);
+		if (ft_match(input, "pb"))
+			push_b(dt);
+		if (ft_match(input, "ra"))
+			rotate_a(dt);
+		if (ft_match(input, "rb"))
+			rotate_b(dt);
+		if (ft_match(input, "rr"))
+			rotate_ab(dt);
+		if (ft_match(input, "rra"))
+			rev_rotate_a(dt);
+		if (ft_match(input, "rrb"))
+			rev_rotate_b(dt);
+		if (ft_match(input, "rrr"))
+			rev_rotate_ab(dt);
+		print_stacks_with_neigbors(dt);
+	}
+
+//	sort(dt);
+//	print_stacks_with_neigbors(dt);
 	free_data(dt);
 //	check_leaks();
 	return (0);

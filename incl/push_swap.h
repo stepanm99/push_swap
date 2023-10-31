@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:26 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/30 20:58:57 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/31 13:03:17 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ struct s_link {
 typedef struct dt {
 	unsigned int	a_length;
 	unsigned int	b_length;
+	unsigned int	min_index;
 	int				stack_div;
 	char			ab_flag;
 	char			a_sorted_flag;

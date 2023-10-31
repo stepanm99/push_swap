@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_operations.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smelicha <smelicha@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 21:14:09 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/22 20:51:29 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/31 16:00:01 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,11 @@ static void	push(t_link *address[])
 	address[0]->next = address[2];
 	if (address[2])
 		address[2]->prev = address[0];
-	address[1]->prev = address[3];
-	address[1]->next = address[4];
+	if (address[1])
+	{
+		address[1]->prev = address[3];
+		address[1]->next = address[4];
+	}
 	address[3]->next = address[1];
 	if (address[4])
 	{
@@ -35,7 +38,8 @@ void	push_a(t_dt *dt)
 		return ;
 	address[0] = dt->head_b;
 	address[1] = dt->head_b->next;
-	address[2] = dt->head_b->next->next;
+	if (dt->head_b->next)
+		address[2] = dt->head_b->next->next;
 	address[3] = dt->head_a;
 	address[4] = dt->head_a->next;
 	if (address[4])

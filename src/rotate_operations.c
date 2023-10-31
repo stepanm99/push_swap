@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate_operations.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smelicha <smelicha@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 21:14:49 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/22 21:12:54 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/31 16:06:26 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	rotate_a(t_dt *dt)
 	address[1] = dt->head_a->prev;
 	address[2] = dt->head_a->next;
 	address[3] = dt->head_a->next->next;
-	if (address[1] != address[3])
+	if (dt->a_length > 3)
 		rotate_many(address);
 	else if (dt->a_length == 3)
 		rotate_three_a(dt);
@@ -62,7 +62,7 @@ void	rotate_b(t_dt *dt)
 	address[1] = dt->head_b->prev;
 	address[2] = dt->head_b->next;
 	address[3] = dt->head_b->next->next;
-	if (address[1] != address[3])
+	if (dt->a_length > 3)
 		rotate_many(address);
 	else if (dt->b_length == 3)
 		rotate_three_b(dt);

@@ -6,68 +6,74 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 20:53:18 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/30 21:44:18 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/31 13:30:16 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/push_swap.h"
 
 
+void	min_index(t_dt *dt)
+{
+	t_link			*temp;
+	unsigned int	limit;
+	unsigned int	min_index;
+
+	temp = dt->head_a->next;
+	limit = dt->a_length;
+	min_index = 4294967295;
+	while (temp)
+	{
+		if (temp->index < min_index && limit)
+			min_index = temp->index;
+		temp = temp->next;
+		limit--;
+	}
+	dt->min_index = min_index;
+	printf("MIN_INDEX: %u\n", min_index);
+}
+
 
 /*Find place of minimal index in the stack a*/
 unsigned int	find_min_index(t_dt *dt)
 {
 	t_link			*temp;
-	unsigned int	min_index;
-	unsigned int	position;
 	unsigned int	limit;
 	unsigned int	i;
 
 	temp = dt->head_a->next;
-	limit = dt->a_length;
-	min_index = 4294967295;
-	position = 0;
+	limit = (dt->a_length / 2U) + 1U;
 	i = 0;
 	while (limit)
 	{
-		if (temp->index < min_index && limit)
-		{
-			min_index = temp->index;
-			position = i;
-		}
+		if (temp->index == dt->min_index && limit)
+			return (i);
 		temp = temp->next;
 		i++;
 		limit--;
 	}
-	return (position);
+	return (4294967295);
 }
 
 /*Find place of minimal index in the stack a from back*/
 unsigned int	find_min_index_rev(t_dt *dt)
 {
 	t_link			*temp;
-	unsigned int	min_index;
-	unsigned int	position;
 	unsigned int	limit;
 	unsigned int	i;
 
 	temp = dt->head_a->prev;
-	limit = dt->a_length;
-	min_index = 4294967295;
-	position = 0;
-	i = 0;
+	limit = (dt->a_length / 2U) + 1U;
+	i = 1;
 	while (limit)
 	{
-		if (temp->index < min_index && limit)
-		{
-			min_index = temp->index;
-			position = i;
-		}
+		if (temp->index == dt->min_index && limit)
+			return (i);
 		temp = temp->prev;
 		i++;
 		limit--;
 	}
-	return (position);
+	return (4294967295);
 }
 
 static void	sort_to_b(t_dt *dt)
@@ -75,13 +81,14 @@ static void	sort_to_b(t_dt *dt)
 	unsigned int	forward_pos;
 	unsigned int	backward_pos;
 
-	forward_pos = 0;
-	backward_pos = 0;
+	forward_pos = 4294967295;
+	backward_pos = 4294967295;
 	while (dt->a_length > 2)
 	{
+		min_index(dt);
 		forward_pos = find_min_index(dt);
 		backward_pos = find_min_index_rev(dt);
-		if (forward_pos < backward_pos)
+		if (forward_pos < backward_pos && dt->head_a->next->index != dt->min_index)
 		{
 			while (forward_pos)
 			{
@@ -89,7 +96,7 @@ static void	sort_to_b(t_dt *dt)
 				forward_pos--;
 			}
 		}
-		else if (backward_pos < forward_pos)
+		else if (backward_pos < forward_pos && dt->head_a->next->index != dt->min_index)
 		{
 			while (backward_pos)
 			{
@@ -102,8 +109,8 @@ static void	sort_to_b(t_dt *dt)
 	}
 	if (dt->head_a->next->index > dt->head_a->next->next->index)
 		swap_a(dt);
-//	while (dt->b_length)
-//		push_a(dt);
+	while (dt->b_length)
+		push_a(dt);
 }
 
 /*Dev function to check if stacks are sorted*/

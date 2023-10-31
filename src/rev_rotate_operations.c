@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rev_rotate_operations.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smelicha <smelicha@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 21:20:47 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/22 21:33:33 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/31 16:05:09 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ void	rev_rotate_a(t_dt *dt)
 {
 	t_link	*address[4];
 
-	if (dt->a_length == 1)
+	if (dt->a_length <= 1)
 		return ;
 	address[0] = dt->head_a;
 	address[1] = dt->head_a->prev->prev;
 	address[2] = dt->head_a->prev;
 	address[3] = dt->head_a->next;
-	if (address[1] != address[3])
+	if (dt->a_length > 3)
 		rev_rotate_many(address);
 	else if (dt->a_length == 3)
 		rev_rotate_three_a(dt);
@@ -62,7 +62,7 @@ void	rev_rotate_b(t_dt *dt)
 	address[1] = dt->head_a->prev->prev;
 	address[2] = dt->head_a->prev;
 	address[3] = dt->head_a->next;
-	if (address[1] != address[3])
+	if (dt->b_length > 3)
 		rev_rotate_many(address);
 	else if (dt->a_length == 3)
 		rev_rotate_three_b(dt);
