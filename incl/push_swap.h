@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:26 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/31 13:03:17 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/01 17:36:31 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,20 @@ typedef struct dt {
 	unsigned int	a_length;
 	unsigned int	b_length;
 	unsigned int	min_index;
+	unsigned int	operations;
+	unsigned int	min_operations;
 	int				stack_div;
 	char			ab_flag;
 	char			a_sorted_flag;
 	char			b_sorted_flag;
+	char			alg_flag;
+	char			print_flag;
 	t_link			*a;
 	t_link			*head_a;
 	t_link			*b;
 	t_link			*head_b;
+	t_link			*head_c;
+	t_link			*c;
 }	t_dt;
 
 /*Data initialization*/

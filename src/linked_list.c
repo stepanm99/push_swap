@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 20:14:46 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/31 13:20:52 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/01 18:03:26 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,10 @@ t_link	*list_add_link_b(t_link *link, int val, t_dt *dt)
 	return (new_link);
 }
 
+void	duplicate_list(t_link *h_original, t_link *h_copy)
+{
+	
+}
 /*Initializes list a and list b
 void	list_init(int val, t_dt *dt)
 {

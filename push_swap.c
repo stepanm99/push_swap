@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/31 19:35:43 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/01 17:40:32 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,15 +178,20 @@ void	indexer(t_dt *dt)
 void	data_init(t_dt *dt)
 {
 	dt->head_a = malloc(sizeof(t_link));
-	dt->head_a->next = NULL;
-	dt->head_a->prev = NULL;
 	if (!dt->head_a)
 		error(dt);
+	dt->head_a->next = NULL;
+	dt->head_a->prev = NULL;
 	dt->head_b = malloc(sizeof(t_link));
-	dt->head_b->next = NULL;
-	dt->head_b->prev = NULL;
 	if (!dt->head_b)
 		error(dt);
+	dt->head_b->next = NULL;
+	dt->head_b->prev = NULL;
+	dt->head_c = malloc(sizeof(t_link));
+	if(!dt->head_c)
+		error(dt);
+	dt->head_c->next = NULL;
+	dt->head_c->prev = NULL;
 	dt->head_a->index = 0;
 	dt->head_b->index = 0;
 	dt->head_a->val = 0;
@@ -196,6 +201,9 @@ void	data_init(t_dt *dt)
 	dt->a_length = (unsigned int)0;
 	dt->b_length = (unsigned int)0;
 	dt->ab_flag = 0;
+	dt->operations = 0;
+	dt->min_operations = 0;
+	dt->alg_flag = 0;
 	dt->stack_div = 1;
 	dt->a_sorted_flag = 0;
 	dt->b_sorted_flag = 0;

@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 21:20:47 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/31 17:44:59 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/01 17:47:25 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	rev_rotate_a(t_dt *dt)
 		rev_rotate_three_a(dt);
 	else
 		rev_rotate_two(address);
-	if (!dt->ab_flag)
+	if (!dt->ab_flag && dt->print_flag)
 		write(1, "rra\n", 4);
 }
 
@@ -68,7 +68,7 @@ void	rev_rotate_b(t_dt *dt)
 		rev_rotate_three_b(dt);
 	else
 		rev_rotate_two(address);
-	if (!dt->ab_flag)
+	if (!dt->ab_flag && dt->print_flag)
 	{
 		write(1, "rrb\n", 4);
 		dt->ab_flag = 0;
@@ -77,8 +77,10 @@ void	rev_rotate_b(t_dt *dt)
 
 void	rev_rotate_ab(t_dt *dt)
 {
-	dt->ab_flag = 1;
+	if (dt->print_flag)
+		dt->ab_flag = 1;
 	rev_rotate_a(dt);
 	rev_rotate_b(dt);
-	write(1, "rrr\n", 4);
+	if (dt->print_flag)
+		write(1, "rrr\n", 4);
 }

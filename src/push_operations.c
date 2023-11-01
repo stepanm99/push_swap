@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 21:14:09 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/31 17:43:15 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/01 17:48:22 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ void	push_a(t_dt *dt)
 		address[3]->prev = address[1];
 	dt->a_length = dt->a_length + 1U;
 	dt->b_length = dt->b_length - 1U;
-	write(1, "pa\n", 3);
+	if (dt->print_flag)
+		write(1, "pa\n", 3);
 }
 
 void	push_b(t_dt *dt)
@@ -73,5 +74,6 @@ void	push_b(t_dt *dt)
 		address[3]->prev = address[1];
 	dt->a_length = dt->a_length - 1U;
 	dt->b_length = dt->b_length + 1U;
-	write(1, "pb\n", 3);
+	if (dt->print_flag)
+		write(1, "pb\n", 3);
 }
