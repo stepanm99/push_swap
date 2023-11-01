@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 20:53:18 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/31 19:34:45 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/01 16:57:02 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	min_index(t_dt *dt)
 		limit--;
 	}
 	dt->min_index = min_index;
-	printf("MIN_INDEX: %u\n", min_index);
+//	printf("MIN_INDEX: %u\n", min_index);
 }
 
 
@@ -90,7 +90,7 @@ static void	sort_to_b(t_dt *dt)
 		backward_pos = find_min_index_rev(dt);
 		if (forward_pos == backward_pos)
 			backward_pos = 4294967295;
-		printf("forward_pos: %u\nbackward_pos: %u\n", forward_pos, backward_pos);
+//		printf("forward_pos: %u\nbackward_pos: %u\n", forward_pos, backward_pos);
 		if ((forward_pos < backward_pos) && (dt->head_a->next->index != dt->min_index))
 		{
 			while (forward_pos)
@@ -107,7 +107,7 @@ static void	sort_to_b(t_dt *dt)
 				backward_pos--;
 			}
 		}
-		printf("index to move to b: %u\n", dt->head_a->next->index);
+//		printf("index to move to b: %u\n", dt->head_a->next->index);
 		push_b(dt);
 	}
 //	if (dt->head_a->next->index > dt->head_a->next->next->index)
@@ -152,14 +152,14 @@ static void	check_sort(t_dt *dt)
 			current_b = current_b->next;
 		}
 	}
-	if (!dt->a_sorted_flag && dt->a_length != 1)
+/*	if (!dt->a_sorted_flag && dt->a_length != 1)
 		printf("Stack a not sorted :(\n");
 	else
 		printf("Stack a sorted :)\n");
 	if (!dt->b_sorted_flag)
 		printf("Stack b not sorted :(\n");
 	else
-		printf("Stack b sorted :)\n");
+		printf("Stack b sorted :)\n");*/
 }
 
 /*Function to sort stack with only two elelemnts*/

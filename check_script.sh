@@ -16,7 +16,7 @@ do
 		((number--))
 	done
 	i=$(($i+100))
-	./push_swap $string | grep "Stack a" && echo $i
+	./push_swap $string | wc -l && echo "number of elements $i" #grep "Stack a" && echo $i
 done
 #./push_swap $string #| grep "Stack"
 #echo $string
