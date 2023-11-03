@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/03 17:36:05 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/03 18:23:39 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 //void	check_leaks();
 
 /*Compares two strings, if they are same, returns length of those strings,
-if strings are different returns 0
+if strings are different returns 0*/
 int	ft_match(const char *str1, const char *str2)
 {
 	int	i;
@@ -37,7 +37,7 @@ int	ft_match(const char *str1, const char *str2)
 		return (i);
 	else
 		return (0);
-}*/
+}
 
 void	checksum(t_dt *dt)
 {
@@ -241,8 +241,7 @@ void	free_data(t_dt *dt)
 	dt = NULL;
 }
 
-/*
-static void	mark_links(t_dt *dt)
+/*static void	mark_links(t_dt *dt)
 {
 	t_link	*link;
 
@@ -259,7 +258,7 @@ static void	mark_links(t_dt *dt)
 int	main(int argc, const char *argv[])
 {
 	t_dt	*dt;
-//	char	input[10];		//for interactive test
+	char	input[10];		//for interactive test
 
 	dt = NULL;
 	if (argc == 1)
@@ -281,7 +280,7 @@ int	main(int argc, const char *argv[])
 	duplicate_list_c_to_a(dt);
 
 
-/* interactive
+/* interactive*/
 	while (1)
 	{
 		scanf("%s", input);
@@ -309,9 +308,20 @@ int	main(int argc, const char *argv[])
 			rev_rotate_b(dt);
 		if (ft_match(input, "rrr"))
 			rev_rotate_ab(dt);
-		print_stacks_with_neigbors(dt);
+		if (ft_match(input, "pr"))
+			print_stacks_with_neigbors(dt);
+		if (ft_match(input, "dupc"))
+			duplicate_list_a_to_c(dt);
+		if (ft_match(input, "dupa"))
+			duplicate_list_c_to_a(dt);
+		if (ft_match(input, "fra"))
+			list_free(dt->head_a, dt);
+		if (ft_match(input, "frb"))
+			list_free(dt->head_b, dt);
+		if (ft_match(input, "frc"))
+			list_free(dt->head_c, dt);
 	}
-*/
+
 
 //	sort(dt);
 	print_stacks_with_neigbors(dt);
