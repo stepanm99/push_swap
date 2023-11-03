@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:26 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/03 16:47:11 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/03 17:36:25 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,10 @@ void	free_data(t_dt *dt);
 
 /*List manipulating functions*/
 
-void	list_free(t_link *head);
-t_link	*list_add_link_a(int val, t_dt *dt);
+void	list_free(t_link *head, t_dt *dt);
+t_link	*list_add_link_a(int val, unsigned int index, t_dt *dt);
 void	duplicate_list_a_to_c(t_dt	*dt);
+void	duplicate_list_c_to_a(t_dt	*dt);
 
 /*Push, swap, rotate operations*/
 

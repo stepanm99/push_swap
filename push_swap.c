@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/03 17:06:43 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/03 17:36:05 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -232,14 +232,11 @@ void	data_init(t_dt *dt)
 void	free_data(t_dt *dt)
 {
 	if (dt->head_a)
-		list_free(dt->head_a);
-	dt->head_a = NULL;
+		list_free(dt->head_a, dt);
 	if (dt->head_b)
-		list_free(dt->head_b);
-	dt->head_b = NULL;
+		list_free(dt->head_b, dt);
 	if (dt->head_c)
-		list_free(dt->head_c);
-	dt->head_c = NULL;
+		list_free(dt->head_c, dt);
 	free(dt);
 	dt = NULL;
 }
@@ -279,7 +276,9 @@ int	main(int argc, const char *argv[])
 	duplicate_list_a_to_c(dt);
 //	print_stacks_with_neigbors(dt);
 //	mark_links(dt);
-
+	list_free(dt->head_a, dt);
+//	print_stacks_with_neigbors(dt);
+	duplicate_list_c_to_a(dt);
 
 
 /* interactive
