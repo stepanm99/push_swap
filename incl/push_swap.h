@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:26 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/01 17:36:31 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/03 16:47:11 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ struct s_link {
 typedef struct dt {
 	unsigned int	a_length;
 	unsigned int	b_length;
+	unsigned int	c_length;
 	unsigned int	min_index;
 	unsigned int	operations;
 	unsigned int	min_operations;
@@ -37,10 +38,10 @@ typedef struct dt {
 	char			b_sorted_flag;
 	char			alg_flag;
 	char			print_flag;
-	t_link			*a;
 	t_link			*head_a;
-	t_link			*b;
+	t_link			*a;
 	t_link			*head_b;
+	t_link			*b;
 	t_link			*head_c;
 	t_link			*c;
 }	t_dt;
@@ -54,7 +55,7 @@ void	free_data(t_dt *dt);
 
 void	list_free(t_link *head);
 t_link	*list_add_link_a(int val, t_dt *dt);
-t_link	*list_add_link_b(t_link *link, int val, t_dt *dt);
+void	duplicate_list_a_to_c(t_dt	*dt);
 
 /*Push, swap, rotate operations*/
 

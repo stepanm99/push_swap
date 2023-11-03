@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 20:14:46 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/01 18:03:26 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/03 17:01:56 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,26 +67,31 @@ t_link	*list_add_link_a(int val, t_dt *dt)
 }
 
 /*Adds next link to the list b and returns address of the new link*/
-t_link	*list_add_link_b(t_link *link, int val, t_dt *dt)
+t_link	*list_add_link_c(int val, unsigned int index, t_dt *dt)
 {
-	t_link	*new_link;
-
-	new_link = malloc(sizeof(t_link));
-	if (!new_link)
+	dt->c->next = malloc(sizeof(t_link));
+	if (!dt->c->next)
 		error(dt);
-	dt->head_b->prev = new_link;
-	link->next = new_link;
-	new_link->prev = link;
-	new_link->next = NULL;
-	new_link->val = val;
-	new_link->index = 0;
-	dt->b_length = dt->b_length + 1U;
-	return (new_link);
+	dt->head_c->prev = dt->c->next;
+	dt->c->next->prev = dt->c;
+	dt->c->next->next = NULL;
+	dt->c->next->val = val;
+	dt->c->next->index = index;
+	dt->c_length = dt->c_length + 1U;
+	dt->c = dt->c->next;
+	return (dt->c);
 }
 
-void	duplicate_list(t_link *h_original, t_link *h_copy)
+void	duplicate_list_a_to_c(t_dt	*dt)
 {
-	
+	t_link	*a_temp;
+
+	a_temp = dt->head_a->next;
+	while (a_temp)
+	{
+		list_add_link_c(a_temp->val, a_temp->index, dt);
+		a_temp = a_temp->next;
+	}
 }
 /*Initializes list a and list b
 void	list_init(int val, t_dt *dt)

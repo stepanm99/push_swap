@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/01 17:40:32 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/03 17:06:43 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,12 @@ void	print_stacks_with_neigbors(t_dt *dt)
 {
 	t_link	*a_temp;
 	t_link	*b_temp;
+	t_link	*c_temp;
 
 	a_temp = dt->head_a->next;
 	b_temp = dt->head_b->next;
-	printf("\nalength: %u\tblength: %u\n", dt->a_length, dt->b_length);
+	c_temp = dt->head_c->next;
+	printf("\nalength: %u\tblength: %u\tclength: %u\n", dt->a_length, dt->b_length, dt->c_length);
 	while (a_temp)
 	{
 		if (a_temp->prev && a_temp->prev != dt->head_a)
@@ -85,6 +87,18 @@ void	print_stacks_with_neigbors(t_dt *dt)
 		if (b_temp->next)
 			printf("next val:\t%i\tindex:\t%u\n", b_temp->next->val, b_temp->next->index);
 		b_temp = b_temp->next;
+	}
+	printf("---------------------\n");
+	while (c_temp)
+	{
+		if (c_temp->prev && c_temp->prev != dt->head_c)
+			printf("prev val:\t%i\tindex:\t%u\n", c_temp->prev->val, c_temp->prev->index);
+		else
+			printf("HEAD_C\n");
+		printf("c:\t%i\tindex:\t%u\n", c_temp->val, c_temp->index);
+		if (c_temp->next)
+			printf("next val:\t%i\tindex:\t%u\n", c_temp->next->val, c_temp->next->index);
+		c_temp = c_temp->next;
 	}
 	printf("---------------------\n");
 }
@@ -194,12 +208,16 @@ void	data_init(t_dt *dt)
 	dt->head_c->prev = NULL;
 	dt->head_a->index = 0;
 	dt->head_b->index = 0;
+	dt->head_c->index = 0;
 	dt->head_a->val = 0;
 	dt->head_b->val = 0;
+	dt->head_c->val = 0;
 	dt->a = dt->head_a;
 	dt->b = dt->head_b;
-	dt->a_length = (unsigned int)0;
-	dt->b_length = (unsigned int)0;
+	dt->c = dt->head_c;
+	dt->a_length = 0U;
+	dt->b_length = 0U;
+	dt->c_length = 0U;
 	dt->ab_flag = 0;
 	dt->operations = 0;
 	dt->min_operations = 0;
@@ -219,6 +237,9 @@ void	free_data(t_dt *dt)
 	if (dt->head_b)
 		list_free(dt->head_b);
 	dt->head_b = NULL;
+	if (dt->head_c)
+		list_free(dt->head_c);
+	dt->head_c = NULL;
 	free(dt);
 	dt = NULL;
 }
@@ -255,6 +276,7 @@ int	main(int argc, const char *argv[])
 	data_init(dt);
 	arg_pars(argv, dt);
 	indexer(dt);
+	duplicate_list_a_to_c(dt);
 //	print_stacks_with_neigbors(dt);
 //	mark_links(dt);
 
@@ -292,8 +314,8 @@ int	main(int argc, const char *argv[])
 	}
 */
 
-	sort(dt);
-//	print_stacks_with_neigbors(dt);
+//	sort(dt);
+	print_stacks_with_neigbors(dt);
 //	checksum(dt);
 	free_data(dt);
 //	check_leaks();
