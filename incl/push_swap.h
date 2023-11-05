@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: stepan <stepan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:26 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/03 17:36:25 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/05 18:14:21 by stepan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,13 @@ struct s_link {
 	unsigned int		index;
 };
 
+
+/*
+alg_flag:
+	1: bubble
+	2: sort to b and push to a
+	3: "bucket" sort
+*/
 typedef struct dt {
 	unsigned int	a_length;
 	unsigned int	b_length;

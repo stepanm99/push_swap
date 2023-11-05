@@ -6,7 +6,7 @@
 /*   By: stepan <stepan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 20:53:18 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/05 02:30:14 by stepan           ###   ########.fr       */
+/*   Updated: 2023/11/05 18:16:24 by stepan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,25 +170,34 @@ static void	sort_two(t_dt *dt)
 }
 
 
-static void	bubble(t_dt *dt)
+static void	bubble_iteration(t_dt *dt)
 {
-	int	flag;
+	unsigned int	i;
 
-	flag = 1;
-	while (dt->head_a->next->index != 1 || flag)
+	i = dt->a_length;
+	while (i)
 	{
-		if (dt->head_a->next->next->index < dt->head_a->next->index)
+		if (dt->head_a->next->next->index < dt->head_a->next->index && i > 1)
 			swap_a(dt);
 		rotate_a(dt);
-		flag = 0;
+		i--;
 	}
 }
 
-/*Function to sort stack with three elements*/
+static void	bubble(t_dt *dt)
+{
+	while (!dt->a_sorted_flag)
+	{
+		bubble_iteration(dt);
+		check_sort(dt);
+	}
+}
+
+/*Function to sort stack with three elements
 static void	sort_three(t_dt *dt)
 {
 	dt->a_length = dt->a_length;
-}
+}*/
 /*
 static void	stalin_sort(t_dt *dt)
 {
@@ -212,6 +221,11 @@ static void	stalin_sort(t_dt *dt)
 		}
 	}
 }*/
+/*prototype
+static void	find_best_algorithm(t_dt *dt)
+{
+	
+}*/
 
 /*Main sorting function, decides what should be done*/
 void	sort(t_dt *dt)
@@ -221,7 +235,7 @@ void	sort(t_dt *dt)
 	else if (dt->a_length == 2)
 		sort_two(dt);
 	else if (dt->a_length == 3)
-		sort_three(dt);
+		bubble(dt);
 	else
 	{
 //		stalin_sort(dt);
@@ -229,5 +243,4 @@ void	sort(t_dt *dt)
 //		sort_to_b(dt);
 //		push_all_to_a(dt);
 	}
-	check_sort(dt);
 }

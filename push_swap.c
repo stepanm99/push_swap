@@ -6,7 +6,7 @@
 /*   By: stepan <stepan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/05 01:55:29 by stepan           ###   ########.fr       */
+/*   Updated: 2023/11/05 17:42:49 by stepan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	print_stacks_with_neigbors(t_dt *dt)
 		if (a_temp->prev && a_temp->prev != dt->head_a)
 			printf("prev val:\t%i\tindex:\t%u\n", a_temp->prev->val, a_temp->prev->index);
 		else
-			printf("HEAD_A\n");
+			printf("HEAD_A\tnext val: %u\n", dt->head_a->next->val);
 		printf("a:\t%i\tindex:\t%u\n", a_temp->val, a_temp->index);
 		if (a_temp->next)
 			printf("next val:\t%i\tindex:\t%u\n", a_temp->next->val, a_temp->next->index);
