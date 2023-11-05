@@ -6,7 +6,7 @@
 /*   By: stepan <stepan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:26 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/05 18:14:21 by stepan           ###   ########.fr       */
+/*   Updated: 2023/11/05 19:07:54 by stepan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,18 @@ alg_flag:
 	3: "bucket" sort
 */
 typedef struct dt {
-	unsigned int	a_length;
-	unsigned int	b_length;
-	unsigned int	c_length;
-	unsigned int	min_index;
-	unsigned int	operations;
-	unsigned int	min_operations;
-	int				stack_div;
-	char			ab_flag;
-	char			a_sorted_flag;
-	char			b_sorted_flag;
-	char			alg_flag;
-	char			print_flag;
+	unsigned int	a_length;		//0
+	unsigned int	b_length;		//0
+	unsigned int	c_length;		//0
+	unsigned int	min_index;		//0
+	unsigned int	operations;		//0
+	unsigned int	min_operations;	//0
+	int				stack_div;		//1
+	char			ab_flag;		//0
+	char			a_sorted_flag;	//0
+	char			b_sorted_flag;	//0
+	char			alg_flag;		//0
+	char			print_flag;		//0
 	t_link			*head_a;
 	t_link			*a;
 	t_link			*head_b;

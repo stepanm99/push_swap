@@ -6,7 +6,7 @@
 /*   By: stepan <stepan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/05 17:42:49 by stepan           ###   ########.fr       */
+/*   Updated: 2023/11/05 19:11:11 by stepan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -231,6 +231,7 @@ void	data_init(t_dt *dt)
 	dt->operations = 0;
 	dt->min_operations = 0;
 	dt->alg_flag = 0;
+	dt->print_flag = 0;
 	dt->stack_div = 1;
 	dt->a_sorted_flag = 0;
 	dt->b_sorted_flag = 0;
@@ -282,11 +283,6 @@ int	main(int argc, const char *argv[])
 	arg_pars(argv, dt);
 	indexer(dt);
 	duplicate_list_a_to_c(dt);
-//	print_stacks_with_neigbors(dt);
-//	mark_links(dt);
-	list_free(dt->head_a, dt);
-//	print_stacks_with_neigbors(dt);
-	duplicate_list_c_to_a(dt);
 
 
 /* interactive*/
@@ -340,7 +336,6 @@ int	main(int argc, const char *argv[])
 		
 	}
 //	sort(dt);
-	print_stacks_with_neigbors(dt);
 //	checksum(dt);
 	free_data(dt);
 //	check_leaks();
