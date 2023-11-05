@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   linked_list.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: stepan <stepan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 20:14:46 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/03 17:35:40 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/05 01:28:10 by stepan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,20 @@ void	list_free(t_link *head, t_dt *dt)
 		next->prev = NULL;
 	}
 	if (dt->head_a == head)
+	{
 		dt->head_a = NULL;
+		dt->a_length = 0;
+	}
 	if (dt->head_b == head)
+	{
 		dt->head_b = NULL;
+		dt->b_length = 0;
+	}
 	if (dt->head_c == head)
+	{
 		dt->head_c = NULL;
+		dt->c_length = 0;
+	}
 }
 
 /*Adds next link to the list a and returns address of the new link*/
@@ -95,6 +104,17 @@ void	duplicate_list_a_to_c(t_dt	*dt)
 {
 	t_link	*a_temp;
 
+	if (!dt->head_a->next)
+		return ;
+	if (!dt->head_c)
+	{
+		dt->head_c = malloc(sizeof(t_link));
+		if (!dt->head_c)
+			error(dt);
+		dt->head_c->next = NULL;
+		dt->head_c->prev = NULL;
+		dt->c = dt->head_c;
+	}
 	a_temp = dt->head_a->next;
 	while (a_temp)
 	{

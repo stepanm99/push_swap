@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: stepan <stepan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 20:53:18 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/01 16:57:02 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/05 02:30:14 by stepan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ unsigned int	find_min_index_rev(t_dt *dt)
 	}
 	return (4294967295);
 }
-
+/*
 static void	sort_to_b(t_dt *dt)
 {
 	unsigned int	forward_pos;
@@ -114,7 +114,7 @@ static void	sort_to_b(t_dt *dt)
 //		swap_a(dt);
 	while (dt->b_length)
 		push_a(dt);
-}
+}*/
 
 /*Dev function to check if stacks are sorted*/
 static void	check_sort(t_dt *dt)
@@ -169,23 +169,20 @@ static void	sort_two(t_dt *dt)
 		swap_a(dt);
 }
 
-/*
+
 static void	bubble(t_dt *dt)
 {
-	while (!dt->a_sorted_flag)
-	{
-		while (dt->head_a->next->index != 1)
-		{
-			if (dt->head_a->next->index > dt->head_a->next->next->index)
-				swap_a(dt);
-			rev_rotate_a(dt);
-		}
-		check_sort(dt);
-		if (!dt->a_sorted_flag)
-			rev_rotate_a(dt);
-	}
+	int	flag;
 
-}*/
+	flag = 1;
+	while (dt->head_a->next->index != 1 || flag)
+	{
+		if (dt->head_a->next->next->index < dt->head_a->next->index)
+			swap_a(dt);
+		rotate_a(dt);
+		flag = 0;
+	}
+}
 
 /*Function to sort stack with three elements*/
 static void	sort_three(t_dt *dt)
@@ -228,8 +225,8 @@ void	sort(t_dt *dt)
 	else
 	{
 //		stalin_sort(dt);
-//		bubble(dt);
-		sort_to_b(dt);
+		bubble(dt);
+//		sort_to_b(dt);
 //		push_all_to_a(dt);
 	}
 	check_sort(dt);

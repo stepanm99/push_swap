@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: stepan <stepan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/03 18:23:39 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/05 01:55:29 by stepan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,12 @@ void	print_stacks_with_neigbors(t_dt *dt)
 	t_link	*b_temp;
 	t_link	*c_temp;
 
-	a_temp = dt->head_a->next;
-	b_temp = dt->head_b->next;
-	c_temp = dt->head_c->next;
 	printf("\nalength: %u\tblength: %u\tclength: %u\n", dt->a_length, dt->b_length, dt->c_length);
-	while (a_temp)
+	if (dt->head_a)
 	{
+		a_temp = dt->head_a->next;
+		while (a_temp)
+		{
 		if (a_temp->prev && a_temp->prev != dt->head_a)
 			printf("prev val:\t%i\tindex:\t%u\n", a_temp->prev->val, a_temp->prev->index);
 		else
@@ -75,10 +75,14 @@ void	print_stacks_with_neigbors(t_dt *dt)
 		if (a_temp->next)
 			printf("next val:\t%i\tindex:\t%u\n", a_temp->next->val, a_temp->next->index);
 		a_temp = a_temp->next;
+		}
+		printf("---------------------\n");
 	}
-	printf("---------------------\n");
-	while (b_temp)
+	if (dt->head_b)
 	{
+		b_temp = dt->head_b->next;
+		while (b_temp)
+		{
 		if (b_temp->prev && b_temp->prev != dt->head_b)
 			printf("prev val:\t%i\tindex:\t%u\n", b_temp->prev->val, b_temp->prev->index);
 		else
@@ -87,20 +91,25 @@ void	print_stacks_with_neigbors(t_dt *dt)
 		if (b_temp->next)
 			printf("next val:\t%i\tindex:\t%u\n", b_temp->next->val, b_temp->next->index);
 		b_temp = b_temp->next;
+		}
+		printf("---------------------\n");
 	}
-	printf("---------------------\n");
-	while (c_temp)
+	if (dt->head_c)
 	{
-		if (c_temp->prev && c_temp->prev != dt->head_c)
-			printf("prev val:\t%i\tindex:\t%u\n", c_temp->prev->val, c_temp->prev->index);
-		else
-			printf("HEAD_C\n");
-		printf("c:\t%i\tindex:\t%u\n", c_temp->val, c_temp->index);
-		if (c_temp->next)
-			printf("next val:\t%i\tindex:\t%u\n", c_temp->next->val, c_temp->next->index);
-		c_temp = c_temp->next;
+		c_temp = dt->head_c->next;
+		while (c_temp)
+		{
+			if (c_temp->prev && c_temp->prev != dt->head_c)
+				printf("prev val:\t%i\tindex:\t%u\n", c_temp->prev->val, c_temp->prev->index);
+			else
+				printf("HEAD_C\n");
+			printf("c:\t%i\tindex:\t%u\n", c_temp->val, c_temp->index);
+			if (c_temp->next)
+				printf("next val:\t%i\tindex:\t%u\n", c_temp->next->val, c_temp->next->index);
+			c_temp = c_temp->next;
+		}
+		printf("---------------------\n");
 	}
-	printf("---------------------\n");
 }
 
 /*Dev test function to print both stacks and their values*/
@@ -320,9 +329,16 @@ int	main(int argc, const char *argv[])
 			list_free(dt->head_b, dt);
 		if (ft_match(input, "frc"))
 			list_free(dt->head_c, dt);
+		if (ft_match(input, "pc"))
+			printf("count: %u\n", dt->operations);
+		if (ft_match(input, "setprint"))
+			dt->print_flag = 1;
+		if (ft_match(input, "usetprint"))
+			dt->print_flag = 0;
+		if (ft_match(input, "sort"))
+			sort(dt);
+		
 	}
-
-
 //	sort(dt);
 	print_stacks_with_neigbors(dt);
 //	checksum(dt);

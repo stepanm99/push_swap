@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate_operations.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: stepan <stepan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 21:14:49 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/03 17:48:35 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/05 00:52:41 by stepan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	rotate_b(t_dt *dt)
 {
 	t_link	*address[4];
 
-	if (dt->b_length == 1)
+	if (dt->b_length <= 1)
 		return ;
 	address[0] = dt->head_b;
 	address[1] = dt->head_b->prev;
