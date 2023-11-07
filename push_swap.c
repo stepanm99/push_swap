@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stepan <stepan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/05 19:11:11 by stepan           ###   ########.fr       */
+/*   Updated: 2023/11/07 20:40:32 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -333,6 +333,13 @@ int	main(int argc, const char *argv[])
 			dt->print_flag = 0;
 		if (ft_match(input, "sort"))
 			sort(dt);
+		if (ft_match(input, "check"))
+			check_sort(dt);
+		if (ft_match(input, "better"))
+		{
+			sort_to_buckets(dt, 2);
+			merge_and_sort_to_a(dt);
+		}
 		
 	}
 //	sort(dt);
