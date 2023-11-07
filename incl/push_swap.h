@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stepan <stepan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:26 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/05 19:07:54 by stepan           ###   ########.fr       */
+/*   Updated: 2023/11/07 18:54:28 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,19 @@ void	arg_pars(const char *argv[], t_dt *dt);
 /*Sorting functions*/
 
 void	sort(t_dt *dt);
+void	min_index(t_dt *dt,	t_link *head, int range, char max_flag);
+unsigned int	find_min_index(t_dt *dt, t_link *head, int range);
+unsigned int	find_min_index_rev(t_dt *dt, t_link *head, int range);
+void	sort_to_buckets(t_dt *dt, int range);
+void	merge_and_sort_to_a(t_dt *dt);
+void	better_sort(t_dt *dt);
+void	check_sort(t_dt *dt);
+void	sort_two(t_dt *dt);
+void	bubble_iteration(t_dt *dt);
+void	bubble(t_dt *dt);
+void	find_best_algorithm(t_dt *dt);
+void	simple_sort(t_dt *dt);
+void	sort_to_b(t_dt *dt);
 
 /*Error functions*/
 
