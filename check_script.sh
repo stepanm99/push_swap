@@ -4,19 +4,46 @@
 string=""
 #read -p "Number of numbers: " number
 #read -p "Maximum number: " max
-i=2
-number=20
-max=100
-while [[ "$i" != '1000' ]];
+i=1000
+j=$i
+number=100
+k=$number
+max=10
+result=0
+sum=0
+average=0
+
+
+while [[ "$i" != '0' ]];
 do
-	number=$i
+	string=""
+	number=$k
 	while [[ "$number" != '0' ]];
 	do
 		string=$string" "$((1 + RANDOM % $max))
 		((number--))
 	done
-	i=$(($i+100))
-	./push_swap $string | wc -l && echo "number of elements $i" #grep "Stack a" && echo $i
+	result=$(./push_swap $string | wc -l)
+	echo result: $result
+	sum=$((result+sum))
+	((i--))
 done
+average=$(($sum/$j))
+echo $average
+#./push_swap $string | wc -l #&& echo "number of elements $i" #grep "Stack a" && echo $i
+
+
+
+#while [[ "$i" != '1000' ]];
+#do
+#	number=$i
+#	while [[ "$number" != '0' ]];
+#	do
+#		string=$string" "$((1 + RANDOM % $max))
+#		((number--))
+#	done
+#	i=$(($i+100))
+#	./push_swap $string # | wc -l && echo "number of elements $i" #grep "Stack a" && echo $i
+#done
 #./push_swap $string #| grep "Stack"
 #echo $string

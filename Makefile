@@ -9,7 +9,7 @@ CC = gcc
 
 FLAGS = -Wall -Wextra -Werror -g
 
-DFLAGS = -Wall -Wextra -Werror -g -fsanitize=address -static-libasan
+DFLAGS = -Wall -Wextra -Werror -g -fsanitize=address -static-libsan
 
 OBJ = $(SRC:.c=.o)
 

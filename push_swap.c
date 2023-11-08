@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/31 19:35:43 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/08 17:48:50 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,24 +59,30 @@ void	print_stacks_with_neigbors(t_dt *dt)
 {
 	t_link	*a_temp;
 	t_link	*b_temp;
+	t_link	*c_temp;
 
-	a_temp = dt->head_a->next;
-	b_temp = dt->head_b->next;
-	printf("\nalength: %u\tblength: %u\n", dt->a_length, dt->b_length);
-	while (a_temp)
+	printf("\nalength: %u\tblength: %u\tclength: %u\n", dt->a_length, dt->b_length, dt->c_length);
+	if (dt->head_a)
 	{
+		a_temp = dt->head_a->next;
+		while (a_temp)
+		{
 		if (a_temp->prev && a_temp->prev != dt->head_a)
 			printf("prev val:\t%i\tindex:\t%u\n", a_temp->prev->val, a_temp->prev->index);
 		else
-			printf("HEAD_A\n");
+			printf("HEAD_A\tnext val: %u\n", dt->head_a->next->val);
 		printf("a:\t%i\tindex:\t%u\n", a_temp->val, a_temp->index);
 		if (a_temp->next)
 			printf("next val:\t%i\tindex:\t%u\n", a_temp->next->val, a_temp->next->index);
 		a_temp = a_temp->next;
+		}
+		printf("---------------------\n");
 	}
-	printf("---------------------\n");
-	while (b_temp)
+	if (dt->head_b)
 	{
+		b_temp = dt->head_b->next;
+		while (b_temp)
+		{
 		if (b_temp->prev && b_temp->prev != dt->head_b)
 			printf("prev val:\t%i\tindex:\t%u\n", b_temp->prev->val, b_temp->prev->index);
 		else
@@ -85,8 +91,25 @@ void	print_stacks_with_neigbors(t_dt *dt)
 		if (b_temp->next)
 			printf("next val:\t%i\tindex:\t%u\n", b_temp->next->val, b_temp->next->index);
 		b_temp = b_temp->next;
+		}
+		printf("---------------------\n");
 	}
-	printf("---------------------\n");
+	if (dt->head_c)
+	{
+		c_temp = dt->head_c->next;
+		while (c_temp)
+		{
+			if (c_temp->prev && c_temp->prev != dt->head_c)
+				printf("prev val:\t%i\tindex:\t%u\n", c_temp->prev->val, c_temp->prev->index);
+			else
+				printf("HEAD_C\n");
+			printf("c:\t%i\tindex:\t%u\n", c_temp->val, c_temp->index);
+			if (c_temp->next)
+				printf("next val:\t%i\tindex:\t%u\n", c_temp->next->val, c_temp->next->index);
+			c_temp = c_temp->next;
+		}
+		printf("---------------------\n");
+	}
 }
 
 /*Dev test function to print both stacks and their values*/
@@ -178,24 +201,37 @@ void	indexer(t_dt *dt)
 void	data_init(t_dt *dt)
 {
 	dt->head_a = malloc(sizeof(t_link));
-	dt->head_a->next = NULL;
-	dt->head_a->prev = NULL;
 	if (!dt->head_a)
 		error(dt);
+	dt->head_a->next = NULL;
+	dt->head_a->prev = NULL;
 	dt->head_b = malloc(sizeof(t_link));
-	dt->head_b->next = NULL;
-	dt->head_b->prev = NULL;
 	if (!dt->head_b)
 		error(dt);
+	dt->head_b->next = NULL;
+	dt->head_b->prev = NULL;
+	dt->head_c = malloc(sizeof(t_link));
+	if(!dt->head_c)
+		error(dt);
+	dt->head_c->next = NULL;
+	dt->head_c->prev = NULL;
 	dt->head_a->index = 0;
 	dt->head_b->index = 0;
+	dt->head_c->index = 0;
 	dt->head_a->val = 0;
 	dt->head_b->val = 0;
+	dt->head_c->val = 0;
 	dt->a = dt->head_a;
 	dt->b = dt->head_b;
-	dt->a_length = (unsigned int)0;
-	dt->b_length = (unsigned int)0;
+	dt->c = dt->head_c;
+	dt->a_length = 0U;
+	dt->b_length = 0U;
+	dt->c_length = 0U;
 	dt->ab_flag = 0;
+	dt->operations = 0;
+	dt->min_operations = 0;
+	dt->alg_flag = 0;
+	dt->print_flag = 0;
 	dt->stack_div = 1;
 	dt->a_sorted_flag = 0;
 	dt->b_sorted_flag = 0;
@@ -206,17 +242,16 @@ void	data_init(t_dt *dt)
 void	free_data(t_dt *dt)
 {
 	if (dt->head_a)
-		list_free(dt->head_a);
-	dt->head_a = NULL;
+		list_free(dt->head_a, dt);
 	if (dt->head_b)
-		list_free(dt->head_b);
-	dt->head_b = NULL;
+		list_free(dt->head_b, dt);
+	if (dt->head_c)
+		list_free(dt->head_c, dt);
 	free(dt);
 	dt = NULL;
 }
 
-/*
-static void	mark_links(t_dt *dt)
+/*static void	mark_links(t_dt *dt)
 {
 	t_link	*link;
 
@@ -247,9 +282,7 @@ int	main(int argc, const char *argv[])
 	data_init(dt);
 	arg_pars(argv, dt);
 	indexer(dt);
-//	print_stacks_with_neigbors(dt);
-//	mark_links(dt);
-
+	duplicate_list_a_to_c(dt);
 
 
 /* interactive
@@ -280,12 +313,36 @@ int	main(int argc, const char *argv[])
 			rev_rotate_b(dt);
 		if (ft_match(input, "rrr"))
 			rev_rotate_ab(dt);
-		print_stacks_with_neigbors(dt);
-	}
-*/
-
+		if (ft_match(input, "pr"))
+			print_stacks_with_neigbors(dt);
+		if (ft_match(input, "dupc"))
+			duplicate_list_a_to_c(dt);
+		if (ft_match(input, "dupa"))
+			duplicate_list_c_to_a(dt);
+		if (ft_match(input, "fra"))
+			list_free(dt->head_a, dt);
+		if (ft_match(input, "frb"))
+			list_free(dt->head_b, dt);
+		if (ft_match(input, "frc"))
+			list_free(dt->head_c, dt);
+		if (ft_match(input, "pc"))
+			printf("count: %u\n", dt->operations);
+		if (ft_match(input, "setprint"))
+			dt->print_flag = 1;
+		if (ft_match(input, "usetprint"))
+			dt->print_flag = 0;
+		if (ft_match(input, "sort"))
+			sort(dt);
+		if (ft_match(input, "check"))
+			check_sort(dt);
+		if (ft_match(input, "better"))
+		{
+			sort_to_buckets(dt, 2, 0);
+			merge_and_sort_to_a(dt, 0);
+		}
+		
+	}*/
 	sort(dt);
-//	print_stacks_with_neigbors(dt);
 //	checksum(dt);
 	free_data(dt);
 //	check_leaks();

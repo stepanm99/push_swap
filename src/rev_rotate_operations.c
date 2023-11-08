@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rev_rotate_operations.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: stepan <stepan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 21:20:47 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/31 17:44:59 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/05 00:53:53 by stepan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,18 @@ void	rev_rotate_a(t_dt *dt)
 	else
 		rev_rotate_two(address);
 	if (!dt->ab_flag)
-		write(1, "rra\n", 4);
+	{
+		if (dt->print_flag)
+			write(1, "rra\n", 4);
+		dt->operations++;
+	}
 }
 
 void	rev_rotate_b(t_dt *dt)
 {
 	t_link	*address[4];
 
-	if (dt->b_length == 1)
+	if (dt->b_length <= 1)
 		return ;
 	address[0] = dt->head_b;
 	address[1] = dt->head_b->prev->prev;
@@ -70,9 +74,11 @@ void	rev_rotate_b(t_dt *dt)
 		rev_rotate_two(address);
 	if (!dt->ab_flag)
 	{
-		write(1, "rrb\n", 4);
-		dt->ab_flag = 0;
+		if (dt->print_flag)
+			write(1, "rrb\n", 4);
+		dt->operations++;
 	}
+	dt->ab_flag = 0;
 }
 
 void	rev_rotate_ab(t_dt *dt)
@@ -80,5 +86,7 @@ void	rev_rotate_ab(t_dt *dt)
 	dt->ab_flag = 1;
 	rev_rotate_a(dt);
 	rev_rotate_b(dt);
-	write(1, "rrr\n", 4);
+	if (dt->print_flag)
+		write(1, "rrr\n", 4);
+	dt->operations++;
 }
