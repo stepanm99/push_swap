@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 20:53:18 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/07 20:35:46 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/08 17:51:31 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,15 +198,19 @@ void	sort_to_b(t_dt *dt)
 		push_a(dt);
 }
 
-void	sort_to_buckets(t_dt *dt, int range)
+void	sort_to_buckets(t_dt *dt, int range, int test_run)
 {
 	unsigned int	forward_pos;
 	unsigned int	backward_pos;
 	int				temp_range;
+	int				temp_print_flag;
 
 	forward_pos = 4294967295;
 	backward_pos = 4294967295;
 	temp_range = range;
+	temp_print_flag = dt->print_flag;
+	if (test_run)
+		dt->print_flag = 0;
 	while (temp_range && dt->a_length)
 	{
 		min_index(dt, dt->head_a, temp_range, 0);
@@ -233,15 +237,21 @@ void	sort_to_buckets(t_dt *dt, int range)
 		push_b(dt);
 		temp_range--;
 	}
+	if (test_run)
+		dt->print_flag = temp_print_flag;
 }
 
-void	merge_and_sort_to_a(t_dt *dt)
+void	merge_and_sort_to_a(t_dt *dt, int test_run)
 {
 	unsigned int	forward_pos;
 	unsigned int	backward_pos;
+	int				temp_print_flag;
 
 	forward_pos = 4294967295;
 	backward_pos = 4294967295;
+	temp_print_flag = dt->print_flag;
+	if (test_run)
+		dt->print_flag = 0;
 	while (dt->b_length)
 	{
 		min_index(dt, dt->head_b, 0, 1);
@@ -271,6 +281,8 @@ void	merge_and_sort_to_a(t_dt *dt)
 	}
 //	if (dt->head_a->next->index > dt->head_a->next->next->index)
 //		swap_a(dt);
+	if (test_run)
+		dt->print_flag = temp_print_flag;
 }
 
 unsigned int	min_range(t_dt *dt, unsigned int *range_operations)
@@ -280,7 +292,7 @@ unsigned int	min_range(t_dt *dt, unsigned int *range_operations)
 
 
 
-	range = dt->a_length / 2;
+	range = dt->a_length / 2U;
 	min_operations = 4294967295;
 	while (range >= 2)
 	{
@@ -288,7 +300,8 @@ unsigned int	min_range(t_dt *dt, unsigned int *range_operations)
 			min_operations = range_operations[range];
 		range--;
 	}
-	while (range_operations[range] != min_operations)
+	range = dt->a_length / 2U;
+	while ((range_operations[range] != min_operations) && range)
 		range--;
 	return (range);
 }
@@ -302,18 +315,18 @@ unsigned int	find_best_range(t_dt *dt)
 	range_operations = malloc(sizeof(unsigned int) * range);
 	while (range > 1)
 	{
-		sort_to_buckets(dt, range);
-		merge_and_sort_to_a(dt);
-		list_free(dt->head_a, dt);
-		duplicate_list_c_to_a(dt);
+		sort_to_buckets(dt, range, 1);
+		merge_and_sort_to_a(dt, 1);
 		range_operations[range] = dt->operations;
-		printf("operations: %u\n",dt->operations);
+//		printf("operations: %u\n",dt->operations);
 		dt->operations = 0;
 		range--;
+		list_free(dt->head_a, dt);
+		duplicate_list_c_to_a(dt);
 	}
 	range = min_range(dt, range_operations);
 	free(range_operations);
-	printf("range: %i\n", range);
+//	printf("range: %i\n", range);
 	return (range);
 }
 
@@ -322,8 +335,8 @@ void	better_sort(t_dt *dt)
 	int	range;
 	range = find_best_range(dt);
 	while (dt->a_length)
-		sort_to_buckets(dt, range);
-	merge_and_sort_to_a(dt);
+		sort_to_buckets(dt, range, 0);
+	merge_and_sort_to_a(dt, 0);
 }
 
 /*Dev function to check if stacks are sorted*/
@@ -362,6 +375,7 @@ void	check_sort(t_dt *dt)
 			current_b = current_b->next;
 		}
 	}
+	/*
 	if (!dt->a_sorted_flag && dt->a_length != 1)
 		printf("Stack a not sorted :(\n");
 	else
@@ -370,6 +384,7 @@ void	check_sort(t_dt *dt)
 		printf("Stack b not sorted :(\n");
 	else
 		printf("Stack b sorted :)\n");
+	*/
 }
 
 /*Function to sort stack with only two elelemnts*/
@@ -409,11 +424,12 @@ void	find_best_algorithm(t_dt *dt)
 	{
 		bubble(dt);
 		dt->min_operations = dt->operations;
-		printf("bubble sort operations: %i\n", dt->operations);
+//		printf("bubble sort operations: %i\n", dt->operations);
 		dt->operations = 0;
 		dt->alg_flag = 1;
 		list_free(dt->head_a, dt);
 		duplicate_list_c_to_a(dt);
+		dt->a_sorted_flag =0;
 	}
 	if (dt->a_length > 4)
 	{
@@ -423,21 +439,25 @@ void	find_best_algorithm(t_dt *dt)
 			dt->min_operations = dt->operations;
 			dt->alg_flag = 2;
 		}
-		printf("simple sort operations: %i\n", dt->operations);
+//		printf("simple sort operations: %i\n", dt->operations);
 		dt->operations = 0;
 		list_free(dt->head_a, dt);
 		duplicate_list_c_to_a(dt);
+		dt->a_sorted_flag =0;
 	}
 	if (dt->a_length >= 10)
 	{
 		better_sort(dt);
-		printf("better sort operations: %i\n", dt->operations);
+//		printf("better sort operations: %i\n", dt->operations);
 		if (dt->operations < dt->min_operations)
 			dt->alg_flag = 3;
+		dt->operations = 0;
 		list_free(dt->head_a, dt);
 		duplicate_list_c_to_a(dt);
+		dt->a_sorted_flag =0;
 	}
 	dt->print_flag = 1;
+//	printf("algorithm cosen: %i\n", dt->alg_flag);
 }
 
 void	simple_sort(t_dt *dt)

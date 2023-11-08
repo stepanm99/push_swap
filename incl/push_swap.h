@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:26 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/07 18:54:28 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/08 17:37:26 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,11 @@ typedef struct dt {
 	unsigned int	operations;		//0
 	unsigned int	min_operations;	//0
 	int				stack_div;		//1
-	char			ab_flag;		//0
-	char			a_sorted_flag;	//0
-	char			b_sorted_flag;	//0
-	char			alg_flag;		//0
-	char			print_flag;		//0
+	int			ab_flag;		//0
+	int			a_sorted_flag;	//0
+	int			b_sorted_flag;	//0
+	int			alg_flag;		//0
+	int			print_flag;		//0
 	t_link			*head_a;
 	t_link			*a;
 	t_link			*head_b;
@@ -55,33 +55,33 @@ typedef struct dt {
 
 /*Data initialization*/
 
-void	data_init(t_dt *dt);
-void	free_data(t_dt *dt);
+void			data_init(t_dt *dt);
+void			free_data(t_dt *dt);
 
 /*List manipulating functions*/
 
-void	list_free(t_link *head, t_dt *dt);
-t_link	*list_add_link_a(int val, unsigned int index, t_dt *dt);
-void	duplicate_list_a_to_c(t_dt	*dt);
-void	duplicate_list_c_to_a(t_dt	*dt);
+void			list_free(t_link *head, t_dt *dt);
+t_link			*list_add_link_a(int val, unsigned int index, t_dt *dt);
+void			duplicate_list_a_to_c(t_dt	*dt);
+void			duplicate_list_c_to_a(t_dt	*dt);
 
 /*Push, swap, rotate operations*/
 
-void	push_a(t_dt *dt);
-void	push_b(t_dt *dt);
-void	swap_a(t_dt *dt);
-void	swap_b(t_dt *dt);
-void	swap_ab(t_dt *dt);
-void	rotate_a(t_dt *dt);
-void	rotate_three_a(t_dt *dt);
-void	rotate_b(t_dt *dt);
-void	rotate_three_b(t_dt *dt);
-void	rotate_ab(t_dt *dt);
-void	rev_rotate_a(t_dt *dt);
-void	rev_rotate_three_a(t_dt *dt);
-void	rev_rotate_b(t_dt *dt);
-void	rev_rotate_three_b(t_dt *dt);
-void	rev_rotate_ab(t_dt *dt);
+void			push_a(t_dt *dt);
+void			push_b(t_dt *dt);
+void			swap_a(t_dt *dt);
+void			swap_b(t_dt *dt);
+void			swap_ab(t_dt *dt);
+void			rotate_a(t_dt *dt);
+void			rotate_three_a(t_dt *dt);
+void			rotate_b(t_dt *dt);
+void			rotate_three_b(t_dt *dt);
+void			rotate_ab(t_dt *dt);
+void			rev_rotate_a(t_dt *dt);
+void			rev_rotate_three_a(t_dt *dt);
+void			rev_rotate_b(t_dt *dt);
+void			rev_rotate_three_b(t_dt *dt);
+void			rev_rotate_ab(t_dt *dt);
 
 /*Argument parsing and saving to stack*/
 
@@ -89,20 +89,20 @@ void	arg_pars(const char *argv[], t_dt *dt);
 
 /*Sorting functions*/
 
-void	sort(t_dt *dt);
-void	min_index(t_dt *dt,	t_link *head, int range, char max_flag);
+void			sort(t_dt *dt);
+void			min_index(t_dt *dt,	t_link *head, int range, char max_flag);
 unsigned int	find_min_index(t_dt *dt, t_link *head, int range);
 unsigned int	find_min_index_rev(t_dt *dt, t_link *head, int range);
-void	sort_to_buckets(t_dt *dt, int range);
-void	merge_and_sort_to_a(t_dt *dt);
-void	better_sort(t_dt *dt);
-void	check_sort(t_dt *dt);
-void	sort_two(t_dt *dt);
-void	bubble_iteration(t_dt *dt);
-void	bubble(t_dt *dt);
-void	find_best_algorithm(t_dt *dt);
-void	simple_sort(t_dt *dt);
-void	sort_to_b(t_dt *dt);
+void			sort_to_buckets(t_dt *dt, int range, int test_run);
+void			merge_and_sort_to_a(t_dt *dt, int test_run);
+void			better_sort(t_dt *dt);
+void			check_sort(t_dt *dt);
+void			sort_two(t_dt *dt);
+void			bubble_iteration(t_dt *dt);
+void			bubble(t_dt *dt);
+void			find_best_algorithm(t_dt *dt);
+void			simple_sort(t_dt *dt);
+void			sort_to_b(t_dt *dt);
 
 /*Error functions*/
 
