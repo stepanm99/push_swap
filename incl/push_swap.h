@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: stepan <stepan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:26 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/08 17:37:26 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/11 22:29:20 by stepan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,14 @@ struct s_link {
 	t_link				*prev;
 	t_link				*next;
 	int					val;
+	int					cost;
 	unsigned int		index;
 };
 
+typedef struct s_sort_data {
+	int	min_cost_dist;
+	int	min_cost_dist_rev;
+}	t_sort_data;
 
 /*
 alg_flag:
@@ -51,6 +56,7 @@ typedef struct dt {
 	t_link			*b;
 	t_link			*head_c;
 	t_link			*c;
+	t_sort_data		sort_data;
 }	t_dt;
 
 /*Data initialization*/
@@ -101,8 +107,8 @@ void			sort_two(t_dt *dt);
 void			bubble_iteration(t_dt *dt);
 void			bubble(t_dt *dt);
 void			find_best_algorithm(t_dt *dt);
-void			simple_sort(t_dt *dt);
 void			sort_to_b(t_dt *dt);
+void			best_sort(t_dt *dt);
 
 /*Error functions*/
 

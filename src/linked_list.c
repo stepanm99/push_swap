@@ -6,7 +6,7 @@
 /*   By: stepan <stepan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 20:14:46 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/11 16:50:53 by stepan           ###   ########.fr       */
+/*   Updated: 2023/11/11 19:35:42 by stepan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ t_link	*list_add_link_a(int val, unsigned int index, t_dt *dt)
 	dt->a->next->prev = dt->a;
 	dt->a->next->next = NULL;
 	dt->a->next->val = val;
+	dt->a->next->cost = 0;
 	if (index)
 		dt->a->next->index = index;
 	else
@@ -95,6 +96,7 @@ t_link	*list_add_link_c(int val, unsigned int index, t_dt *dt)
 	dt->c->next->next = NULL;
 	dt->c->next->val = val;
 	dt->c->next->index = index;
+	dt->c->next->cost = 0;
 	dt->c_length = dt->c_length + 1U;
 	dt->c = dt->c->next;
 	return (dt->c);

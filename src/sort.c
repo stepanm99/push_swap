@@ -6,7 +6,7 @@
 /*   By: stepan <stepan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 20:53:18 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/11 17:46:22 by stepan           ###   ########.fr       */
+/*   Updated: 2023/11/11 21:26:16 by stepan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	find_best_algorithm(t_dt *dt)
 /*Main sorting function, decides what should be done*/
 void	sort(t_dt *dt)
 {
+	/*
 	find_best_algorithm(dt);
 	if (dt->a_length == 1)
 		return ;
@@ -76,5 +77,6 @@ void	sort(t_dt *dt)
 			sort_to_b(dt);
 		else if (dt->alg_flag == 3)
 			better_sort(dt);
-	}
+	}*/
+	best_sort(dt);
 }

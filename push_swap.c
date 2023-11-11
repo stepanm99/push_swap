@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: stepan <stepan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/08 17:48:50 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/11 22:48:05 by stepan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 //void	check_leaks();
 
 /*Compares two strings, if they are same, returns length of those strings,
-if strings are different returns 0
+if strings are different returns 0*/
 int	ft_match(const char *str1, const char *str2)
 {
 	int	i;
@@ -37,7 +37,7 @@ int	ft_match(const char *str1, const char *str2)
 		return (i);
 	else
 		return (0);
-}*/
+}
 
 void	checksum(t_dt *dt)
 {
@@ -71,7 +71,7 @@ void	print_stacks_with_neigbors(t_dt *dt)
 			printf("prev val:\t%i\tindex:\t%u\n", a_temp->prev->val, a_temp->prev->index);
 		else
 			printf("HEAD_A\tnext val: %u\n", dt->head_a->next->val);
-		printf("a:\t%i\tindex:\t%u\n", a_temp->val, a_temp->index);
+		printf("a:\t%i\tindex:\t%u\tcost:\t%i\n", a_temp->val, a_temp->index, a_temp->cost);
 		if (a_temp->next)
 			printf("next val:\t%i\tindex:\t%u\n", a_temp->next->val, a_temp->next->index);
 		a_temp = a_temp->next;
@@ -87,7 +87,7 @@ void	print_stacks_with_neigbors(t_dt *dt)
 			printf("prev val:\t%i\tindex:\t%u\n", b_temp->prev->val, b_temp->prev->index);
 		else
 			printf("HEAD_B\n");
-		printf("b:\t%i\tindex:\t%u\n", b_temp->val, b_temp->index);
+		printf("b:\t%i\tindex:\t%u\tcost:\t%i\n", b_temp->val, b_temp->index, b_temp->cost);
 		if (b_temp->next)
 			printf("next val:\t%i\tindex:\t%u\n", b_temp->next->val, b_temp->next->index);
 		b_temp = b_temp->next;
@@ -103,7 +103,7 @@ void	print_stacks_with_neigbors(t_dt *dt)
 				printf("prev val:\t%i\tindex:\t%u\n", c_temp->prev->val, c_temp->prev->index);
 			else
 				printf("HEAD_C\n");
-			printf("c:\t%i\tindex:\t%u\n", c_temp->val, c_temp->index);
+			printf("c:\t%i\tindex:\t%u\tcost:\t%i\n", c_temp->val, c_temp->index, c_temp->cost);
 			if (c_temp->next)
 				printf("next val:\t%i\tindex:\t%u\n", c_temp->next->val, c_temp->next->index);
 			c_temp = c_temp->next;
@@ -221,6 +221,9 @@ void	data_init(t_dt *dt)
 	dt->head_a->val = 0;
 	dt->head_b->val = 0;
 	dt->head_c->val = 0;
+	dt->head_a->cost = 0;
+	dt->head_b->cost = 0;
+	dt->head_c->cost = 0;
 	dt->a = dt->head_a;
 	dt->b = dt->head_b;
 	dt->c = dt->head_c;
@@ -268,7 +271,7 @@ void	free_data(t_dt *dt)
 int	main(int argc, const char *argv[])
 {
 	t_dt	*dt;
-//	char	input[10];		//for interactive test
+	char	input[10];		//for interactive test
 
 	dt = NULL;
 	if (argc == 1)
@@ -285,7 +288,7 @@ int	main(int argc, const char *argv[])
 	duplicate_list_a_to_c(dt);
 
 
-/* interactive
+/* interactive */
 	while (1)
 	{
 		scanf("%s", input);
@@ -341,7 +344,7 @@ int	main(int argc, const char *argv[])
 			merge_and_sort_to_a(dt, 0);
 		}
 		
-	}*/
+	}
 	sort(dt);
 //	checksum(dt);
 	free_data(dt);
