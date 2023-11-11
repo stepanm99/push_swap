@@ -8,7 +8,7 @@ i=1000
 j=$i
 number=100
 k=$number
-max=10
+max=2750000
 result=0
 sum=0
 average=0
@@ -25,11 +25,13 @@ do
 	done
 	result=$(./push_swap $string | wc -l)
 	echo result: $result
+	./push_swap $string | ./checker_linux $string
+#	echo $string
 	sum=$((result+sum))
 	((i--))
 done
 average=$(($sum/$j))
-echo $average
+echo "average: $average"
 #./push_swap $string | wc -l #&& echo "number of elements $i" #grep "Stack a" && echo $i
 
 

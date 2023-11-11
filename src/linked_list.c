@@ -6,7 +6,7 @@
 /*   By: stepan <stepan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 20:14:46 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/05 01:28:10 by stepan           ###   ########.fr       */
+/*   Updated: 2023/11/11 16:50:53 by stepan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,33 +143,3 @@ void	duplicate_list_c_to_a(t_dt	*dt)
 		c_temp = c_temp->next;
 	}
 }
-/*Initializes list a and list b
-void	list_init(int val, t_dt *dt)
-{
-	t_link	*a;
-	t_link	*b;
-
-	a = NULL;
-	b = NULL;
-	if (!dt->a)
-		a = malloc(sizeof(t_link));
-	if (!a)
-		error(dt);
-	if (!dt->b)
-		b = malloc(sizeof(t_link));
-	if (!b)
-		error(dt);
-	dt->a = a;
-	dt->b = b;
-	dt->head_a = dt->a;
-	dt->head_b = dt->b;
-	dt->a->val = val;
-	dt->a->prev = NULL;
-	dt->a->next = NULL;
-	dt->a->index = 0;
-	dt->b->prev = NULL;
-	dt->b->next = NULL;
-	dt->b->index = 0;
-	dt->b->val = 0;
-}
-*/
