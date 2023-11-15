@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   sort_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stepan <stepan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 17:43:24 by stepan            #+#    #+#             */
-/*   Updated: 2023/11/11 17:44:09 by stepan           ###   ########.fr       */
+/*   Updated: 2023/11/15 21:21:21 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../incl/push_swap.h"
+#include "../incl/push_swap.h"
 
+/*Find minimal index in a stack of given head, limited by range;
+	if max flag = 1, it finds maximal index*/
 void	min_index(t_dt *dt,	t_link *head, int range, char max_flag)
 {
 	t_link			*temp;
@@ -80,6 +82,40 @@ void	min_index(t_dt *dt,	t_link *head, int range, char max_flag)
 	}
 }
 
+static t_link	*find_min_index_head_logic(t_dt *dt, t_link *head)
+{
+	t_link	*temp;
+
+	temp = NULL;
+	if (head == dt->head_a)
+		temp = dt->head_a->prev;
+	else if (head == dt->head_b)
+		temp = dt->head_b->prev;
+	return (temp);
+}
+
+static unsigned int	find_min_index_limit_logic(t_dt *dt, t_link *head,
+	int range)
+{
+	unsigned int	limit;
+
+	limit = 0;
+	if (head == dt->head_a)
+	{
+		if (range == 0)
+			limit = dt->a_length;
+		else
+			limit = range;
+	}
+	else if (head == dt->head_b)
+	{
+		if (range == 0)
+			limit = dt->b_length;
+		else
+			limit = range;
+	}
+	return (limit);
+}
 
 /*Find place of minimal index in the stack a*/
 unsigned int	find_min_index(t_dt *dt, t_link *head, int range)
@@ -90,23 +126,8 @@ unsigned int	find_min_index(t_dt *dt, t_link *head, int range)
 
 	if (!head)
 		error(dt);
-	limit = range;
-	if (head == dt->head_a)
-	{
-		temp = dt->head_a->next;
-		if (range == 0)
-			limit = dt->a_length;
-		else
-			limit = range;
-	}
-	else if (head == dt->head_b)
-	{
-		temp = dt->head_b->next;
-		if (range == 0)
-			limit = dt->b_length;
-		else
-			limit = range;
-	}
+	limit = find_min_index_limit_logic(dt, head, range);
+	temp = find_min_index_head_logic(dt, head);
 	i = 0;
 	while (limit)
 	{
@@ -128,23 +149,8 @@ unsigned int	find_min_index_rev(t_dt *dt, t_link *head, int range)
 
 	if (!head)
 		error(dt);
-	limit = range;
-	if(head == dt->head_a)
-	{
-		temp = dt->head_a->prev;
-		if (range == 0)
-			limit = dt->a_length;
-		else
-			limit = range;
-	}
-	else if (head == dt->head_b)
-	{
-		temp = dt->head_b->prev;
-		if (range == 0)
-			limit = dt->b_length;
-		else
-			limit = range;
-	}
+	limit = find_min_index_limit_logic(dt, head, range);
+	temp = find_min_index_head_logic(dt, head);
 	i = 1;
 	while (limit)
 	{
@@ -157,13 +163,31 @@ unsigned int	find_min_index_rev(t_dt *dt, t_link *head, int range)
 	return (4294967295);
 }
 
+static void	check_sort_b(t_dt *dt)
+{
+	t_link	*current_b;
 
+	if (dt->head_b->next)
+	{
+		current_b = dt->head_b->next;
+		while (current_b->next)
+		{
+			if (current_b->index > current_b->next->index)
+			{
+				dt->b_sorted_flag = 0;
+				break ;
+			}
+			else
+				dt->b_sorted_flag = 1;
+			current_b = current_b->next;
+		}
+	}
+}
 
 /*Dev function to check if stacks are sorted*/
 void	check_sort(t_dt *dt)
 {
 	t_link	*current_a;
-	t_link	*current_b;
 
 	if (dt->head_a->next)
 	{
@@ -180,29 +204,5 @@ void	check_sort(t_dt *dt)
 			current_a = current_a->next;
 		}
 	}
-	if (dt->head_b->next)
-	{
-		current_b = dt->head_b->next;
-		while (current_b->next)
-		{
-			if (current_b->index > current_b->next->index)
-			{
-				dt->b_sorted_flag = 0;
-				break ;
-			}
-			else
-				dt->b_sorted_flag = 1;
-			current_b = current_b->next;
-		}
-	}
-	/*
-	if (!dt->a_sorted_flag && dt->a_length != 1)
-		printf("Stack a not sorted :(\n");
-	else
-		printf("Stack a sorted :)\n");
-	if (!dt->b_sorted_flag)
-		printf("Stack b not sorted :(\n");
-	else
-		printf("Stack b sorted :)\n");
-	*/
+	check_sort_b(dt);
 }

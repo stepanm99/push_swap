@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   best_sort.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stepan <stepan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 17:14:26 by stepan            #+#    #+#             */
-/*   Updated: 2023/11/11 23:02:02 by stepan           ###   ########.fr       */
+/*   Updated: 2023/11/14 18:54:42 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,11 @@ void	rotation_cost(t_dt *dt)
 		current = current->next;
 	}
 }
+/*prototype
+void	b_rotation(t_dt *dt)
+{
+
+}*/
 
 void	calculate_cost(t_dt *dt)
 {
