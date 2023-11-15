@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stepan <stepan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:26 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/11 22:29:20 by stepan           ###   ########.fr       */
+/*   Updated: 2023/11/14 18:12:42 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ struct s_link {
 typedef struct s_sort_data {
 	int	min_cost_dist;
 	int	min_cost_dist_rev;
+	int	sim_rot;
+	int	sim_rev_rot;
 }	t_sort_data;
 
 /*
