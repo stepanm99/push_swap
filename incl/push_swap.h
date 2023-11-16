@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:26 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/14 18:12:42 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/16 20:15:43 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,16 @@ void			bubble(t_dt *dt);
 void			find_best_algorithm(t_dt *dt);
 void			sort_to_b(t_dt *dt);
 void			best_sort(t_dt *dt);
+
+/*Best sort utils*/
+
+int				max_value(t_link *head);
+int				min_value(t_link *head);
+int				find_value(t_link *head, int val, t_dt *dt);
+int				find_space(t_link *head, int val, t_dt *dt);
+void			null_cost_stack(t_link *head);
+void			null_cost(t_dt *dt);
+void			rotation_cost(t_dt *dt);
 
 /*Error functions*/
 
