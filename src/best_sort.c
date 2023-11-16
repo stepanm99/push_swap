@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 17:14:26 by stepan            #+#    #+#             */
-/*   Updated: 2023/11/14 18:54:42 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/16 20:05:31 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,96 @@ int	max_value(t_link *head)
 		current = current->next;
 	}
 	return (max_value);
+}
+
+/*Finds and return minimal value in the stack of the given head*/
+int	min_value(t_link *head)
+{
+	t_link	*current;
+	int		min_value;
+
+	min_value = 2147483647;
+	current = head->next;
+	while(current)
+	{
+		if (current->val < min_value)
+			min_value = current->val;
+		current = current->next;
+	}
+	return (min_value);
+}
+
+/*Finds value in the stack of the head, if it is closer from the back, returns negative number*/
+int	find_value(t_link *head, int val, t_dt *dt)
+{
+	t_link	*current;
+	int		forward;
+	int		backward;
+
+	forward = 0;
+	backward = 0;
+	if (!head)
+		error(dt);
+	if (head->next)
+		current = head->next;
+	while (current)
+	{
+		if (current->val == val)
+			break ;
+		current = current->next;
+		forward++;
+	}
+	current = head->prev;
+	while (current != head)
+	{
+		if (current->val == val)
+			break ;
+		current = current->prev;
+		backward++;
+	}
+	if (backward < forward)
+		return ((backward * -1));
+	else
+		return (forward);
+}
+
+int	find_space(t_link *head, int val, t_dt *dt)
+{
+	t_link	*current;
+	int		forward;
+	int		backward;
+
+	forward = 0;
+	backward = 0;
+	if (!head)
+		error(dt);
+	if (head->next)
+		current = head->next;
+	while (current)
+	{
+		if (current->prev != head)
+		{
+			if (current->prev->val > val && current->val < val)
+				break ;
+		}
+		current = current->next;
+		forward++;
+	}
+	current = head->prev;
+	while (current != head)
+	{
+		if (current->next != NULL)
+		{
+			if (current->val < val && current->next->val > val)
+				break ;
+		}
+		current = current->prev;
+		backward++;
+	}
+	if (backward < forward)
+		return ((backward * -1));
+	else
+		return (forward);
 }
 
 void	null_cost_stack(t_link *head)
@@ -80,6 +170,7 @@ void	b_rotation(t_dt *dt)
 
 }*/
 
+/*How many move would it take to put this number into correct position*/
 void	calculate_cost(t_dt *dt)
 {
 	t_link	*current;
@@ -102,6 +193,7 @@ void	best_sort(t_dt *dt)
 	push_b(dt);
 	push_b(dt);
 	
-	printf("max value: %i\n", max_value(dt->head_a));
+	printf("max a value: %i\n", max_value(dt->head_a));
+	printf("max b value: %i\n", max_value(dt->head_b));
 	calculate_cost(dt);
 }

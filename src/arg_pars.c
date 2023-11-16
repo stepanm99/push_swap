@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 20:03:38 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/03 17:18:26 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/16 17:02:56 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int	ft_atoi(const char *str)
 	return (n * negflag);
 }
 
+/*Check if the argument contains only digits or minus sign*/
 void	arg_check(const char *arg, t_dt *dt)
 {
 	int	i;

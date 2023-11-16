@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stepan <stepan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 20:53:18 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/11 21:26:16 by stepan           ###   ########.fr       */
+/*   Updated: 2023/11/16 17:06:57 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,22 @@ void	sort_two(t_dt *dt)
 {
 	if (dt->head_a->next->index > dt->head_a->prev->index)
 		swap_a(dt);
+}
+
+/*Continuation of function to meet norm requirements*/
+static void	find_best_algorithm_1(t_dt *dt)
+{
+	if (dt->a_length >= 10)
+	{
+		better_sort(dt);
+		if (dt->operations < dt->min_operations)
+			dt->alg_flag = 3;
+		dt->operations = 0;
+		list_free(dt->head_a, dt);
+		duplicate_list_c_to_a(dt);
+		dt->a_sorted_flag = 0;
+	}
+	dt->print_flag = 1;
 }
 
 /*Checks which algorithm makes least moves*/
@@ -45,17 +61,7 @@ void	find_best_algorithm(t_dt *dt)
 		duplicate_list_c_to_a(dt);
 		dt->a_sorted_flag = 0;
 	}
-	if (dt->a_length >= 10)
-	{
-		better_sort(dt);
-		if (dt->operations < dt->min_operations)
-			dt->alg_flag = 3;
-		dt->operations = 0;
-		list_free(dt->head_a, dt);
-		duplicate_list_c_to_a(dt);
-		dt->a_sorted_flag = 0;
-	}
-	dt->print_flag = 1;
+	find_best_algorithm_1(dt);
 }
 
 /*Main sorting function, decides what should be done*/
