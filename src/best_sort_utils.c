@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   best_sort_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: stepan <stepan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 17:44:11 by stepan            #+#    #+#             */
-/*   Updated: 2023/11/16 20:16:04 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/17 18:16:08 by stepan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,4 +171,39 @@ void	rotation_cost(t_dt *dt)
 		}
 		current = current->next;
 	}
+}
+
+void	b_rotation_max(t_dt *dt)
+{
+	int	rot;
+
+	rot = find_value(dt->head_b, dt->sort_data.b_max_val, dt);
+	if (rot < 0)
+		dt->sort_data.b_rev_rot = (rot * -1);
+	else
+		dt->sort_data.b_rot = rot;
+}
+
+void	b_rotation_min(t_dt *dt)
+{
+	int	rot;
+
+	rot = find_value(dt->head_b, dt->sort_data.b_min_val, dt);
+	if (rot < 0)
+		dt->sort_data.b_rev_rot = (rot * -1);
+	else
+		dt->sort_data.b_rot = rot;
+}
+
+/*Decide how to rotate b stack in order to push a stack value into correct position*/
+void	b_rotation(int a_val, t_dt *dt)
+{
+	dt->sort_data.b_min_val = min_value(dt->head_b);
+	dt->sort_data.b_max_val = max_value(dt->head_b);
+	if (a_val > dt->sort_data.b_max_val)
+		b_rotation_max(dt);
+	else if (a_val < dt->sort_data.b_min_val)
+		b_rotation_min(dt);
+	else
+		b_rotation_middle(a_val, dt);
 }
