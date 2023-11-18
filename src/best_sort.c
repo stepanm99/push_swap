@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   best_sort.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: stepan <stepan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 17:14:26 by stepan            #+#    #+#             */
-/*   Updated: 2023/11/16 20:16:10 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/18 22:32:32 by stepan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,20 @@ void	b_rotation(t_dt *dt)
 void	calculate_cost(t_dt *dt)
 {
 	t_link	*current;
-	int		b_max;
 //	int		cost;
-//	int		i;
+	int		i;
 
 	null_cost(dt);
 	rotation_cost(dt);
-	b_max = max_value(dt->head_b);
 	current = dt->head_a->next;
-	current++;
-	current--;
-	b_max++;
-	b_max--;
+	i = 0;
+	while (current)
+	{
+		b_rotation_cost(current->val, dt);
+		current->cost += calculate_b_rot_cost(i, dt);
+		current = current->next;
+		i++;
+	}
 }
 
 void	best_sort(t_dt *dt)

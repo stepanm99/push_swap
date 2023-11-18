@@ -6,7 +6,7 @@
 /*   By: stepan <stepan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:26 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/17 18:12:39 by stepan           ###   ########.fr       */
+/*   Updated: 2023/11/18 22:38:32 by stepan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,12 @@ typedef struct s_sort_data {
 	int	b_min_val;
 	int	b_rot;
 	int	b_rev_rot;
+	int	ra;
+	int	rb;
+	int	rr;
+	int	rra;
+	int	rrb;
+	int	rrr;
 }	t_sort_data;
 
 /*
@@ -42,6 +48,7 @@ alg_flag:
 	1: bubble
 	2: sort to b and push to a
 	3: "bucket" sort
+	4: best sort
 */
 typedef struct dt {
 	unsigned int	a_length;		//0
@@ -125,6 +132,11 @@ int				find_space(t_link *head, int val, t_dt *dt);
 void			null_cost_stack(t_link *head);
 void			null_cost(t_dt *dt);
 void			rotation_cost(t_dt *dt);
+void			b_rotation_cost(int a_val, t_dt *dt);
+void			b_rotation_max(t_dt *dt);
+void			b_rotation_min(t_dt *dt);
+void			b_rotation_middle(int val, t_dt *dt);
+
 
 /*Error functions*/
 

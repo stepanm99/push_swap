@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: stepan <stepan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 20:53:18 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/16 17:06:57 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/18 22:44:59 by stepan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,17 @@ static void	find_best_algorithm_1(t_dt *dt)
 	{
 		better_sort(dt);
 		if (dt->operations < dt->min_operations)
+		{
 			dt->alg_flag = 3;
+			dt->min_operations = dt->operations;
+		}
+		dt->operations = 0;
+		list_free(dt->head_a, dt);
+		duplicate_list_c_to_a(dt);
+		dt->a_sorted_flag = 0;
+		best_sort(dt);
+		if (dt->operations < dt->min_operations)
+			dt->alg_flag = 4;
 		dt->operations = 0;
 		list_free(dt->head_a, dt);
 		duplicate_list_c_to_a(dt);

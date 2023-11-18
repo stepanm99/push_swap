@@ -6,7 +6,7 @@
 /*   By: stepan <stepan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 17:44:11 by stepan            #+#    #+#             */
-/*   Updated: 2023/11/17 18:16:08 by stepan           ###   ########.fr       */
+/*   Updated: 2023/11/18 22:28:38 by stepan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,30 +173,50 @@ void	rotation_cost(t_dt *dt)
 	}
 }
 
+/*Procedure to set correct values for b rotation*/
+void	set_b_rot_values(int rot, t_dt *dt)
+{
+	if (rot < 0)
+	{
+		dt->sort_data.b_rev_rot = (rot * -1);
+		dt->sort_data.b_rot = -1;
+	}
+	else
+	{
+		dt->sort_data.b_rot = rot;
+		dt->sort_data.b_rev_rot = -1;
+	}
+}
+
+/*Finds out how many rotation steps are needed to get max value to the top of the stack*/
 void	b_rotation_max(t_dt *dt)
 {
 	int	rot;
 
 	rot = find_value(dt->head_b, dt->sort_data.b_max_val, dt);
-	if (rot < 0)
-		dt->sort_data.b_rev_rot = (rot * -1);
-	else
-		dt->sort_data.b_rot = rot;
+	set_b_rot_values(rot, dt);
 }
 
+/*Finds out how many rotation steps are needed to get min value to the top of the stack*/
 void	b_rotation_min(t_dt *dt)
 {
 	int	rot;
 
 	rot = find_value(dt->head_b, dt->sort_data.b_min_val, dt);
-	if (rot < 0)
-		dt->sort_data.b_rev_rot = (rot * -1);
-	else
-		dt->sort_data.b_rot = rot;
+	set_b_rot_values(rot, dt);
+}
+
+/*Finds out how many rotation steps are needed to get correct position according to a given value to the top of the stack*/
+void	b_rotation_middle(int val, t_dt *dt)
+{
+	int	rot;
+
+	rot = find_space(dt->head_b, val, dt);
+	set_b_rot_values(rot, dt);
 }
 
 /*Decide how to rotate b stack in order to push a stack value into correct position*/
-void	b_rotation(int a_val, t_dt *dt)
+void	b_rotation_cost(int a_val, t_dt *dt)
 {
 	dt->sort_data.b_min_val = min_value(dt->head_b);
 	dt->sort_data.b_max_val = max_value(dt->head_b);
