@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stepan <stepan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:26 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/18 22:38:32 by stepan           ###   ########.fr       */
+/*   Updated: 2023/11/20 18:02:08 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,7 @@ int				find_value(t_link *head, int val, t_dt *dt);
 int				find_space(t_link *head, int val, t_dt *dt);
 void			null_cost_stack(t_link *head);
 void			null_cost(t_dt *dt);
+void			calculate_cost(t_dt *dt);
 void			rotation_cost(t_dt *dt);
 void			b_rotation_cost(int a_val, t_dt *dt);
 void			b_rotation_max(t_dt *dt);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   best_sort_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stepan <stepan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 17:44:11 by stepan            #+#    #+#             */
-/*   Updated: 2023/11/18 22:28:38 by stepan           ###   ########.fr       */
+/*   Updated: 2023/11/20 18:11:42 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,20 @@ int	min_value(t_link *head)
 	return (min_value);
 }
 
+int	find_head_length(t_link *head, t_dt *dt)
+{
+	int	length;
+
+	length = 0;
+	if (head == dt->head_a)
+		length = dt->a_length;
+	else if (head == dt->head_b)
+		length = dt->b_length;
+	else
+		error(dt);
+	return (length);
+}
+
 /*Finds value in the stack of the head, if it is closer from the back,
 	returns negative number*/
 int	find_value(t_link *head, int val, t_dt *dt)
@@ -53,9 +67,12 @@ int	find_value(t_link *head, int val, t_dt *dt)
 	t_link	*current;
 	int		forward;
 	int		backward;
+	int		limit;
 
+	limit = find_head_length(head, dt);
 	forward = 0;
 	backward = 0;
+	current = NULL;
 	if (!head)
 		error(dt);
 	if (head->next)
@@ -68,7 +85,7 @@ int	find_value(t_link *head, int val, t_dt *dt)
 		forward++;
 	}
 	current = head->prev;
-	while (current != head)
+	while (backward != limit)
 	{
 		if (current->val == val)
 			break ;
@@ -90,6 +107,7 @@ int	find_space(t_link *head, int val, t_dt *dt)
 	int		forward;
 	int		backward;
 
+	current = NULL;
 	forward = 0;
 	backward = 0;
 	if (!head)

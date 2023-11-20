@@ -3,20 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   best_sort.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stepan <stepan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 17:14:26 by stepan            #+#    #+#             */
-/*   Updated: 2023/11/19 20:59:44 by stepan           ###   ########.fr       */
+/*   Updated: 2023/11/20 17:46:57 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../incl/push_swap.h"
 
-/*prototype
-void	b_rotation(t_dt *dt)
-{
-
-}*/
 
 /*need to work out the logic :(*/
 int	calculate_b_rot_cost(int a_position, t_dt *dt)
@@ -91,6 +86,7 @@ int	get_min_cost_value(int min_cost_position, t_dt *dt)
 	int		min_cost_value;
 
 	current = dt->head_a->next;
+	min_cost_value = 0;
 	while (min_cost_position && current)
 	{
 		current = current->next;
@@ -105,6 +101,7 @@ int	get_min_cost_value(int min_cost_position, t_dt *dt)
 	return (min_cost_value);
 }
 
+/*Function for finding how many and which rotations to make on each stack*/
 void	best_sort_get_rot(t_dt *dt)
 {
 	int	min_cost_position;
@@ -112,7 +109,6 @@ void	best_sort_get_rot(t_dt *dt)
 
 	min_cost_position = get_min_cost_pos(dt);
 	min_cost_value = get_min_cost_value(min_cost_position, dt);
-	
 }
 
 void	best_sort(t_dt *dt)
