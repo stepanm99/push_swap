@@ -3,21 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   better_sort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stepan <stepan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 17:14:23 by stepan            #+#    #+#             */
-/*   Updated: 2023/11/11 17:29:03 by stepan           ###   ########.fr       */
+/*   Updated: 2023/11/21 13:55:05 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../incl/push_swap.h"
+#include "../incl/push_swap.h"
 
 unsigned int	min_range(t_dt *dt, unsigned int *range_operations)
 {
 	unsigned int	min_operations;
 	unsigned int	range;
-
-
 
 	range = dt->a_length / 2U;
 	min_operations = 4294967295;
@@ -51,8 +49,8 @@ void	merge_and_sort_to_a(t_dt *dt, int test_run)
 		backward_pos = find_min_index_rev(dt, dt->head_b, 0);
 		if (forward_pos == backward_pos)
 			backward_pos = 4294967295;
-//		printf("forward_pos: %u\nbackward_pos: %u\n", forward_pos, backward_pos);
-		if ((forward_pos < backward_pos) && (dt->head_b->next->index != dt->min_index))
+		if ((forward_pos < backward_pos)
+			&& (dt->head_b->next->index != dt->min_index))
 		{
 			while (forward_pos)
 			{
@@ -60,7 +58,8 @@ void	merge_and_sort_to_a(t_dt *dt, int test_run)
 				forward_pos--;
 			}
 		}
-		else if ((backward_pos < forward_pos) && (dt->head_b->next->index != dt->min_index))
+		else if ((backward_pos < forward_pos)
+			&& (dt->head_b->next->index != dt->min_index))
 		{
 			while (backward_pos)
 			{
@@ -68,11 +67,8 @@ void	merge_and_sort_to_a(t_dt *dt, int test_run)
 				backward_pos--;
 			}
 		}
-//		printf("index to move to b: %u\n", dt->head_a->next->index);
 		push_a(dt);
 	}
-//	if (dt->head_a->next->index > dt->head_a->next->next->index)
-//		swap_a(dt);
 	if (test_run)
 		dt->print_flag = temp_print_flag;
 }
@@ -97,7 +93,8 @@ void	sort_to_buckets(t_dt *dt, int range, int test_run)
 		backward_pos = find_min_index_rev(dt, dt->head_a, temp_range);
 		if (forward_pos == backward_pos)
 			backward_pos = 4294967295;
-		if ((forward_pos < backward_pos) && (dt->head_a->next->index != dt->min_index))
+		if ((forward_pos < backward_pos)
+			&& (dt->head_a->next->index != dt->min_index))
 		{
 			while (forward_pos)
 			{
@@ -105,7 +102,8 @@ void	sort_to_buckets(t_dt *dt, int range, int test_run)
 				forward_pos--;
 			}
 		}
-		else if ((backward_pos < forward_pos) && (dt->head_a->next->index != dt->min_index))
+		else if ((backward_pos < forward_pos)
+			&& (dt->head_a->next->index != dt->min_index))
 		{
 			while (backward_pos)
 			{
@@ -132,7 +130,6 @@ unsigned int	find_best_range(t_dt *dt)
 		sort_to_buckets(dt, range, 1);
 		merge_and_sort_to_a(dt, 1);
 		range_operations[range] = dt->operations;
-//		printf("operations: %u\n",dt->operations);
 		dt->operations = 0;
 		range--;
 		list_free(dt->head_a, dt);
@@ -140,13 +137,13 @@ unsigned int	find_best_range(t_dt *dt)
 	}
 	range = min_range(dt, range_operations);
 	free(range_operations);
-//	printf("range: %i\n", range);
 	return (range);
 }
 
 void	better_sort(t_dt *dt)
 {
 	int	range;
+
 	range = find_best_range(dt);
 	while (dt->a_length)
 		sort_to_buckets(dt, range, 0);

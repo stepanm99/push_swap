@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   bubble_sort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stepan <stepan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 17:14:20 by stepan            #+#    #+#             */
-/*   Updated: 2023/11/11 17:31:30 by stepan           ###   ########.fr       */
+/*   Updated: 2023/11/21 13:58:46 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../incl/push_swap.h"
+#include "../incl/push_swap.h"
 
 void	bubble_iteration(t_dt *dt)
 {

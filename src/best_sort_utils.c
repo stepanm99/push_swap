@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 17:44:11 by stepan            #+#    #+#             */
-/*   Updated: 2023/11/20 18:11:42 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/21 16:31:09 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,11 @@ int	max_value(t_link *head)
 	int		max_value;
 
 	max_value = -2147483648;
-	current = head->next;
-	while(current)
+	if (head)
+		current = head->next;
+	else
+		return (0);
+	while (current)
 	{
 		if (current->val > max_value)
 			max_value = current->val;
@@ -37,7 +40,7 @@ int	min_value(t_link *head)
 
 	min_value = 2147483647;
 	current = head->next;
-	while(current)
+	while (current)
 	{
 		if (current->val < min_value)
 			min_value = current->val;
@@ -206,7 +209,8 @@ void	set_b_rot_values(int rot, t_dt *dt)
 	}
 }
 
-/*Finds out how many rotation steps are needed to get max value to the top of the stack*/
+/*Finds out how many rotation steps are needed to get max
+	value to the top of the stack*/
 void	b_rotation_max(t_dt *dt)
 {
 	int	rot;
@@ -215,7 +219,8 @@ void	b_rotation_max(t_dt *dt)
 	set_b_rot_values(rot, dt);
 }
 
-/*Finds out how many rotation steps are needed to get min value to the top of the stack*/
+/*Finds out how many rotation steps are needed to get min
+	value to the top of the stack*/
 void	b_rotation_min(t_dt *dt)
 {
 	int	rot;
@@ -224,7 +229,8 @@ void	b_rotation_min(t_dt *dt)
 	set_b_rot_values(rot, dt);
 }
 
-/*Finds out how many rotation steps are needed to get correct position according to a given value to the top of the stack*/
+/*Finds out how many rotation steps are needed to get
+	correct position according to a given value to the top of the stack*/
 void	b_rotation_middle(int val, t_dt *dt)
 {
 	int	rot;
@@ -233,7 +239,8 @@ void	b_rotation_middle(int val, t_dt *dt)
 	set_b_rot_values(rot, dt);
 }
 
-/*Decide how to rotate b stack in order to push a stack value into correct position*/
+/*Decide how to rotate b stack in order to
+	push a stack value into correct position*/
 void	b_rotation_cost(int a_val, t_dt *dt)
 {
 	dt->sort_data.b_min_val = min_value(dt->head_b);

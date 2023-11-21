@@ -6,12 +6,11 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 17:14:26 by stepan            #+#    #+#             */
-/*   Updated: 2023/11/20 17:46:57 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/21 19:48:11 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../incl/push_swap.h"
-
+#include "../incl/push_swap.h"
 
 /*need to work out the logic :(*/
 int	calculate_b_rot_cost(int a_position, t_dt *dt)
@@ -22,6 +21,7 @@ int	calculate_b_rot_cost(int a_position, t_dt *dt)
 	a_stack_middle = dt->a_length / 2;
 	if (dt->sort_data.b_rev_rot < 0)
 	{
+		printf("first if\n");
 		if (a_position < dt->sort_data.b_rot)
 			cost = dt->sort_data.b_rot - a_position;
 		else
@@ -29,11 +29,13 @@ int	calculate_b_rot_cost(int a_position, t_dt *dt)
 	}
 	if (dt->sort_data.b_rot < 0)
 	{
+		printf("second if\n");
 		if ((a_position - a_stack_middle) < dt->sort_data.b_rev_rot)
 			cost = dt->sort_data.b_rev_rot - (a_position - a_stack_middle);
 		else
 			cost = (a_position - a_stack_middle) - dt->sort_data.b_rev_rot;
 	}
+	printf("cost from b: %i\n", cost);
 	return (cost);
 }
 
@@ -41,7 +43,6 @@ int	calculate_b_rot_cost(int a_position, t_dt *dt)
 void	calculate_cost(t_dt *dt)
 {
 	t_link	*current;
-//	int		cost;
 	int		i;
 
 	null_cost(dt);
@@ -101,21 +102,128 @@ int	get_min_cost_value(int min_cost_position, t_dt *dt)
 	return (min_cost_value);
 }
 
+/*Continuing of function performing actual rotations of stacks*/
+void	do_rotations_cont(t_dt *dt)
+{
+	while (dt->sort_data.rrb != 0)
+	{
+		rev_rotate_b(dt);
+		dt->sort_data.rrb--;
+	}
+	while (dt->sort_data.rrr != 0)
+	{
+		rev_rotate_ab(dt);
+		dt->sort_data.rrr--;
+	}
+}
+
+/*Function for performing actual rotations of stacks*/
+void	do_rotations(t_dt *dt)
+{
+	while (dt->sort_data.ra != 0)
+	{
+		rotate_a(dt);
+		dt->sort_data.ra--;
+	}
+	while (dt->sort_data.rb != 0)
+	{
+		rotate_b(dt);
+		dt->sort_data.rb--;
+	}
+	while (dt->sort_data.rr != 0)
+	{
+		rotate_ab(dt);
+		dt->sort_data.rr--;
+	}
+	while (dt->sort_data.rra != 0)
+	{
+		rev_rotate_a(dt);
+		dt->sort_data.rra--;
+	}
+	do_rotations_cont(dt);
+}
+
+/*Checking zeroed data for rotation*/
+void	clean_rot_data(t_dt *dt)
+{
+	if (dt->sort_data.ra != 0)
+		printf("ra not zero\n");
+	if (dt->sort_data.rb != 0)
+		printf("rb not zero\n");
+	if (dt->sort_data.rr != 0)
+		printf("rr not zero\n");
+	if (dt->sort_data.rra != 0)
+		printf("rra not zero\n");
+	if (dt->sort_data.rrb != 0)
+		printf("rrb not zero\n");
+	if (dt->sort_data.rrr != 0)
+		printf("rrr not zero\n");
+}
+
 /*Function for finding how many and which rotations to make on each stack*/
 void	best_sort_get_rot(t_dt *dt)
 {
 	int	min_cost_position;
 	int	min_cost_value;
+	int	stack_a_middle;
 
 	min_cost_position = get_min_cost_pos(dt);
 	min_cost_value = get_min_cost_value(min_cost_position, dt);
+	stack_a_middle = dt->a_length / 2;
+	clean_rot_data(dt);
+	b_rotation_cost(min_cost_value, dt);
+	if (min_cost_position <= stack_a_middle)
+	{
+		if (dt->sort_data.b_rev_rot < 0)
+		{
+			if (min_cost_position >= dt->sort_data.b_rot)
+			{
+				dt->sort_data.rr = min_cost_position - dt->sort_data.b_rot;
+				dt->sort_data.rb = 0;
+				dt->sort_data.ra = min_cost_position - dt->sort_data.rr;
+			}
+			else if (min_cost_position < dt->sort_data.b_rot)
+			{
+				dt->sort_data.rr = dt->sort_data.b_rot - min_cost_position;
+				dt->sort_data.ra = 0;
+				dt->sort_data.rb = dt->sort_data.b_rot - dt->sort_data.rr;
+			}
+		}
+		else if (dt->sort_data.b_rot < 0)
+		{
+			dt->sort_data.rrb = dt->sort_data.b_rev_rot;
+			dt->sort_data.ra = min_cost_position;
+		}
+	}
+	if (min_cost_position > stack_a_middle)
+	{
+		if(dt->sort_data.b_rev_rot < 0)
+		{
+			dt->sort_data.rb = dt->sort_data.b_rot;
+			dt->sort_data.rra = (min_cost_position - stack_a_middle);
+		}
+		else if (dt->sort_data.b_rot < 0)
+		{
+			if ((min_cost_position - stack_a_middle) <= dt->sort_data.b_rev_rot)
+			{
+				dt->sort_data.rrr = dt->sort_data.b_rev_rot - (min_cost_position - stack_a_middle);
+				dt->sort_data.rra = 0;
+				dt->sort_data.rrb = dt->sort_data.b_rev_rot - dt->sort_data.rrr;
+			}
+			if ((min_cost_position - stack_a_middle) > dt->sort_data.b_rev_rot)
+			{
+				dt->sort_data.rrr = (min_cost_position - stack_a_middle) - dt->sort_data.b_rev_rot;
+				dt->sort_data.rrb = 0;
+				dt->sort_data.rra = (min_cost_position - stack_a_middle) - dt->sort_data.rrr;
+			}
+		}
+	}
 }
 
 void	best_sort(t_dt *dt)
 {
 	push_b(dt);
 	push_b(dt);
-	
 	printf("max a value: %i\n", max_value(dt->head_a));
 	printf("max b value: %i\n", max_value(dt->head_b));
 	calculate_cost(dt);
@@ -123,6 +231,9 @@ void	best_sort(t_dt *dt)
 	{
 		calculate_cost(dt);
 		best_sort_get_rot(dt);
+		do_rotations(dt);
 		push_b(dt);
 	}
+	while (dt->b_length)
+		push_a(dt);
 }
