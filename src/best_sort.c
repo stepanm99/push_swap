@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 17:14:26 by stepan            #+#    #+#             */
-/*   Updated: 2023/11/21 19:48:11 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/21 19:55:56 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	calculate_b_rot_cost(int a_position, t_dt *dt)
 	a_stack_middle = dt->a_length / 2;
 	if (dt->sort_data.b_rev_rot < 0)
 	{
-		printf("first if\n");
+//		printf("first if\n");
 		if (a_position < dt->sort_data.b_rot)
 			cost = dt->sort_data.b_rot - a_position;
 		else
@@ -29,13 +29,13 @@ int	calculate_b_rot_cost(int a_position, t_dt *dt)
 	}
 	if (dt->sort_data.b_rot < 0)
 	{
-		printf("second if\n");
+//		printf("second if\n");
 		if ((a_position - a_stack_middle) < dt->sort_data.b_rev_rot)
 			cost = dt->sort_data.b_rev_rot - (a_position - a_stack_middle);
 		else
 			cost = (a_position - a_stack_middle) - dt->sort_data.b_rev_rot;
 	}
-	printf("cost from b: %i\n", cost);
+//	printf("cost from b: %i\n", cost);
 	return (cost);
 }
 
@@ -224,8 +224,8 @@ void	best_sort(t_dt *dt)
 {
 	push_b(dt);
 	push_b(dt);
-	printf("max a value: %i\n", max_value(dt->head_a));
-	printf("max b value: %i\n", max_value(dt->head_b));
+//	printf("max a value: %i\n", max_value(dt->head_a));
+//	printf("max b value: %i\n", max_value(dt->head_b));
 	calculate_cost(dt);
 	while (dt->a_length)
 	{

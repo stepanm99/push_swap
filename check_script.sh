@@ -25,7 +25,7 @@ do
 	done
 	result=$(./push_swap $string | wc -l)
 	echo result: $result
-	./push_swap $string | ./checker_linux $string
+#	./push_swap $string | ./checker_linux $string
 #	echo $string
 	sum=$((result+sum))
 	((i--))

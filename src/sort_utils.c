@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 17:43:24 by stepan            #+#    #+#             */
-/*   Updated: 2023/11/15 21:21:21 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/21 20:08:11 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ unsigned int	find_min_index(t_dt *dt, t_link *head, int range)
 	limit = find_min_index_limit_logic(dt, head, range);
 	temp = find_min_index_head_logic(dt, head);
 	i = 0;
-	while (limit)
+	while (limit && temp)
 	{
 		if (temp->index == dt->min_index && limit)
 			return (i);
