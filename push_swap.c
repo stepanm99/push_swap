@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/21 19:51:50 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/21 20:41:31 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 //void	check_leaks();
 
 /*Compares two strings, if they are same, returns length of those strings,
-if strings are different returns 0
+if strings are different returns 0*/
 int	ft_match(const char *str1, const char *str2)
 {
 	int	i;
@@ -271,7 +271,7 @@ void	free_data(t_dt *dt)
 int	main(int argc, const char *argv[])
 {
 	t_dt	*dt;
-//	char	input[10];		//for interactive test
+	char	input[10];		//for interactive test
 
 	dt = NULL;
 	if (argc == 1)
@@ -287,7 +287,7 @@ int	main(int argc, const char *argv[])
 	indexer(dt);
 	duplicate_list_a_to_c(dt);
 
-/* interactive 
+/* interactive */
 	while (1)
 	{
 		scanf("%s", input);
@@ -347,7 +347,7 @@ int	main(int argc, const char *argv[])
 		if (ft_match(input, "cost"))
 			calculate_cost(dt);
 	}//*/
-	sort(dt);
+//	sort(dt);
 //	checksum(dt);
 	free_data(dt);
 //	check_leaks();

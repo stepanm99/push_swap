@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 20:53:18 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/21 20:08:48 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/21 20:37:19 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ void	sort(t_dt *dt)
 {
 
 	find_best_algorithm(dt);
+	dt->alg_flag = 4;			//for testing
 	if (dt->a_length == 1)
 		return ;
 	else if (dt->a_length == 2)
