@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 17:14:26 by stepan            #+#    #+#             */
-/*   Updated: 2023/11/22 17:20:33 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/22 20:42:51 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,6 +163,40 @@ void	clean_rot_data(t_dt *dt)
 		printf("rrr not zero\n");
 }
 
+void	check_parallel_rotations(t_dt *dt)
+{
+	if (dt->sort_data.ra > 0 && dt->sort_data.rb > 0)
+	{
+		if (dt->sort_data.ra >= dt->sort_data.rb)
+		{
+			dt->sort_data.rr = dt->sort_data.ra - dt->sort_data.rb;
+			dt->sort_data.rb = 0;
+			dt->sort_data.ra = dt->sort_data.ra - dt->sort_data.rr;
+		}
+		else if (dt->sort_data.rb > dt->sort_data.ra)
+		{
+			dt->sort_data.rr = dt->sort_data.rb - dt->sort_data.ra;
+			dt->sort_data.ra = 0;
+			dt->sort_data.rb = dt->sort_data.rb - dt->sort_data.rr;
+		}
+	}
+	if (dt->sort_data.rra > 0 && dt->sort_data.rrb > 0)
+	{
+		if (dt->sort_data.rra >= dt->sort_data.rrb)
+		{
+			dt->sort_data.rrr = dt->sort_data.rra - dt->sort_data.rrb;
+			dt->sort_data.rrb = 0;
+			dt->sort_data.rra = dt->sort_data.rra - dt->sort_data.rrr;
+		}
+		else if (dt->sort_data.rrb > dt->sort_data.rra)
+		{
+			dt->sort_data.rrr = dt->sort_data.rrb - dt->sort_data.rra;
+			dt->sort_data.rra = 0;
+			dt->sort_data.rrb = dt->sort_data.rrb - dt->sort_data.rrr;
+		}
+	}
+}
+
 /*Function for finding how many and which rotations to make on each stack*/
 void	best_sort_get_rot(t_dt *dt)
 {
@@ -176,17 +210,29 @@ void	best_sort_get_rot(t_dt *dt)
 	clean_rot_data(dt);
 	b_rotation_cost(min_cost_value, dt);
 	if (min_cost_position <= stack_a_middle)
+		dt->sort_data.ra = min_cost_position;
+	else if (min_cost_position > stack_a_middle)
+		dt->sort_data.rra = (min_cost_position - dt->a_length) * -1;
+	if (dt->sort_data.b_rev_rot < 0)
+		dt->sort_data.rb = dt->sort_data.b_rot;
+	else if (dt->sort_data.b_rot < 0)
+		dt->sort_data.rrb = dt->sort_data.b_rev_rot;
+	check_parallel_rotations(dt);
+	/*
+	if (min_cost_position <= stack_a_middle)
 	{
 		if (dt->sort_data.b_rev_rot < 0)
 		{
 			if (min_cost_position >= dt->sort_data.b_rot)
 			{
+				printf("from: if (min_cost_position >= dt->sort_data.b_rot)\n");
 				dt->sort_data.rr = min_cost_position - dt->sort_data.b_rot;
 				dt->sort_data.rb = 0;
 				dt->sort_data.ra = min_cost_position - dt->sort_data.rr;
 			}
 			else if (min_cost_position < dt->sort_data.b_rot)
 			{
+				printf("from: else if (min_cost_position < dt->sort_data.b_rot)\n");
 				dt->sort_data.rr = dt->sort_data.b_rot - min_cost_position;
 				dt->sort_data.ra = 0;
 				dt->sort_data.rb = dt->sort_data.b_rot - dt->sort_data.rr;
@@ -194,14 +240,16 @@ void	best_sort_get_rot(t_dt *dt)
 		}
 		else if (dt->sort_data.b_rot < 0)
 		{
+			printf("from: else if (dt->sort_data.b_rot < 0)");
 			dt->sort_data.rrb = dt->sort_data.b_rev_rot;
 			dt->sort_data.ra = min_cost_position;
 		}
 	}
-	if (min_cost_position > stack_a_middle)
+	else if (min_cost_position > stack_a_middle)
 	{
 		if(dt->sort_data.b_rev_rot < 0)
 		{
+			printf("from: if(dt->sort_data.b_rev_rot < 0)\n");
 			dt->sort_data.rb = dt->sort_data.b_rot;
 			dt->sort_data.rra = (min_cost_position - stack_a_middle);
 		}
@@ -209,18 +257,21 @@ void	best_sort_get_rot(t_dt *dt)
 		{
 			if ((min_cost_position - stack_a_middle) <= dt->sort_data.b_rev_rot)
 			{
+				printf("from: if ((min_cost_position - stack_a_middle) <= dt->sort_data.b_rev_rot)\n");
 				dt->sort_data.rrr = dt->sort_data.b_rev_rot - (min_cost_position - stack_a_middle);
 				dt->sort_data.rra = 0;
 				dt->sort_data.rrb = dt->sort_data.b_rev_rot - dt->sort_data.rrr;
 			}
-			if ((min_cost_position - stack_a_middle) > dt->sort_data.b_rev_rot)
+			else if ((min_cost_position - stack_a_middle) > dt->sort_data.b_rev_rot)
 			{
+				printf("from: else if ((min_cost_position - stack_a_middle) > dt->sort_data.b_rev_rot)\n");
 				dt->sort_data.rrr = (min_cost_position - stack_a_middle) - dt->sort_data.b_rev_rot;
 				dt->sort_data.rrb = 0;
 				dt->sort_data.rra = (min_cost_position - stack_a_middle) - dt->sort_data.rrr;
 			}
 		}
-	}
+	}*/
+	printf("ra: %i\trb: %i\trr: %i\trra: %i\trrb: %i\trrr: %i\n", dt->sort_data.ra, dt->sort_data.rb, dt->sort_data.rr, dt->sort_data.rra, dt->sort_data.rrb, dt->sort_data.rrr);
 }
 
 void	best_sort_loop_to_b(t_dt *dt)
@@ -236,6 +287,7 @@ void	best_sort_loop_to_b(t_dt *dt)
 		best_sort_get_rot(dt);
 		do_rotations(dt);
 		push_b(dt);
+		print_stacks_with_neigbors(dt);
 	}
 	b_max_value = max_value(dt->head_b);
 	b_max_pos = find_value(dt->head_b, b_max_value, dt);
@@ -246,6 +298,7 @@ void	best_sort_loop_to_b(t_dt *dt)
 		{
 			rev_rotate_b(dt);
 			b_max_pos--;
+			print_stacks_with_neigbors(dt);
 		}
 	}
 	else
@@ -254,6 +307,7 @@ void	best_sort_loop_to_b(t_dt *dt)
 		{
 			rotate_b(dt);
 			b_max_pos--;
+			print_stacks_with_neigbors(dt);
 		}
 	}
 }

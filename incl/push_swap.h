@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:26 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/22 16:51:48 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/22 18:01:47 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,10 @@ typedef struct dt {
 	t_link			*c;
 	t_sort_data		sort_data;
 }	t_dt;
+
+/*Debug functions*/
+
+void			print_stacks_with_neigbors(t_dt *dt);
 
 /*Data initialization*/
 

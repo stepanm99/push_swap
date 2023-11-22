@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/22 13:53:48 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/22 18:41:37 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,51 +61,57 @@ void	print_stacks_with_neigbors(t_dt *dt)
 	t_link	*b_temp;
 	t_link	*c_temp;
 
-	printf("\nalength: %u\tblength: %u\tclength: %u\n", dt->a_length, dt->b_length, dt->c_length);
+//	printf("\nalength: %u\tblength: %u\tclength: %u\n", dt->a_length, dt->b_length, dt->c_length);
 	if (dt->head_a)
 	{
 		a_temp = dt->head_a->next;
+		printf("a:");
 		while (a_temp)
 		{
-		if (a_temp->prev && a_temp->prev != dt->head_a)
-			printf("prev val:\t%i\tindex:\t%u\n", a_temp->prev->val, a_temp->prev->index);
-		else
-			printf("HEAD_A\tnext val: %u\n", dt->head_a->next->val);
-		printf("a:\t%i\tindex:\t%u\tcost:\t%i\n", a_temp->val, a_temp->index, a_temp->cost);
-		if (a_temp->next)
-			printf("next val:\t%i\tindex:\t%u\n", a_temp->next->val, a_temp->next->index);
+//		if (a_temp->prev && a_temp->prev != dt->head_a)
+//			printf("prev val:\t%i\tindex:\t%u\n", a_temp->prev->val, a_temp->prev->index);
+//		else
+//			printf("HEAD_A\tnext val: %u\n", dt->head_a->next->val);
+//		printf("a:\t%i\tindex:\t%u\tcost:\t%i\n", a_temp->val, a_temp->index, a_temp->cost);
+		printf(" %i", a_temp->val);
+//		if (a_temp->next)
+//			printf("next val:\t%i\tindex:\t%u\n", a_temp->next->val, a_temp->next->index);
 		a_temp = a_temp->next;
 		}
-		printf("---------------------\n");
+		printf("\n");
 	}
 	if (dt->head_b)
 	{
 		b_temp = dt->head_b->next;
+		printf("b:");
 		while (b_temp)
 		{
-		if (b_temp->prev && b_temp->prev != dt->head_b)
-			printf("prev val:\t%i\tindex:\t%u\n", b_temp->prev->val, b_temp->prev->index);
-		else
-			printf("HEAD_B\n");
-		printf("b:\t%i\tindex:\t%u\tcost:\t%i\n", b_temp->val, b_temp->index, b_temp->cost);
-		if (b_temp->next)
-			printf("next val:\t%i\tindex:\t%u\n", b_temp->next->val, b_temp->next->index);
+//		if (b_temp->prev && b_temp->prev != dt->head_b)
+//			printf("prev val:\t%i\tindex:\t%u\n", b_temp->prev->val, b_temp->prev->index);
+//		else
+//			printf("HEAD_B\n");
+//		printf("b:\t%i\tindex:\t%u\tcost:\t%i\n", b_temp->val, b_temp->index, b_temp->cost);
+		printf(" %i", b_temp->val);
+//		if (b_temp->next)
+//			printf("next val:\t%i\tindex:\t%u\n", b_temp->next->val, b_temp->next->index);
 		b_temp = b_temp->next;
 		}
-		printf("---------------------\n");
+		printf("\n");
 	}
 	if (dt->head_c)
 	{
+		printf("c:");
 		c_temp = dt->head_c->next;
 		while (c_temp)
 		{
-			if (c_temp->prev && c_temp->prev != dt->head_c)
-				printf("prev val:\t%i\tindex:\t%u\n", c_temp->prev->val, c_temp->prev->index);
-			else
-				printf("HEAD_C\n");
-			printf("c:\t%i\tindex:\t%u\tcost:\t%i\n", c_temp->val, c_temp->index, c_temp->cost);
-			if (c_temp->next)
-				printf("next val:\t%i\tindex:\t%u\n", c_temp->next->val, c_temp->next->index);
+			// if (c_temp->prev && c_temp->prev != dt->head_c)
+			// 	printf("prev val:\t%i\tindex:\t%u\n", c_temp->prev->val, c_temp->prev->index);
+			// else
+			// 	printf("HEAD_C\n");
+//			printf("c:\t%i\tindex:\t%u\tcost:\t%i\n", c_temp->val, c_temp->index, c_temp->cost);
+			printf(" %i", c_temp->val);
+			// if (c_temp->next)
+			// 	printf("next val:\t%i\tindex:\t%u\n", c_temp->next->val, c_temp->next->index);
 			c_temp = c_temp->next;
 		}
 		printf("---------------------\n");
