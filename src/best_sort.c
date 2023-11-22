@@ -6,13 +6,16 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 17:14:26 by stepan            #+#    #+#             */
-/*   Updated: 2023/11/21 19:55:56 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/22 17:20:33 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/push_swap.h"
 
-/*need to work out the logic :(*/
+/*Claculates the cost of rotating b, taking in account the simultaneous
+	rotations, outputing of actual cost it would take to rotate b alone
+	so it could be added to cost of pushing the number in stack a to
+	the correct position*/
 int	calculate_b_rot_cost(int a_position, t_dt *dt)
 {
 	int	cost;
@@ -220,13 +223,13 @@ void	best_sort_get_rot(t_dt *dt)
 	}
 }
 
-void	best_sort(t_dt *dt)
+void	best_sort_loop_to_b(t_dt *dt)
 {
-	push_b(dt);
-	push_b(dt);
-//	printf("max a value: %i\n", max_value(dt->head_a));
-//	printf("max b value: %i\n", max_value(dt->head_b));
-	calculate_cost(dt);
+	int	b_max_value;
+	int	b_max_pos;
+
+	b_max_pos = 0;
+	b_max_value = 0;
 	while (dt->a_length)
 	{
 		calculate_cost(dt);
@@ -234,6 +237,35 @@ void	best_sort(t_dt *dt)
 		do_rotations(dt);
 		push_b(dt);
 	}
+	b_max_value = max_value(dt->head_b);
+	b_max_pos = find_value(dt->head_b, b_max_value, dt);
+	if (b_max_pos < 0)
+	{
+		b_max_pos *= -1;
+		while (b_max_pos)
+		{
+			rev_rotate_b(dt);
+			b_max_pos--;
+		}
+	}
+	else
+	{
+		while (b_max_pos)
+		{
+			rotate_b(dt);
+			b_max_pos--;
+		}
+	}
+}
+
+void	best_sort(t_dt *dt)
+{
+	push_b(dt);
+	push_b(dt);
+//	printf("max a value: %i\n", max_value(dt->head_a));
+//	printf("max b value: %i\n", max_value(dt->head_b));
+	calculate_cost(dt);
+	best_sort_loop_to_b(dt);
 	while (dt->b_length)
 		push_a(dt);
 }

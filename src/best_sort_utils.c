@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 17:44:11 by stepan            #+#    #+#             */
-/*   Updated: 2023/11/21 16:31:09 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/22 17:15:09 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,8 @@ int	find_value(t_link *head, int val, t_dt *dt)
 {
 	t_link	*current;
 	int		forward;
-	int		backward;
-	int		limit;
 
-	limit = find_head_length(head, dt);
 	forward = 0;
-	backward = 0;
 	current = NULL;
 	if (!head)
 		error(dt);
@@ -88,15 +84,8 @@ int	find_value(t_link *head, int val, t_dt *dt)
 		forward++;
 	}
 	current = head->prev;
-	while (backward != limit)
-	{
-		if (current->val == val)
-			break ;
-		current = current->prev;
-		backward++;
-	}
-	if (backward < forward)
-		return ((backward * -1));
+	if (forward > (int)(dt->b_length / 2))
+		return (forward - dt->b_length);
 	else
 		return (forward);
 }
@@ -108,11 +97,9 @@ int	find_space(t_link *head, int val, t_dt *dt)
 {
 	t_link	*current;
 	int		forward;
-	int		backward;
 
 	current = NULL;
 	forward = 0;
-	backward = 0;
 	if (!head)
 		error(dt);
 	if (head->next)
@@ -124,22 +111,16 @@ int	find_space(t_link *head, int val, t_dt *dt)
 			if (current->prev->val > val && current->val < val)
 				break ;
 		}
+		else
+		{
+			if (current->prev->prev->val > val && current->val < val)
+				break ;
+		}
 		current = current->next;
 		forward++;
 	}
-	current = head->prev;
-	while (current != head)
-	{
-		if (current->next != NULL)
-		{
-			if (current->val < val && current->next->val > val)
-				break ;
-		}
-		current = current->prev;
-		backward++;
-	}
-	if (backward < forward)
-		return ((backward * -1));
+	if (forward > (int)(dt->b_length / 2))
+		return ((forward - dt->b_length));
 	else
 		return (forward);
 }
@@ -211,7 +192,7 @@ void	set_b_rot_values(int rot, t_dt *dt)
 
 /*Finds out how many rotation steps are needed to get max
 	value to the top of the stack*/
-void	b_rotation_max(t_dt *dt)
+void	b_rotation_max_to_top(t_dt *dt)
 {
 	int	rot;
 
@@ -245,10 +226,8 @@ void	b_rotation_cost(int a_val, t_dt *dt)
 {
 	dt->sort_data.b_min_val = min_value(dt->head_b);
 	dt->sort_data.b_max_val = max_value(dt->head_b);
-	if (a_val > dt->sort_data.b_max_val)
-		b_rotation_max(dt);
-	else if (a_val < dt->sort_data.b_min_val)
-		b_rotation_min(dt);
+	if ((a_val > dt->sort_data.b_max_val) || (a_val < dt->sort_data.b_min_val))
+		b_rotation_max_to_top(dt);
 	else
 		b_rotation_middle(a_val, dt);
 }

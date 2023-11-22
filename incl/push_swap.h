@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:26 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/20 18:02:08 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/22 16:51:48 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_sort_data {
 	int	sim_rot;
 	int	sim_rev_rot;
 	int	b_max_val;
-	int	b_min_val;
+	int b_min_val;
 	int	b_rot;
 	int	b_rev_rot;
 	int	ra;
@@ -137,6 +137,7 @@ void			b_rotation_cost(int a_val, t_dt *dt);
 void			b_rotation_max(t_dt *dt);
 void			b_rotation_min(t_dt *dt);
 void			b_rotation_middle(int val, t_dt *dt);
+void			best_sort_loop_to_b(t_dt *dt);
 
 
 /*Error functions*/

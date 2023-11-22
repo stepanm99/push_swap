@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/21 20:41:31 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/22 13:53:48 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -336,7 +336,10 @@ int	main(int argc, const char *argv[])
 		if (ft_match(input, "sort"))
 			sort(dt);
 		if (ft_match(input, "check"))
+		{
 			check_sort(dt);
+			printf("a_sorted: %i\tb_sorted: %i\n", dt->a_sorted_flag, dt->b_sorted_flag);
+		}
 		if (ft_match(input, "better"))
 		{
 			sort_to_buckets(dt, 2, 0);
@@ -346,6 +349,8 @@ int	main(int argc, const char *argv[])
 			rotation_cost(dt);
 		if (ft_match(input, "cost"))
 			calculate_cost(dt);
+		if (ft_match("bestloop", input))
+			best_sort_loop_to_b(dt);
 	}//*/
 //	sort(dt);
 //	checksum(dt);
