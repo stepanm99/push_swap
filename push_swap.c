@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/22 18:41:37 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/22 21:05:55 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -358,7 +358,7 @@ int	main(int argc, const char *argv[])
 		if (ft_match("bestloop", input))
 			best_sort_loop_to_b(dt);
 	}//*/
-//	sort(dt);
+	sort(dt);
 //	checksum(dt);
 	free_data(dt);
 //	check_leaks();

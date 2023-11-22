@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 17:14:26 by stepan            #+#    #+#             */
-/*   Updated: 2023/11/22 20:42:51 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/22 20:58:57 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,7 @@ void	do_rotations(t_dt *dt)
 	do_rotations_cont(dt);
 }
 
-/*Checking zeroed data for rotation*/
+/*Checking zeroed data for rotation
 void	clean_rot_data(t_dt *dt)
 {
 	if (dt->sort_data.ra != 0)
@@ -161,7 +161,7 @@ void	clean_rot_data(t_dt *dt)
 		printf("rrb not zero\n");
 	if (dt->sort_data.rrr != 0)
 		printf("rrr not zero\n");
-}
+}//*/
 
 void	check_parallel_rotations(t_dt *dt)
 {
@@ -207,7 +207,7 @@ void	best_sort_get_rot(t_dt *dt)
 	min_cost_position = get_min_cost_pos(dt);
 	min_cost_value = get_min_cost_value(min_cost_position, dt);
 	stack_a_middle = dt->a_length / 2;
-	clean_rot_data(dt);
+//	clean_rot_data(dt);
 	b_rotation_cost(min_cost_value, dt);
 	if (min_cost_position <= stack_a_middle)
 		dt->sort_data.ra = min_cost_position;
@@ -217,7 +217,7 @@ void	best_sort_get_rot(t_dt *dt)
 		dt->sort_data.rb = dt->sort_data.b_rot;
 	else if (dt->sort_data.b_rot < 0)
 		dt->sort_data.rrb = dt->sort_data.b_rev_rot;
-	check_parallel_rotations(dt);
+//	check_parallel_rotations(dt);
 	/*
 	if (min_cost_position <= stack_a_middle)
 	{
@@ -271,7 +271,7 @@ void	best_sort_get_rot(t_dt *dt)
 			}
 		}
 	}*/
-	printf("ra: %i\trb: %i\trr: %i\trra: %i\trrb: %i\trrr: %i\n", dt->sort_data.ra, dt->sort_data.rb, dt->sort_data.rr, dt->sort_data.rra, dt->sort_data.rrb, dt->sort_data.rrr);
+//	printf("ra: %i\trb: %i\trr: %i\trra: %i\trrb: %i\trrr: %i\n", dt->sort_data.ra, dt->sort_data.rb, dt->sort_data.rr, dt->sort_data.rra, dt->sort_data.rrb, dt->sort_data.rrr);
 }
 
 void	best_sort_loop_to_b(t_dt *dt)
@@ -287,7 +287,7 @@ void	best_sort_loop_to_b(t_dt *dt)
 		best_sort_get_rot(dt);
 		do_rotations(dt);
 		push_b(dt);
-		print_stacks_with_neigbors(dt);
+//		print_stacks_with_neigbors(dt);
 	}
 	b_max_value = max_value(dt->head_b);
 	b_max_pos = find_value(dt->head_b, b_max_value, dt);
@@ -298,7 +298,7 @@ void	best_sort_loop_to_b(t_dt *dt)
 		{
 			rev_rotate_b(dt);
 			b_max_pos--;
-			print_stacks_with_neigbors(dt);
+//			print_stacks_with_neigbors(dt);
 		}
 	}
 	else
@@ -307,7 +307,7 @@ void	best_sort_loop_to_b(t_dt *dt)
 		{
 			rotate_b(dt);
 			b_max_pos--;
-			print_stacks_with_neigbors(dt);
+//			print_stacks_with_neigbors(dt);
 		}
 	}
 }
