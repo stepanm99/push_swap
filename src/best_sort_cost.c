@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 17:25:41 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/23 17:33:44 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/23 21:21:18 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	b_rotation_cost(int a_val, t_dt *dt)
 }
 
 /*How many move would it take to put this number into correct position*/
-void	calculate_cost(t_dt *dt)
+void	old_calculate_cost(t_dt *dt)
 {
 	t_link	*current;
 	int		i;
@@ -121,4 +121,55 @@ int	calculate_b_rot_cost(int a_position, t_dt *dt)
 	}
 //	printf("cost from b: %i\n", cost);
 	return (cost);
+}
+/*_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-*/
+
+void	null_rotations(t_dt *dt)
+{
+	dt->sort_data.ra = 0;
+	dt->sort_data.rb = 0;
+	dt->sort_data.rr = 0;
+	dt->sort_data.rra = 0;
+	dt->sort_data.rrb = 0;
+	dt->sort_data.rrr = 0;
+}
+
+void	calculate_cost(t_dt *dt)
+{
+	int	min_cost_position;
+	int	min_cost_value;
+	int	stack_a_middle;
+	t_link	*current;
+	int		i;
+
+	dt->print_flag = 0;
+	min_cost_position = 0;
+	min_cost_value = 0;
+	stack_a_middle = 0;
+	null_cost(dt);
+	rotation_cost(dt);
+	current = dt->head_a->next;
+	i = 0;
+	while (current)
+	{
+		null_rotations(dt);
+		min_cost_position = i;
+		min_cost_value = get_min_cost_value(min_cost_position, dt);
+		stack_a_middle = dt->a_length / 2;
+	//	clean_rot_data(dt);
+		b_rotation_cost(min_cost_value, dt);
+		if (min_cost_position <= stack_a_middle)
+			dt->sort_data.ra = min_cost_position;
+		else if (min_cost_position > stack_a_middle)
+			dt->sort_data.rra = (min_cost_position - stack_a_middle);
+		if (dt->sort_data.b_rev_rot < 0)
+			dt->sort_data.rb = dt->sort_data.b_rot;
+		else if (dt->sort_data.b_rot < 0)
+			dt->sort_data.rrb = dt->sort_data.b_rev_rot;
+		current->cost = dt->sort_data.ra + dt->sort_data.rb + dt->sort_data.rr
+			+ dt->sort_data.rra + dt->sort_data.rrb + dt->sort_data.rrr;
+		current = current->next;
+		i++;
+	}
+	dt->print_flag = 1;
 }

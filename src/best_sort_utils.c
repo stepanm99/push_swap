@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 17:44:11 by stepan            #+#    #+#             */
-/*   Updated: 2023/11/23 17:34:39 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/23 23:46:57 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ int	get_min_cost_value(int min_cost_position, t_dt *dt)
 
 	current = dt->head_a->next;
 	min_cost_value = 0;
+//	printf("min_cost_position: %i ", min_cost_position);
 	while (min_cost_position && current)
 	{
 		current = current->next;
@@ -104,5 +105,6 @@ int	get_min_cost_value(int min_cost_position, t_dt *dt)
 	}
 	else
 		error(dt);
+//	printf("min_cost_value: %i\n", min_cost_value);
 	return (min_cost_value);
 }

@@ -6,11 +6,18 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 15:44:14 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/23 19:31:04 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/23 22:01:27 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/push_swap.h"
+
+void	print_rotations(t_dt *dt)
+{
+	printf("ra: %i\trb: %i\trr: %i\nrra: %i\trrb: %i\trrr: %i\n", dt->sort_data.ra, dt->sort_data.rb, dt->sort_data.rr,
+		dt->sort_data.rra, dt->sort_data.rrb, dt->sort_data.rrr);
+}
+
 /*For controlling if the length of final sorted a is the same as the length saved in struct*/
 void	checksum(t_dt *dt)
 {
@@ -89,6 +96,8 @@ void	interactive(t_dt *dt)
 			reverse_print_stacks_with_neigbors(dt);
 		if (ft_match("lpr", input))
 			print_stacks_in_line(dt);
+		if (ft_match("rotpr", input))
+			print_rotations(dt);
 		if (ft_match(input, "dupc"))
 			duplicate_list_a_to_c(dt);
 		if (ft_match(input, "dupa"))

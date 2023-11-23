@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 17:25:21 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/23 17:32:25 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/23 22:32:36 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	find_value(t_link *head, int val, t_dt *dt)
 		forward++;
 	}
 	current = head->prev;
-	if (forward > (int)(dt->b_length / 2))
+	if (forward < (int)(dt->b_length / 2))
 		return (forward - dt->b_length);
 	else
 		return (forward);
@@ -169,7 +169,7 @@ void	best_sort_get_rot(t_dt *dt)
 	if (min_cost_position <= stack_a_middle)
 		dt->sort_data.ra = min_cost_position;
 	else if (min_cost_position > stack_a_middle)
-		dt->sort_data.rra = (min_cost_position - dt->a_length) * -1;
+		dt->sort_data.rra = (min_cost_position - stack_a_middle);
 	if (dt->sort_data.b_rev_rot < 0)
 		dt->sort_data.rb = dt->sort_data.b_rot;
 	else if (dt->sort_data.b_rot < 0)

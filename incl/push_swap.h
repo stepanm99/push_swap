@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:26 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/23 19:16:28 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/23 22:00:39 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,5 +162,6 @@ int		ft_match(const char *str1, const char *str2);
 void	checksum(t_dt *dt);
 void	reverse_print_stacks_with_neigbors(t_dt *dt);
 void	print_stacks_in_line(t_dt *dt);
+void	print_rotations(t_dt *dt);
 
 #endif
