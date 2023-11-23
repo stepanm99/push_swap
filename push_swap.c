@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/23 17:24:46 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/23 18:00:18 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,11 +151,10 @@ int	main(int argc, const char *argv[])
 	arg_pars(argv, dt);
 	indexer(dt);
 	duplicate_list_a_to_c(dt);
-
-	interactive(dt);	//for debug purposes
-	
+	if (TESTING)
+		interactive(dt);	//for debug purposes
 	sort(dt);
-	checksum(dt);
+//	checksum(dt);
 	free_data(dt);
 //	check_leaks();
 //	system("leaks push_swap");

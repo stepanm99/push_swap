@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 21:14:09 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/21 13:52:07 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/23 19:03:07 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,11 @@ static void	push(t_link *address[])
 	address[0]->next = address[2];
 	if (address[2])
 		address[2]->prev = address[0];
-	address[1]->prev = address[3];
-	address[1]->next = address[4];
+//	if (address[1])
+//	{
+		address[1]->prev = address[3];
+		address[1]->next = address[4];
+//	}
 	address[3]->next = address[1];
 	if (address[4])
 	{

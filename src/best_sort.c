@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 17:14:26 by stepan            #+#    #+#             */
-/*   Updated: 2023/11/23 17:34:28 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/23 18:47:01 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,6 @@ void	best_sort(t_dt *dt)
 	push_b(dt);
 //	printf("max a value: %i\n", max_value(dt->head_a));
 //	printf("max b value: %i\n", max_value(dt->head_b));
-	calculate_cost(dt);
 	best_sort_loop_to_b(dt);
 	while (dt->b_length)
 		push_a(dt);

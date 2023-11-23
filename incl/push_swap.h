@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:26 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/23 17:39:36 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/23 19:16:28 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
+
+# ifndef TESTING		//delete before
+#  define TESTING=0		//submitting
+# endif					//the work!!!
 
 typedef struct s_link	t_link;
 
@@ -149,12 +153,14 @@ void			best_sort_loop_to_b(t_dt *dt);
 void	error(t_dt *dt);
 
 
-/*Debug functions*/
+/*Debug functions - delete before submitting the work!!!*/
 
 void	print_stacks_with_neigbors(t_dt *dt);
 void	print_stacks(t_dt *dt);
 void	interactive(t_dt *dt);
 int		ft_match(const char *str1, const char *str2);
 void	checksum(t_dt *dt);
+void	reverse_print_stacks_with_neigbors(t_dt *dt);
+void	print_stacks_in_line(t_dt *dt);
 
 #endif
