@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/23 17:04:19 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/23 17:24:46 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,5 +158,6 @@ int	main(int argc, const char *argv[])
 	checksum(dt);
 	free_data(dt);
 //	check_leaks();
+//	system("leaks push_swap");
 	return (0);
 }

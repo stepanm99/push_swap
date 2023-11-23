@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:26 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/23 17:03:48 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/23 17:39:36 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,10 +132,15 @@ int				find_space(t_link *head, int val, t_dt *dt);
 void			null_cost_stack(t_link *head);
 void			null_cost(t_dt *dt);
 void			calculate_cost(t_dt *dt);
+int				calculate_b_rot_cost(int a_position, t_dt *dt);
 void			rotation_cost(t_dt *dt);
 void			b_rotation_cost(int a_val, t_dt *dt);
+int				get_min_cost_pos(t_dt *dt);
+int				get_min_cost_value(int min_cost_position, t_dt *dt);
 void			b_rotation_min(t_dt *dt);
 void			b_rotation_middle(int val, t_dt *dt);
+void			best_sort_get_rot(t_dt *dt);
+void			b_rotation_max_to_top(t_dt *dt);
 void			best_sort_loop_to_b(t_dt *dt);
 
 
