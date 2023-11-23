@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:26 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/22 18:01:47 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/23 17:03:48 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,6 @@ typedef struct dt {
 	t_sort_data		sort_data;
 }	t_dt;
 
-/*Debug functions*/
-
-void			print_stacks_with_neigbors(t_dt *dt);
-
 /*Data initialization*/
 
 void			data_init(t_dt *dt);
@@ -108,7 +104,7 @@ void			rev_rotate_ab(t_dt *dt);
 
 /*Argument parsing and saving to stack*/
 
-void	arg_pars(const char *argv[], t_dt *dt);
+void			arg_pars(const char *argv[], t_dt *dt);
 
 /*Sorting functions*/
 
@@ -138,7 +134,6 @@ void			null_cost(t_dt *dt);
 void			calculate_cost(t_dt *dt);
 void			rotation_cost(t_dt *dt);
 void			b_rotation_cost(int a_val, t_dt *dt);
-void			b_rotation_max(t_dt *dt);
 void			b_rotation_min(t_dt *dt);
 void			b_rotation_middle(int val, t_dt *dt);
 void			best_sort_loop_to_b(t_dt *dt);
@@ -147,5 +142,14 @@ void			best_sort_loop_to_b(t_dt *dt);
 /*Error functions*/
 
 void	error(t_dt *dt);
+
+
+/*Debug functions*/
+
+void	print_stacks_with_neigbors(t_dt *dt);
+void	print_stacks(t_dt *dt);
+void	interactive(t_dt *dt);
+int		ft_match(const char *str1, const char *str2);
+void	checksum(t_dt *dt);
 
 #endif
