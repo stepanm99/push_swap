@@ -6,21 +6,21 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 17:29:30 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/24 17:44:59 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/24 17:51:49 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/push_swap.h"
 
 /*Returns square root in form of integer*/
-static int	babylonian_sqrt(int	n)
+int	babylonian_sqrt(int	n)
 {
 	int	temp;
 	int	diff;
 	int	guess;
 
 	temp = 0;
-	diff = 0;
+	diff = 1;
 	guess = n / 2;
 	while (diff)
 	{
@@ -30,4 +30,3 @@ static int	babylonian_sqrt(int	n)
 	}
 	return (guess);
 }
-

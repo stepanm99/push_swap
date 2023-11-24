@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:26 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/08 17:37:26 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/24 17:48:44 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,10 @@ void			bubble(t_dt *dt);
 void			find_best_algorithm(t_dt *dt);
 void			simple_sort(t_dt *dt);
 void			sort_to_b(t_dt *dt);
+
+/*K sort functions*/
+
+int				babylonian_sqrt(int	n);
 
 /*Error functions*/
 
