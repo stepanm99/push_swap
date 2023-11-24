@@ -6,16 +6,36 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 22:47:39 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/24 22:49:10 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/24 23:05:41 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/push_swap.h"
 
+void	check_sort_continuum(t_dt *dt)
+{
+	t_link	*current_b;
+
+	if (dt->head_b->next)
+	{
+		current_b = dt->head_b->next;
+		while (current_b->next)
+		{
+			if (current_b->index > current_b->next->index)
+			{
+				dt->b_sorted_flag = 0;
+				break ;
+			}
+			else
+				dt->b_sorted_flag = 1;
+			current_b = current_b->next;
+		}
+	}
+}
+
 void	check_sort(t_dt *dt)
 {
 	t_link	*current_a;
-	t_link	*current_b;
 
 	if (dt->head_a->next)
 	{
@@ -32,21 +52,7 @@ void	check_sort(t_dt *dt)
 			current_a = current_a->next;
 		}
 	}
-	if (dt->head_b->next)
-	{
-		current_b = dt->head_b->next;
-		while (current_b->next)
-		{
-			if (current_b->index > current_b->next->index)
-			{
-				dt->b_sorted_flag = 0;
-				break ;
-			}
-			else
-				dt->b_sorted_flag = 1;
-			current_b = current_b->next;
-		}
-	}
+	check_sort_continuum(dt);
 }
 
 void	bubble_iteration(t_dt *dt)
