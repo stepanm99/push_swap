@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/24 17:49:55 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/24 19:24:16 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -346,6 +346,6 @@ int	main(int argc, const char *argv[])
 //	checksum(dt);
 	free_data(dt);
 //	check_leaks();
-	printf("%i\n", babylonian_sqrt(999));
+//	printf("%i\n", babylonian_sqrt(999));
 	return (0);
 }
