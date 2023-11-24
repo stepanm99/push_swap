@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 20:53:18 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/23 23:32:23 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/24 16:59:26 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	sort(t_dt *dt)
 
 //	find_best_algorithm(dt);
 	dt->print_flag = 0;
-	dt->alg_flag = 4;			//for testing
+	dt->alg_flag = 2;			//for testing
 	if (dt->a_length == 1)
 		return ;
 	else if (dt->a_length == 2)
@@ -90,11 +90,20 @@ void	sort(t_dt *dt)
 	else
 	{
 		if (dt->alg_flag == 1)
+		{
+			dt->print_flag = 1;
 			bubble(dt);
+		}
 		else if (dt->alg_flag == 2)
+		{
+			dt->print_flag = 1;
 			sort_to_b(dt);
+		}
 		else if (dt->alg_flag == 3)
+		{
+			dt->print_flag = 1;
 			better_sort(dt);
+		}
 		else if (dt->alg_flag == 4)
 			best_sort(dt);
 	}

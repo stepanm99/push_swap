@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 17:14:26 by stepan            #+#    #+#             */
-/*   Updated: 2023/11/24 00:05:39 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/24 16:09:55 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,12 @@ void	do_rotations_cont(t_dt *dt)
 		rev_rotate_ab(dt);
 		dt->sort_data.rrr--;
 	}
-	printf("from do rotations\n");
-	print_stacks_with_neigbors(dt);
-	printf("rule check: %i\n", check_rule(get_min_cost_value(get_min_cost_pos(dt), dt), dt));
+	if (TESTING)
+	{
+		printf("from do rotations\n");
+		print_stacks_with_neigbors(dt);
+		printf("rule check: %i\n", check_rule(get_min_cost_value(get_min_cost_pos(dt), dt), dt));
+	}
 }
 
 /*Function for performing actual rotations of stacks*/
@@ -154,7 +157,8 @@ void	best_sort(t_dt *dt)
 		b_max_value_position = 0;
 		b_value_position = 0;
 		current = NULL;
-		printf("before find values\n");
+		if (TESTING)
+			printf("before find values\n");
 		//find values
 		calculate_cost(dt);
 		dt->print_flag = 1;
@@ -214,51 +218,61 @@ void	best_sort(t_dt *dt)
 				current = current->next;
 			}
 		}
-		printf("before do rotations\n");
+		if (TESTING)
+			printf("before do rotations\n");
 		//do rotations
 		if (min_cost_position && min_cost_position <= (int)(dt->a_length / 2))	//rotating a
 		{
-			printf("if (min_cost_position && min_cost_position <= (int)(dt->a_length / 2))\n");
+			if (TESTING)
+				printf("if (min_cost_position && min_cost_position <= (int)(dt->a_length / 2))\n");
 			while (min_cost_position)
 			{
 				rotate_a(dt);
-				print_stacks_in_line(dt);
+				if (TESTING)
+					print_stacks_in_line(dt);
 				min_cost_position--;
 			}
 		}
 		else if (min_cost_position && min_cost_position > (int)(dt->a_length / 2))
 		{
-			printf("else if (min_cost_position && min_cost_position > (int)(dt->a_length / 2))\n");
-			min_cost_position = min_cost_position - (int)(dt->a_length / 2) + 1;
+			if (TESTING)
+				printf("else if (min_cost_position && min_cost_position > (int)(dt->a_length / 2))\n");
+			min_cost_position = (min_cost_position - (int)(dt->a_length) * - 1);
 			while (min_cost_position)
 			{
 				rev_rotate_a(dt);
-				print_stacks_in_line(dt);
+				if (TESTING)
+					print_stacks_in_line(dt);
 				min_cost_position--;
 			}
 		}
 
 		if (b_value_position != 0)		//rotating b
 		{
-			printf("if (b_value_position != 0)\n");
+			if (TESTING)
+				printf("if (b_value_position != 0)\n");
 			if (b_value_position && b_value_position <= (int)(dt->b_length / 2))
 			{
-				printf("if (b_value_position && b_value_position <= (int)(dt->b_length / 2))\n");
+				if (TESTING)
+					printf("if (b_value_position && b_value_position <= (int)(dt->b_length / 2))\n");
 				while (b_value_position)
 				{
 					rotate_b(dt);
-					print_stacks_in_line(dt);
+					if (TESTING)
+						print_stacks_in_line(dt);
 					b_value_position--;
 				}
 			}
 			else if (b_value_position && b_value_position > (int)(dt->b_length / 2))
 			{
-				printf("else if (b_value_position && b_value_position > (int)(dt->b_length / 2))\n");
-				b_value_position = b_value_position - (dt->b_length) + 1;
+				if (TESTING)
+					printf("else if (b_value_position && b_value_position > (int)(dt->b_length / 2))\n");
+				b_value_position = (b_value_position - (dt->b_length) * - 1);
 				while (b_value_position)
 				{
 					rev_rotate_b(dt);
-					print_stacks_in_line(dt);
+					if (TESTING)
+						print_stacks_in_line(dt);
 					b_value_position--;
 				}
 			}
@@ -267,30 +281,36 @@ void	best_sort(t_dt *dt)
 		{
 			if (b_max_value_position && b_max_value_position <= (int)(dt->b_length / 2))
 			{
-				printf("if (b_max_value_position && b_max_value_position <= (int)(dt->b_length / 2))\n");
+				if (TESTING)
+					printf("if (b_max_value_position && b_max_value_position <= (int)(dt->b_length / 2))\n");
 				while (b_max_value_position)
 				{
 					rotate_b(dt);
-					print_stacks_in_line(dt);
+					if (TESTING)
+						print_stacks_in_line(dt);
 					b_max_value_position--;
 				}
 			}
 			else if (b_max_value_position && b_max_value_position > (int)(dt->b_length / 2))
 			{
-				printf("else if (b_max_value_position && b_max_value_position > (int)(dt->b_length / 2))\n");
-				b_max_value_position = b_max_value_position - (dt->b_length) + 1;
+				if (TESTING)
+					printf("else if (b_max_value_position && b_max_value_position > (int)(dt->b_length / 2))\n");
+				b_max_value_position = (b_max_value_position - (dt->b_length) * - 1);
 				while (b_max_value_position)
 				{
 					rev_rotate_b(dt);
-					print_stacks_in_line(dt);
+					if (TESTING)
+						print_stacks_in_line(dt);
 					b_max_value_position--;
 				}
 			}
 		}
 		push_b(dt);
-		print_stacks_in_line(dt);
+		if (TESTING)
+			print_stacks_in_line(dt);
 	}
-	printf("after main while\n");
+	if (TESTING)
+		printf("after main while\n");
 	//aligning stack b for pushing to a
 	i = 0;
 	current = dt->head_b;
@@ -306,29 +326,37 @@ void	best_sort(t_dt *dt)
 	}
 	if (b_max_value_position && b_max_value_position <= (int)(dt->b_length / 2))	//rotating b to correct position
 	{
-		printf("if (b_max_value_position && b_max_value_position <= (int)(dt->b_length / 2))\n");
+		if (TESTING)
+			printf("if (b_max_value_position && b_max_value_position <= (int)(dt->b_length / 2))\n");
 		while (b_max_value_position)
 		{
 			rotate_b(dt);
-			print_stacks_in_line(dt);
+			if (TESTING)
+				print_stacks_in_line(dt);
 			b_max_value_position--;
 		}
 	}
 	else if (b_max_value_position && b_max_value_position > (int)(dt->b_length / 2))
 	{
-		printf("else if (b_max_value_position && b_max_value_position > (int)(dt->b_length / 2))\n");
+		if (TESTING != 0)
+			printf("else if (b_max_value_position && b_max_value_position > (int)(dt->b_length / 2))\n");
 		b_max_value_position = b_max_value_position - (int)(dt->b_length);
-		printf("b_max_value_position: %i\n", b_max_value_position);
+		if (TESTING != 0)
+			printf("b_max_value_position: %i\n", b_max_value_position);
 		while (b_max_value_position > 0)
 		{
-			printf("b_max_value_position from while: %i\n", b_max_value_position);
+			if (TESTING != 0)
+				printf("b_max_value_position from while: %i\n", b_max_value_position);
 			rev_rotate_b(dt);
-			print_stacks_in_line(dt);
+			if (TESTING != 0)
+				print_stacks_in_line(dt);
 			b_max_value_position--;
 		}
 	}
-	printf("b_max_value: %i\n", b_max_value);
+	if (TESTING != 0)
+		printf("b_max_value: %i\n", b_max_value);
 	while (dt->b_length)
 		push_a(dt);
-	print_stacks_in_line(dt);
+	if (TESTING != 0)
+		print_stacks_in_line(dt);
 }

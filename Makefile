@@ -10,7 +10,7 @@ SRC = push_swap.c src/arg_pars.c src/error.c src/linked_list.c \
 
 CC = gcc
 
-FLAGS = -Wall -Wextra -Werror -g -D TESTING=0 #delete -D TESTING flag before submission!!!
+FLAGS = -Wall -Wextra -Werror -g -D TESTING=1 #delete -D TESTING flag before submission!!!
 
 DFLAGS = -Wall -Wextra -Werror -g -fsanitize=address -static-libsan
 

@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 15:44:14 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/23 22:01:27 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/24 17:03:25 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,14 @@ void	interactive(t_dt *dt)
 			rev_rotate_b(dt);
 		if (ft_match(input, "rrr"))
 			rev_rotate_ab(dt);
+		if (ft_match("bubble", input))
+			bubble(dt);
+		if (ft_match("stb", input))
+			sort_to_b(dt);
+		if (ft_match("better", input))
+			better_sort(dt);
+		if (ft_match("best", input))
+			best_sort(dt);
 		if (ft_match(input, "pr"))
 			print_stacks_with_neigbors(dt);
 		if (ft_match("rpr", input))
