@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 20:14:10 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/24 19:05:36 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/24 22:34:28 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*Called in case of error, shows error message and calls frees data*/
 void	error(t_dt *dt)
 {
-//	printf("Error\n");
+	printf("Error\n");
 	free_data(dt);
 	exit(-1);
 }

@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 21:14:25 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/03 17:48:12 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/24 22:42:09 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,7 @@ void	swap_b(t_dt *dt)
 	address[1] = dt->head_b->next;
 	address[2] = dt->head_b->next->next;
 	if (dt->b_length == 2)
-	{
-		swap_two(address);
-		return ;
-	}
+		return (swap_two(address));
 	address[3] = dt->head_b->next->next->next;
 	address[0]->next = address[2];
 	address[1]->next = address[3];

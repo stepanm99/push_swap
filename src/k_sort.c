@@ -6,14 +6,14 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 17:29:30 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/24 19:23:51 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/24 22:35:30 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/push_swap.h"
 
 /*Returns square root in form of integer*/
-int	babylonian_sqrt(int	n)
+int	babylonian_sqrt(int n)
 {
 	int	temp;
 	int	diff;
@@ -48,7 +48,7 @@ int	find_value_position(t_link *head, int val)
 
 void	push_back(t_dt *dt)
 {
-	int	highest_b_index_position;
+	int		max_b_index_pos;
 	t_link	*c_temp;
 
 	c_temp = dt->head_c->prev;
@@ -56,8 +56,8 @@ void	push_back(t_dt *dt)
 	{
 		while (dt->head_b->next->val != c_temp->val)
 		{
-			highest_b_index_position = find_value_position(dt->head_b, c_temp->val);
-			if (highest_b_index_position <= ((int)dt->b_length / 2))
+			max_b_index_pos = find_value_position(dt->head_b, c_temp->val);
+			if (max_b_index_pos <= ((int)dt->b_length / 2))
 				rotate_b(dt);
 			else
 				rev_rotate_b(dt);
@@ -113,6 +113,5 @@ void	k_sort(t_dt *dt)
 		else
 			rotate_a(dt);
 	}
-//	error(dt);
 	push_back(dt);
 }
