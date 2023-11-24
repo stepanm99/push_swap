@@ -4,7 +4,8 @@ SRC = push_swap.c src/arg_pars.c src/error.c src/linked_list.c \
 	src/push_operations.c src/rev_rotate_operations.c src/rotate_operations.c \
 	src/swap_operations.c src/rotate_operations_utils.c src/sort.c \
 	src/rev_rotate_operations_utils.c src/k_sort.c src/linked_list_free.c \
-	src/linked_list_duplicate.c
+	src/linked_list_duplicate.c src/simple_sort.c src/bubble_sort.c \
+	src/better_sort.c
 
 CC = gcc
 
