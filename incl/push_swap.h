@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:26 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/25 20:06:38 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/25 20:17:10 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ typedef struct dt {
 	int				stack_div;
 	int				ab_flag;
 	int				a_sorted_flag;
-	int				b_sorted_flag;
 	int				alg_flag;
 	int				print_flag;
 	t_link			*head_a;
@@ -112,7 +111,7 @@ void			bubble_iteration(t_dt *dt);
 void			bubble(t_dt *dt);
 void			find_best_algorithm(t_dt *dt);
 void			simple_sort(t_dt *dt);
-void			sort_to_b(t_dt *dt);
+//void			sort_to_b(t_dt *dt);
 
 /*K sort functions*/
 

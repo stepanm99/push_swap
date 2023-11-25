@@ -6,13 +6,15 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/25 19:28:49 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/25 20:42:04 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "incl/push_swap.h"
 
-/*Find minimal value in the stack a*/
+/*Find minimal value in the stack a
+	called by: indexer()
+*/
 int	find_min_val(t_dt *dt)
 {
 	t_link	*temp;
@@ -29,7 +31,10 @@ int	find_min_val(t_dt *dt)
 	return (min_val);
 }
 
-/*Checks the values of the list and indexes them with unsigned integer*/
+/*Checks the values of the list and indexes them with unsigned integer
+	called by:	main()
+	calls:		find_min_val()
+*/
 void	indexer(t_dt *dt)
 {
 	t_link			*temp;

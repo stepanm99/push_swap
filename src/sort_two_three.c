@@ -6,19 +6,24 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 19:43:53 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/25 19:57:40 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/25 20:48:43 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/push_swap.h"
 
-/*Function to sort stack with only two elelemnts*/
+/*Gives out instruction, if needed, to sort 2 elements stack
+	called by:	sort()
+*/
 void	sort_two(t_dt *dt)
 {
 	if (dt->head_a->next->val > dt->head_a->prev->val)
 		write(1, "sa\n", 3);
 }
 
+/*Gives out instructions for stack with three elements
+	called by:	sort()
+*/
 void	sort_three(t_dt *dt)
 {
 	if (dt->head_a->next->index == 1 && dt->head_a->prev->index == 2)
@@ -32,12 +37,3 @@ void	sort_three(t_dt *dt)
 	else if (dt->head_a->next->index == 3 && dt->head_a->prev->index == 1)
 		write(1, "sa\nrra\n", 7);
 }
-
-/*
-123	nothing
-132	ra sa rra *
-213 sa *
-231 rra *
-312	ra *
-321	sa rra <
-*/

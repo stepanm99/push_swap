@@ -6,28 +6,17 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 20:14:46 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/24 22:38:03 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/25 20:47:03 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/push_swap.h"
 
-int	list_length(t_link *head)
-{
-	int		i;
-	t_link	*temp;
+/*Adds next link to the list a and returns address of the new link
+	called by:	arg_pars()
 
-	i = 0;
-	temp = head;
-	while (temp)
-	{
-		temp = temp->next;
-		i++;
-	}
-	return (i - 1);
-}
-
-/*Adds next link to the list a and returns address of the new link*/
+	calls:		error()
+*/
 t_link	*list_add_link_a(int val, unsigned int index, t_dt *dt)
 {
 	dt->a->next = malloc(sizeof(t_link));
@@ -46,7 +35,11 @@ t_link	*list_add_link_a(int val, unsigned int index, t_dt *dt)
 	return (dt->a);
 }
 
-/*Adds next link to the list b and returns address of the new link*/
+/*Adds next link to the list b and returns address of the new link
+	called by:	duplicate_list_a_to_c()
+	
+	calls:		error()
+*/
 t_link	*list_add_link_c(int val, unsigned int index, t_dt *dt)
 {
 	dt->c->next = malloc(sizeof(t_link));

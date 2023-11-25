@@ -6,12 +6,18 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 22:36:45 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/24 22:37:38 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/25 20:47:19 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/push_swap.h"
 
+/*Duplicates list a to list c to save initial state for testing
+	multiple algorithms without need for new parsing
+	called by:	main()
+
+	calss:		list_add_link_c()
+*/
 void	duplicate_list_a_to_c(t_dt	*dt)
 {
 	t_link	*a_temp;

@@ -6,12 +6,18 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 22:47:19 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/25 17:26:04 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/25 21:08:34 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/push_swap.h"
 
+/// @brief Loops until it reaches limit or end of stack
+/// @param dt saves the min index in dt->min_index
+/// @param temp temporary address of the link in the stack in which it searches
+/// @param limit limits the range in which to search
+/// @param max_flag whether to search for minimal or maximal index
+///(1 = maximal; 0 = minimal)
 void	min_index_loop(t_dt *dt, t_link *temp, unsigned int limit,
 			char max_flag)
 {
@@ -39,6 +45,12 @@ void	min_index_loop(t_dt *dt, t_link *temp, unsigned int limit,
 	dt->min_index = min_index;
 }
 
+/// @brief Searches for minimal index in the stack given by head
+/// @param dt main data structure
+/// @param head head of the stack in which to search
+/// @param range limits the distance of search (from the top and bottom)
+/// @param max_flag inverts the functionality and saves maximal index
+///in the stack (1 = maximal; 0 = minimal)
 void	min_index(t_dt *dt,	t_link *head, int range, char max_flag)
 {
 	t_link			*temp;
@@ -85,6 +97,8 @@ void	simple_sort_rev_rotate(t_dt *dt, unsigned int backward_pos)
 	}
 }
 
+/*Sorts the stack in descending order into stack b, then pushes
+	entire stack b back into a.*/
 void	simple_sort(t_dt *dt)
 {
 	unsigned int	forward_pos;

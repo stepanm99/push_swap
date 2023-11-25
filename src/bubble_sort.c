@@ -6,33 +6,16 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 22:47:39 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/24 23:05:41 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/25 20:55:22 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/push_swap.h"
 
-void	check_sort_continuum(t_dt *dt)
-{
-	t_link	*current_b;
-
-	if (dt->head_b->next)
-	{
-		current_b = dt->head_b->next;
-		while (current_b->next)
-		{
-			if (current_b->index > current_b->next->index)
-			{
-				dt->b_sorted_flag = 0;
-				break ;
-			}
-			else
-				dt->b_sorted_flag = 1;
-			current_b = current_b->next;
-		}
-	}
-}
-
+/*Checks if the stack a is sorted, then changes the a_sorted flag accordingly.
+	called by:	sort()
+				bubble()
+	*/
 void	check_sort(t_dt *dt)
 {
 	t_link	*current_a;
@@ -52,9 +35,14 @@ void	check_sort(t_dt *dt)
 			current_a = current_a->next;
 		}
 	}
-	check_sort_continuum(dt);
 }
 
+/*Rotates entire stack once and swaps values if neccesarry
+	called by:	bubble()
+
+	calls:		swap_a()
+				rotate_a()
+*/
 void	bubble_iteration(t_dt *dt)
 {
 	unsigned int	i;
@@ -69,6 +57,14 @@ void	bubble_iteration(t_dt *dt)
 	}
 }
 
+/*Rotates stack. If the second value from top is less than first one, it
+	swaps those and then continues.
+	called by:	find_best_algorithm()
+				sort()
+
+	calls:		bubble_iteration()
+				check_sort()
+*/
 void	bubble(t_dt *dt)
 {
 	while (!dt->a_sorted_flag)
