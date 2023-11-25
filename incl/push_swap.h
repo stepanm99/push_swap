@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:26 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/25 17:19:36 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/25 18:53:03 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,9 @@ t_link			*find_min_index_get_temp(t_dt *dt, t_link *head);
 void			sort_to_buckets(t_dt *dt, int range, int test_run);
 void			merge_and_sort_to_a(t_dt *dt, int test_run);
 void			better_sort(t_dt *dt);
+unsigned int	find_best_range(t_dt *dt);
+void			b_rotation(t_dt *dt, unsigned int forward_pos);
+void			b_rev_rotation(t_dt *dt, unsigned int backward_pos);
 void			check_sort(t_dt *dt);
 void			sort_two(t_dt *dt);
 void			bubble_iteration(t_dt *dt);
