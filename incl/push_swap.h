@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:26 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/24 18:57:31 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/25 17:00:49 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ void			sort(t_dt *dt);
 void			min_index(t_dt *dt,	t_link *head, int range, char max_flag);
 unsigned int	find_min_index(t_dt *dt, t_link *head, int range);
 unsigned int	find_min_index_rev(t_dt *dt, t_link *head, int range);
+unsigned int	find_min_index_get_limit(t_dt *dt, t_link *head, int range);
 void			sort_to_buckets(t_dt *dt, int range, int test_run);
 void			merge_and_sort_to_a(t_dt *dt, int test_run);
 void			better_sort(t_dt *dt);

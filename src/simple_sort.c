@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 22:47:19 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/24 22:58:26 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/25 17:14:44 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,78 +80,22 @@ void	min_index(t_dt *dt,	t_link *head, int range, char max_flag)
 	}
 }
 
-unsigned int	find_min_index(t_dt *dt, t_link *head, int range)
+void	simple_sort_rotate(t_dt *dt, unsigned int forward_pos)
 {
-	t_link			*temp;
-	unsigned int	limit;
-	unsigned int	i;
-
-	if (!head)
-		error(dt);
-	limit = range;
-	if (head == dt->head_a)
+	while (forward_pos)
 	{
-		temp = dt->head_a->next;
-		if (range == 0)
-			limit = dt->a_length;
-		else
-			limit = range;
+		rotate_a(dt);
+		forward_pos--;
 	}
-	else if (head == dt->head_b)
-	{
-		temp = dt->head_b->next;
-		if (range == 0)
-			limit = dt->b_length;
-		else
-			limit = range;
-	}
-	i = 0;
-	while (limit)
-	{
-		if (temp->index == dt->min_index && limit)
-			return (i);
-		temp = temp->next;
-		i++;
-		limit--;
-	}
-	return (4294967295);
 }
 
-unsigned int	find_min_index_rev(t_dt *dt, t_link *head, int range)
+void	simple_sort_rev_rotate(t_dt *dt, unsigned int backward_pos)
 {
-	t_link			*temp;
-	unsigned int	limit;
-	unsigned int	i;
-
-	if (!head)
-		error(dt);
-	limit = range;
-	if(head == dt->head_a)
+	while (backward_pos)
 	{
-		temp = dt->head_a->prev;
-		if (range == 0)
-			limit = dt->a_length;
-		else
-			limit = range;
+		rev_rotate_a(dt);
+		backward_pos--;
 	}
-	else if (head == dt->head_b)
-	{
-		temp = dt->head_b->prev;
-		if (range == 0)
-			limit = dt->b_length;
-		else
-			limit = range;
-	}
-	i = 1;
-	while (limit)
-	{
-		if (temp->index == dt->min_index && limit)
-			return (i);
-		temp = temp->prev;
-		i++;
-		limit--;
-	}
-	return (4294967295);
 }
 
 void	simple_sort(t_dt *dt)
@@ -168,22 +112,12 @@ void	simple_sort(t_dt *dt)
 		backward_pos = find_min_index_rev(dt, dt->head_a, 0);
 		if (forward_pos == backward_pos)
 			backward_pos = 4294967295;
-		if ((forward_pos < backward_pos) && (dt->head_a->next->index != dt->min_index))
-		{
-			while (forward_pos)
-			{
-				rotate_a(dt);
-				forward_pos--;
-			}
-		}
-		else if ((backward_pos < forward_pos) && (dt->head_a->next->index != dt->min_index))
-		{
-			while (backward_pos)
-			{
-				rev_rotate_a(dt);
-				backward_pos--;
-			}
-		}
+		if ((forward_pos < backward_pos)
+			&& (dt->head_a->next->index != dt->min_index))
+			simple_sort_rotate(dt, forward_pos);
+		else if ((backward_pos < forward_pos)
+			&& (dt->head_a->next->index != dt->min_index))
+			simple_sort_rev_rotate(dt, backward_pos);
 		push_b(dt);
 	}
 	while (dt->b_length)
