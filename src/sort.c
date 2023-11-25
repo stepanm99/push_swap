@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 20:53:18 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/25 17:56:14 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/25 19:17:59 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 /*Function to sort stack with only two elelemnts*/
 void	sort_two(t_dt *dt)
 {
-	if (dt->head_a->next->index > dt->head_a->prev->index)
-		swap_a(dt);
+	if (dt->head_a->next->val > dt->head_a->prev->val)
+		write(1, "sa\n", 3);
 }
 
 void	find_best_algorithm_continuum(t_dt *dt)
@@ -67,23 +67,27 @@ void	find_best_algorithm(t_dt *dt)
 /*Main sorting function, decides what should be done*/
 void	sort(t_dt *dt)
 {
-	find_best_algorithm(dt);
-	dt->alg_flag = 3;
+	dt->print_flag = 1;
+	check_sort(dt);
 	if (dt->a_length == 1)
 		return ;
+	else if (dt->a_sorted_flag)
+		return ;
 	else if (dt->a_length == 2)
+	{
 		sort_two(dt);
+		return ;
+	}
 	else if (dt->a_length == 3)
 		bubble(dt);
-	else
-	{
-		if (dt->alg_flag == 1)
-			bubble(dt);
-		else if (dt->alg_flag == 2)
-			simple_sort(dt);
-		else if (dt->alg_flag == 3)
-			better_sort(dt);
-		else if (dt->alg_flag == 4)
-			k_sort(dt);
-	}
+	dt->print_flag = 0;
+	find_best_algorithm(dt);
+	if (dt->alg_flag == 1)
+		bubble(dt);
+	else if (dt->alg_flag == 2)
+		simple_sort(dt);
+	else if (dt->alg_flag == 3)
+		better_sort(dt);
+	else if (dt->alg_flag == 4)
+		k_sort(dt);
 }

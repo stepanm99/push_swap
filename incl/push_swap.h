@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:26 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/25 18:53:03 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/25 18:58:16 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,24 +27,25 @@ struct s_link {
 
 
 /*
+all initialized to 0, except int stack_div = 1
 alg_flag:
 	1: bubble
 	2: sort to b and push to a
 	3: "bucket" sort
 */
 typedef struct dt {
-	unsigned int	a_length;		//0
-	unsigned int	b_length;		//0
-	unsigned int	c_length;		//0
-	unsigned int	min_index;		//0
-	unsigned int	operations;		//0
-	unsigned int	min_operations;	//0
-	int				stack_div;		//1
-	int			ab_flag;		//0
-	int			a_sorted_flag;	//0
-	int			b_sorted_flag;	//0
-	int			alg_flag;		//0
-	int			print_flag;		//0
+	unsigned int	a_length;
+	unsigned int	b_length;
+	unsigned int	c_length;
+	unsigned int	min_index;
+	unsigned int	operations;
+	unsigned int	min_operations;
+	int				stack_div;
+	int				ab_flag;
+	int				a_sorted_flag;
+	int				b_sorted_flag;
+	int				alg_flag;
+	int				print_flag;
 	t_link			*head_a;
 	t_link			*a;
 	t_link			*head_b;
@@ -91,7 +92,7 @@ void			rev_rotate_ab(t_dt *dt);
 
 void	arg_pars(const char *argv[], t_dt *dt);
 
-/*Sorting functions*/
+/*-----Sorting functions-----*/
 
 void			sort(t_dt *dt);
 void			min_index(t_dt *dt,	t_link *head, int range, char max_flag);
