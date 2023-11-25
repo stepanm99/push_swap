@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:26 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/25 18:58:16 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/25 20:06:38 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ struct s_link {
 	int					val;
 	unsigned int		index;
 };
-
 
 /*
 all initialized to 0, except int stack_div = 1
@@ -90,7 +89,7 @@ void			rev_rotate_ab(t_dt *dt);
 
 /*Argument parsing and saving to stack*/
 
-void	arg_pars(const char *argv[], t_dt *dt);
+void			arg_pars(const char *argv[], t_dt *dt);
 
 /*-----Sorting functions-----*/
 
@@ -108,6 +107,7 @@ void			b_rotation(t_dt *dt, unsigned int forward_pos);
 void			b_rev_rotation(t_dt *dt, unsigned int backward_pos);
 void			check_sort(t_dt *dt);
 void			sort_two(t_dt *dt);
+void			sort_three(t_dt *dt);
 void			bubble_iteration(t_dt *dt);
 void			bubble(t_dt *dt);
 void			find_best_algorithm(t_dt *dt);
@@ -117,10 +117,10 @@ void			sort_to_b(t_dt *dt);
 /*K sort functions*/
 
 void			k_sort(t_dt *dt);
-int				babylonian_sqrt(int	n);
+int				babylonian_sqrt(int n);
 
 /*Error functions*/
 
-void	error(t_dt *dt);
+void			error(t_dt *dt);
 
 #endif

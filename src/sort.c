@@ -6,18 +6,11 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 20:53:18 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/25 19:17:59 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/25 20:01:44 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/push_swap.h"
-
-/*Function to sort stack with only two elelemnts*/
-void	sort_two(t_dt *dt)
-{
-	if (dt->head_a->next->val > dt->head_a->prev->val)
-		write(1, "sa\n", 3);
-}
 
 void	find_best_algorithm_continuum(t_dt *dt)
 {
@@ -67,7 +60,6 @@ void	find_best_algorithm(t_dt *dt)
 /*Main sorting function, decides what should be done*/
 void	sort(t_dt *dt)
 {
-	dt->print_flag = 1;
 	check_sort(dt);
 	if (dt->a_length == 1)
 		return ;
@@ -79,8 +71,10 @@ void	sort(t_dt *dt)
 		return ;
 	}
 	else if (dt->a_length == 3)
-		bubble(dt);
-	dt->print_flag = 0;
+	{
+		sort_three(dt);
+		return ;
+	}
 	find_best_algorithm(dt);
 	if (dt->alg_flag == 1)
 		bubble(dt);
