@@ -6,45 +6,17 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 22:47:19 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/25 17:14:44 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/25 17:26:04 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/push_swap.h"
 
-void	min_index(t_dt *dt,	t_link *head, int range, char max_flag)
+void	min_index_loop(t_dt *dt, t_link *temp, unsigned int limit,
+			char max_flag)
 {
-	t_link			*temp;
-	unsigned int	limit;
 	unsigned int	min_index;
-	char			back_flag;
 
-	if (!head)
-		error(dt);
-	back_flag = 0;
-	limit = range;
-	if (head == dt->head_a)
-	{
-		if (range == 0)
-			limit = dt->a_length;
-		else
-		{
-			limit = range;
-			back_flag = 1;
-		}
-		temp = dt->head_a->next;
-	}
-	else if (head == dt->head_b)
-	{
-		if (range == 0)
-			limit = dt->b_length;
-		else
-		{
-			limit = range;
-			back_flag = 1;
-		}
-		temp = dt->head_b->next;
-	}
 	if (!max_flag)
 		min_index = 4294967295;
 	else
@@ -65,6 +37,21 @@ void	min_index(t_dt *dt,	t_link *head, int range, char max_flag)
 		limit--;
 	}
 	dt->min_index = min_index;
+}
+
+void	min_index(t_dt *dt,	t_link *head, int range, char max_flag)
+{
+	t_link			*temp;
+	unsigned int	limit;
+	unsigned int	min_index;
+	char			back_flag;
+
+	if (!head)
+		error(dt);
+	back_flag = 0;
+	temp = find_min_index_get_temp(dt, head);
+	limit = find_min_index_get_limit(dt, head, range);
+	min_index_loop(dt, temp, limit, max_flag);
 	if (back_flag)
 	{
 		limit = range;

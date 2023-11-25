@@ -6,13 +6,13 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 16:52:23 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/25 17:02:44 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/25 17:19:26 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/push_swap.h"
 
-static t_link	*find_min_index_get_temp(t_dt *dt, t_link *head)
+t_link	*find_min_index_get_temp(t_dt *dt, t_link *head)
 {
 	if (head == dt->head_a)
 		return (dt->head_a->next);
