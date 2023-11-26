@@ -6,16 +6,15 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 22:47:39 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/25 20:55:22 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/26 17:29:12 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/push_swap.h"
 
-/*Checks if the stack a is sorted, then changes the a_sorted flag accordingly.
-	called by:	sort()
-				bubble()
-	*/
+/// @brief Checks if the stack a is sorted, then changes the a_sorted
+///			flag accordingly.
+/// @param dt main data struct
 void	check_sort(t_dt *dt)
 {
 	t_link	*current_a;
@@ -37,12 +36,8 @@ void	check_sort(t_dt *dt)
 	}
 }
 
-/*Rotates entire stack once and swaps values if neccesarry
-	called by:	bubble()
-
-	calls:		swap_a()
-				rotate_a()
-*/
+/// @brief Rotates entire stack once and swaps values if neccesarry
+/// @param dt main data struct
 void	bubble_iteration(t_dt *dt)
 {
 	unsigned int	i;
@@ -57,14 +52,9 @@ void	bubble_iteration(t_dt *dt)
 	}
 }
 
-/*Rotates stack. If the second value from top is less than first one, it
-	swaps those and then continues.
-	called by:	find_best_algorithm()
-				sort()
-
-	calls:		bubble_iteration()
-				check_sort()
-*/
+/// @brief Rotates stack. If the second value from top is less than first one,
+///	it swaps those and then continues.
+/// @param dt main data struct
 void	bubble(t_dt *dt)
 {
 	while (!dt->a_sorted_flag)

@@ -6,12 +6,15 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 18:13:39 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/25 18:46:01 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/26 17:28:35 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/push_swap.h"
 
+/// @brief Loop to sort the numbers in a to small clusters of values
+/// @param dt main data struct
+/// @param range how big the clusters, buckets, are
 void	sort_to_buckets_loop(t_dt *dt, int range)
 {
 	unsigned int	forward_pos;
@@ -37,6 +40,10 @@ void	sort_to_buckets_loop(t_dt *dt, int range)
 	}
 }
 
+/// @brief Routine to sort a to b in small buckets
+/// @param dt main data struct
+/// @param range how big the buckets will be
+/// @param test_run 0 = normal run; 1 = test run (does not print)
 void	sort_to_buckets(t_dt *dt, int range, int test_run)
 {
 	int				temp_print_flag;

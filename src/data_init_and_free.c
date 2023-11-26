@@ -6,12 +6,14 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 19:00:44 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/25 19:03:04 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/26 17:31:03 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/push_swap.h"
 
+/// @brief continuation of data_init()
+/// @param dt 
 void	data_init_continuum(t_dt *dt)
 {
 	dt->a_length = 0U;
@@ -24,11 +26,11 @@ void	data_init_continuum(t_dt *dt)
 	dt->print_flag = 0;
 	dt->stack_div = 1;
 	dt->a_sorted_flag = 0;
-	dt->b_sorted_flag = 0;
 	dt->min_index = 0;
 }
 
-/*Initialization of main data struct*/
+/// @brief Initialization of variables in main data struct
+/// @param dt main data struct
 void	data_init(t_dt *dt)
 {
 	dt->head_a = malloc(sizeof(t_link));
@@ -58,7 +60,8 @@ void	data_init(t_dt *dt)
 	data_init_continuum(dt);
 }
 
-/*Routine to clean all allocated data*/
+/// @brief Routine to free all allocated memory
+/// @param dt main data struct
 void	free_data(t_dt *dt)
 {
 	if (dt->head_a)

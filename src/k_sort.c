@@ -6,13 +6,17 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 17:29:30 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/24 22:35:30 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/26 17:33:33 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/push_swap.h"
 
 /*Returns square root in form of integer*/
+
+/// @brief Quick square root aproximation algorithm
+/// @param n number for which the square root is searched
+/// @return aproximate integer value of the number n
 int	babylonian_sqrt(int n)
 {
 	int	temp;
@@ -31,6 +35,10 @@ int	babylonian_sqrt(int n)
 	return (guess);
 }
 
+/// @brief Function to find particular value in the stack
+/// @param head head of the stack we search in
+/// @param val value we search for
+/// @return position from the top of the stack
 int	find_value_position(t_link *head, int val)
 {
 	t_link	*temp;

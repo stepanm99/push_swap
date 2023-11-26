@@ -6,15 +6,15 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 20:03:38 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/25 20:40:41 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/26 17:14:34 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/push_swap.h"
 
-/*Converts array of numerical characters to integer
-	called by: arg_pars()
-*/
+/// @brief Converts array of numerical characters to integer
+/// @param str input array of numerical characters
+/// @return type int number
 int	ft_atoi(const char *str)
 {
 	size_t	i;
@@ -42,10 +42,9 @@ int	ft_atoi(const char *str)
 	return (n * negflag);
 }
 
-/*Checks if the argument is a number
-	called by:	arg_pars()
-	calls:		error()
-*/
+/// @brief Checks if the string contains only numerical characters
+/// @param arg string to check
+/// @param dt main data struct; is passed to error() in case of error
 void	arg_check(const char *arg, t_dt *dt)
 {
 	int	i;
@@ -59,7 +58,9 @@ void	arg_check(const char *arg, t_dt *dt)
 	}
 }
 
-/*Parses and checks program argument ans saves the data to stack a*/
+/// @brief Parses and checks program argument ans saves the data to stack a
+/// @param argv array of arguments
+/// @param dt main data struct
 void	arg_pars(const char *argv[], t_dt *dt)
 {
 	int	i;

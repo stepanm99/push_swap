@@ -6,12 +6,14 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 22:47:35 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/25 18:48:33 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/26 17:28:54 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/push_swap.h"
 
+/// @brief Main procedure for "better sort" algorithm
+/// @param dt main data struct
 void	better_sort(t_dt *dt)
 {
 	int	range;

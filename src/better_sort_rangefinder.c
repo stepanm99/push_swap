@@ -6,12 +6,18 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 18:47:59 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/25 18:48:40 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/26 17:20:56 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/push_swap.h"
 
+/// @brief Routine to find range which results in minimal number of operations
+///		better sort performs
+/// @param dt main data struct
+/// @param range_operations array of ranges, r..._o...[range] = operations
+/// @return unsigned int number of range that results in minimal operations
+///		of better sort
 unsigned int	min_range(t_dt *dt, unsigned int *range_operations)
 {
 	unsigned int	min_operations;
@@ -31,6 +37,9 @@ unsigned int	min_range(t_dt *dt, unsigned int *range_operations)
 	return (range);
 }
 
+/// @brief Routine to find best range for better sort algorithm
+/// @param dt main data struct
+/// @return unsigned int number of range
 unsigned int	find_best_range(t_dt *dt)
 {
 	unsigned int	*range_operations;

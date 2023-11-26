@@ -6,12 +6,15 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 18:46:39 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/25 18:48:54 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/26 17:26:01 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/push_swap.h"
 
+/// @brief rotates b forward_pos times
+/// @param dt main data struct
+/// @param forward_pos how many times to rotate b
 void	b_rotation(t_dt *dt, unsigned int forward_pos)
 {
 	while (forward_pos)
@@ -21,6 +24,9 @@ void	b_rotation(t_dt *dt, unsigned int forward_pos)
 	}
 }
 
+/// @brief reverse rotates b backward_pos times
+/// @param dt main data struct
+/// @param backward_pos how many time to reverse rotate b
 void	b_rev_rotation(t_dt *dt, unsigned int backward_pos)
 {
 	while (backward_pos)
@@ -30,6 +36,8 @@ void	b_rev_rotation(t_dt *dt, unsigned int backward_pos)
 	}
 }
 
+/// @brief Loop pushes correct values from b to a so it will result in sorted a
+/// @param dt main data struct
 void	merge_and_sort_to_a_loop(t_dt *dt)
 {
 	unsigned int	forward_pos;
@@ -54,9 +62,13 @@ void	merge_and_sort_to_a_loop(t_dt *dt)
 	}
 }
 
+/// @brief Routine to sort b to a
+/// @param dt main data struct
+/// @param test_run for finding out how many operations algorithm takes
+///				0 = normal run (prints); 1 = test run (does not print)
 void	merge_and_sort_to_a(t_dt *dt, int test_run)
 {
-	int				temp_print_flag;
+	int	temp_print_flag;
 
 	temp_print_flag = dt->print_flag;
 	if (test_run)
