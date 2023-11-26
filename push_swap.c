@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/26 22:29:22 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/27 00:29:11 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,7 @@ int	main(int argc, const char *argv[])
 
 	dt = NULL;
 	if (argc == 1)
-	{
-		write(2, "Error!\n", 7);
-		return (-1);
-	}
+		return (0);
 	dt = malloc(sizeof(t_dt));
 	if (!dt)
 		return (-1);

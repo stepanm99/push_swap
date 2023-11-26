@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 20:53:18 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/26 19:59:07 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/27 00:20:10 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	sort_three(t_dt *dt)
 /// @param dt main data struct
 static void	find_best_algorithm_continuum(t_dt *dt)
 {
-	if (dt->a_length >= 10)
+	if (dt->a_length > 4 && dt->a_length < 1000)
 	{
 		better_sort(dt);
 		if (dt->operations < dt->min_operations)
@@ -61,7 +61,7 @@ static void	find_best_algorithm_continuum(t_dt *dt)
 /// @param dt main data struct
 static void	find_best_algorithm(t_dt *dt)
 {
-	if (dt->a_length > 2)
+	if (dt->a_length > 2 && dt->a_length < 500)
 	{
 		bubble(dt);
 		dt->min_operations = dt->operations;
@@ -71,7 +71,7 @@ static void	find_best_algorithm(t_dt *dt)
 		duplicate_list_c_to_a(dt);
 		dt->a_sorted_flag = 0;
 	}
-	if (dt->a_length > 4)
+	if (dt->a_length > 4 && dt->a_length < 1000)
 	{
 		simple_sort(dt);
 		if (dt->operations < dt->min_operations)
