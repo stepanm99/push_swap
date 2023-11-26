@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 19:00:44 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/26 17:31:03 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/26 20:08:17 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /// @brief continuation of data_init()
 /// @param dt 
-void	data_init_continuum(t_dt *dt)
+static void	data_init_continuum(t_dt *dt)
 {
 	dt->a_length = 0U;
 	dt->b_length = 0U;

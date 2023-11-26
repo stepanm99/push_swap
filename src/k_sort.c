@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 17:29:30 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/26 17:33:33 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/26 20:07:30 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 /// @brief Quick square root aproximation algorithm
 /// @param n number for which the square root is searched
 /// @return aproximate integer value of the number n
-int	babylonian_sqrt(int n)
+static int	babylonian_sqrt(int n)
 {
 	int	temp;
 	int	diff;
@@ -39,7 +39,7 @@ int	babylonian_sqrt(int n)
 /// @param head head of the stack we search in
 /// @param val value we search for
 /// @return position from the top of the stack
-int	find_value_position(t_link *head, int val)
+static int	find_value_position(t_link *head, int val)
 {
 	t_link	*temp;
 	int		i;
@@ -54,7 +54,10 @@ int	find_value_position(t_link *head, int val)
 	return (i - 1);
 }
 
-void	push_back(t_dt *dt)
+/// @brief Routine to push values back to stack a from K shaped stack b
+///		(highest values on top and bottom of b, smallest in the middle of b)
+/// @param dt main data struct
+static void	push_back(t_dt *dt)
 {
 	int		max_b_index_pos;
 	t_link	*c_temp;
@@ -75,6 +78,9 @@ void	push_back(t_dt *dt)
 	}
 }
 
+/// @brief Routine to make already sorted stack c which is used as reference
+///		by k_sort()
+/// @param dt main data struct
 static void	prepare_sorted(t_dt *dt)
 {
 	dt->print_flag = 0;
@@ -97,6 +103,9 @@ static void	prepare_sorted(t_dt *dt)
 	dt->print_flag = 1;
 }
 
+/// @brief Values from stack a are pushed to be to create K shape in b and then
+///		those values can be efficiently pushed and sorted back to a.
+/// @param dt main data struct
 void	k_sort(t_dt *dt)
 {
 	int	i;

@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 22:47:19 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/25 21:08:34 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/26 20:02:34 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 /// @param limit limits the range in which to search
 /// @param max_flag whether to search for minimal or maximal index
 ///(1 = maximal; 0 = minimal)
-void	min_index_loop(t_dt *dt, t_link *temp, unsigned int limit,
+static void	min_index_loop(t_dt *dt, t_link *temp, unsigned int limit,
 			char max_flag)
 {
 	unsigned int	min_index;
@@ -45,7 +45,8 @@ void	min_index_loop(t_dt *dt, t_link *temp, unsigned int limit,
 	dt->min_index = min_index;
 }
 
-/// @brief Searches for minimal index in the stack given by head
+/// @brief Searches for minimal index in the list given by a head and saves
+///			it in dt->min_index
 /// @param dt main data structure
 /// @param head head of the stack in which to search
 /// @param range limits the distance of search (from the top and bottom)
@@ -79,7 +80,10 @@ void	min_index(t_dt *dt,	t_link *head, int range, char max_flag)
 	}
 }
 
-void	simple_sort_rotate(t_dt *dt, unsigned int forward_pos)
+/// @brief Function to rotate stack a forward_pos times
+/// @param dt main data struct
+/// @param forward_pos how many times to rotate the stack
+static void	simple_sort_rotate(t_dt *dt, unsigned int forward_pos)
 {
 	while (forward_pos)
 	{
@@ -88,7 +92,10 @@ void	simple_sort_rotate(t_dt *dt, unsigned int forward_pos)
 	}
 }
 
-void	simple_sort_rev_rotate(t_dt *dt, unsigned int backward_pos)
+/// @brief Function to reverse rotate stack a backward_pos times
+/// @param dt main data struct
+/// @param backward_pos how many times to reverse rotate the stack
+static void	simple_sort_rev_rotate(t_dt *dt, unsigned int backward_pos)
 {
 	while (backward_pos)
 	{
@@ -97,8 +104,9 @@ void	simple_sort_rev_rotate(t_dt *dt, unsigned int backward_pos)
 	}
 }
 
-/*Sorts the stack in descending order into stack b, then pushes
-	entire stack b back into a.*/
+/// @brief Sorts stack a to stack b which results in sorted stack b in
+///			descending order which is then pushed back to a
+/// @param dt main data struct
 void	simple_sort(t_dt *dt)
 {
 	unsigned int	forward_pos;

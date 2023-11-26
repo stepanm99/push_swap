@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 22:47:39 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/26 17:29:12 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/26 20:08:56 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	check_sort(t_dt *dt)
 
 /// @brief Rotates entire stack once and swaps values if neccesarry
 /// @param dt main data struct
-void	bubble_iteration(t_dt *dt)
+static void	bubble_iteration(t_dt *dt)
 {
 	unsigned int	i;
 

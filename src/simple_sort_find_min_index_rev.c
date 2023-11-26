@@ -6,13 +6,17 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 16:54:08 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/25 17:02:33 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/26 19:54:11 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/push_swap.h"
 
-static t_link	*find_min_index_rev_get_temp(t_dt *dt, t_link *head)
+/// @brief Function to get the right last link from the list
+/// @param dt main data struct
+/// @param head head of the stack we want the last link from
+/// @return the address of the last link in the list of head
+t_link	*find_min_index_rev_get_temp(t_dt *dt, t_link *head)
 {
 	if (head == dt->head_a)
 		return (dt->head_a->prev);
@@ -22,6 +26,12 @@ static t_link	*find_min_index_rev_get_temp(t_dt *dt, t_link *head)
 		return (NULL);
 }
 
+/// @brief Finds the minimal index 
+/// @param dt main data struct
+/// @param head head of the list we search in
+/// @param range range in which to search; if 0, it searches through
+/// @return minimal index position in the list in specified range or
+///			in entire list if the range is 0
 unsigned int	find_min_index_rev(t_dt *dt, t_link *head, int range)
 {
 	t_link			*temp;

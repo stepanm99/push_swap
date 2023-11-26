@@ -6,12 +6,16 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 16:52:23 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/25 17:19:26 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/26 20:05:19 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/push_swap.h"
 
+/// @brief Function to get the right first link from the list
+/// @param dt main data struct
+/// @param head head of the stack we want the first link from
+/// @return the address of the first link in the list of head
 t_link	*find_min_index_get_temp(t_dt *dt, t_link *head)
 {
 	if (head == dt->head_a)
@@ -22,6 +26,12 @@ t_link	*find_min_index_get_temp(t_dt *dt, t_link *head)
 		return (NULL);
 }
 
+/// @brief Routine to figure out the correct limit in which to search
+/// @param dt main data struct
+/// @param head head of the list where we want to search
+/// @param range range defining the limit, if 0, limit is the length
+///				of the list
+/// @return limit of the search
 unsigned int	find_min_index_get_limit(t_dt *dt, t_link *head, int range)
 {
 	unsigned int	limit;
@@ -44,6 +54,12 @@ unsigned int	find_min_index_get_limit(t_dt *dt, t_link *head, int range)
 	return (limit);
 }
 
+/// @brief Routine to find min index in a list of given head
+/// @param dt main data struct
+/// @param head head of the list we want to search in
+/// @param range how far from the top to search
+/// @return minimal index position found in the list in a given range
+///			or in entire list if range is 0
 unsigned int	find_min_index(t_dt *dt, t_link *head, int range)
 {
 	t_link			*temp;

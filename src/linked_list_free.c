@@ -6,13 +6,16 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 22:36:58 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/24 22:39:37 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/26 20:06:40 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/push_swap.h"
 
-void	list_free_heads(t_link *head, t_dt *dt)
+/// @brief Free the correct head of the list in struct dt
+/// @param head head to be freed
+/// @param dt main data struct
+static void	list_free_heads(t_link *head, t_dt *dt)
 {
 	if (dt->head_a == head)
 	{
@@ -31,7 +34,9 @@ void	list_free_heads(t_link *head, t_dt *dt)
 	}
 }
 
-/*Frees entire list from head*/
+/// @brief Frees linked list of given head
+/// @param head head of the linked list to be freed
+/// @param dt main data struct
 void	list_free(t_link *head, t_dt *dt)
 {
 	t_link	*current;

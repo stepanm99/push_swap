@@ -6,12 +6,14 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 21:14:09 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/24 22:40:27 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/26 18:07:12 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/push_swap.h"
 
+/// @brief Address operations to perform push
+/// @param address ordered array of adresses affected by push operation
 static void	push(t_link *address[])
 {
 	address[0]->next = address[2];
@@ -27,6 +29,8 @@ static void	push(t_link *address[])
 	}
 }
 
+/// @brief Push operation from stack b to stack a
+/// @param dt main data struct
 void	push_a(t_dt *dt)
 {
 	t_link	*address[6];
@@ -52,6 +56,8 @@ void	push_a(t_dt *dt)
 	dt->operations++;
 }
 
+/// @brief Push operation from stack a to stack b
+/// @param dt main data struct
 void	push_b(t_dt *dt)
 {
 	t_link	*address[6];

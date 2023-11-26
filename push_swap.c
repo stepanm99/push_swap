@@ -6,15 +6,15 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/25 20:42:04 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/26 18:16:56 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "incl/push_swap.h"
 
-/*Find minimal value in the stack a
-	called by: indexer()
-*/
+/// @brief 
+/// @param dt 
+/// @return 
 int	find_min_val(t_dt *dt)
 {
 	t_link	*temp;
@@ -35,6 +35,9 @@ int	find_min_val(t_dt *dt)
 	called by:	main()
 	calls:		find_min_val()
 */
+
+/// @brief 
+/// @param dt 
 void	indexer(t_dt *dt)
 {
 	t_link			*temp;

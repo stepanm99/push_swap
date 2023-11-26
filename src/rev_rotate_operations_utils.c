@@ -1,17 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rev_rotate_utils.c                                 :+:      :+:    :+:   */
+/*   rev_rotate_operations_utils.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smelicha <smelicha@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 20:59:26 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/22 21:19:20 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/26 18:08:17 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/push_swap.h"
 
+/// @brief Reverse rotation in case of three elemnts in stack a
+/// @param dt main data struct
 void	rev_rotate_three_a(t_dt *dt)
 {
 	t_link	*address[4];
@@ -30,6 +32,8 @@ void	rev_rotate_three_a(t_dt *dt)
 	address[3]->prev = address[0];
 }
 
+/// @brief Reverse rotation in case of three elemnts in stack b
+/// @param dt main data struct
 void	rev_rotate_three_b(t_dt *dt)
 {
 	t_link	*address[4];

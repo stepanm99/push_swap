@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 20:03:38 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/26 17:14:34 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/26 19:56:31 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /// @brief Converts array of numerical characters to integer
 /// @param str input array of numerical characters
 /// @return type int number
-int	ft_atoi(const char *str)
+static int	ft_atoi(const char *str)
 {
 	size_t	i;
 	int		negflag;
@@ -45,7 +45,7 @@ int	ft_atoi(const char *str)
 /// @brief Checks if the string contains only numerical characters
 /// @param arg string to check
 /// @param dt main data struct; is passed to error() in case of error
-void	arg_check(const char *arg, t_dt *dt)
+static void	arg_check(const char *arg, t_dt *dt)
 {
 	int	i;
 

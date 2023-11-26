@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 18:46:39 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/26 17:26:01 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/26 20:12:48 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	b_rev_rotation(t_dt *dt, unsigned int backward_pos)
 
 /// @brief Loop pushes correct values from b to a so it will result in sorted a
 /// @param dt main data struct
-void	merge_and_sort_to_a_loop(t_dt *dt)
+static void	merge_and_sort_to_a_loop(t_dt *dt)
 {
 	unsigned int	forward_pos;
 	unsigned int	backward_pos;

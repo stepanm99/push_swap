@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 18:47:59 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/26 17:20:56 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/26 19:57:02 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 /// @param range_operations array of ranges, r..._o...[range] = operations
 /// @return unsigned int number of range that results in minimal operations
 ///		of better sort
-unsigned int	min_range(t_dt *dt, unsigned int *range_operations)
+static unsigned int	min_range(t_dt *dt, unsigned int *range_operations)
 {
 	unsigned int	min_operations;
 	unsigned int	range;

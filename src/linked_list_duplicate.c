@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 22:36:45 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/25 20:47:19 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/26 17:46:26 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@
 
 	calss:		list_add_link_c()
 */
+
+/// @brief Duplicates stack a to stack c to save initial state for testing
+///		multiple algorithms without need for new parsing
+/// @param dt main data struct
 void	duplicate_list_a_to_c(t_dt	*dt)
 {
 	t_link	*a_temp;
@@ -41,6 +45,8 @@ void	duplicate_list_a_to_c(t_dt	*dt)
 	}
 }
 
+/// @brief Duplicates stack c to stack a
+/// @param dt main data struct
 void	duplicate_list_c_to_a(t_dt	*dt)
 {
 	t_link	*c_temp;
@@ -62,6 +68,8 @@ void	duplicate_list_c_to_a(t_dt	*dt)
 	}
 }
 
+/// @brief Duplicates list a to list b
+/// @param dt main data struct
 void	duplicate_list_a_to_b(t_dt *dt)
 {
 	t_link	*a_temp;
@@ -85,6 +93,8 @@ void	duplicate_list_a_to_b(t_dt *dt)
 	}
 }
 
+/// @brief Duplicates list b to list c
+/// @param dt main data struct
 void	duplicate_list_b_to_c(t_dt *dt)
 {
 	t_link	*b_temp;
