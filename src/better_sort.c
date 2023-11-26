@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 22:47:35 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/26 20:13:41 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/26 22:25:19 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@ static void	sort_to_buckets_loop(t_dt *dt, int range)
 	unsigned int	forward_pos;
 	unsigned int	backward_pos;
 
-	forward_pos = 4294967295;
-	backward_pos = 4294967295;
+	forward_pos = UINT_MAX;
+	backward_pos = UINT_MAX;
 	while (range && dt->a_length)
 	{
 		min_index(dt, dt->head_a, range, 0);
 		forward_pos = find_min_index(dt, dt->head_a, range);
 		backward_pos = find_min_index_rev(dt, dt->head_a, range);
 		if (forward_pos == backward_pos)
-			backward_pos = 4294967295;
+			backward_pos = UINT_MAX;
 		if ((forward_pos < backward_pos)
 			&& (dt->head_a->next->index != dt->min_index))
 			b_rotation(dt, forward_pos);

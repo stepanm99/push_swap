@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:26 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/26 20:12:34 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/26 22:39:21 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,16 @@
 # define PUSH_SWAP_H
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdio.h>
+
+# ifndef INT_MAX
+#  define INT_MAX 2147483647
+# endif
+# ifndef INT_MIN
+#  define INT_MIN -2147483648
+# endif
+# ifndef UINT_MAX
+#  define UINT_MAX 4294967295U
+# endif
 
 typedef struct s_link	t_link;
 
@@ -58,6 +67,11 @@ typedef struct dt {
 void			data_init(t_dt *dt);
 void			free_data(t_dt *dt);
 
+/*-----Argument parsing and saving to stack-----*/
+
+void			arg_pars(const char *argv[], t_dt *dt);
+long			ft_atol(const char *str);
+
 /*-----List manipulating functions-----*/
 
 void			list_free(t_link *head, t_dt *dt);
@@ -87,15 +101,11 @@ void			rev_rotate_b(t_dt *dt);
 void			rev_rotate_three_b(t_dt *dt);
 void			rev_rotate_ab(t_dt *dt);
 
-/*Argument parsing and saving to stack*/
-
-void			arg_pars(const char *argv[], t_dt *dt);
-
 /*-----Sorting functions-----*/
 
 void			sort(t_dt *dt);
 
-/*Bubble sort*/
+/* Bubble sort */
 
 void			bubble(t_dt *dt);
 void			check_sort(t_dt *dt);
@@ -110,7 +120,7 @@ unsigned int	find_min_index_get_limit(t_dt *dt, t_link *head, int range);
 t_link			*find_min_index_get_temp(t_dt *dt, t_link *head);
 t_link			*find_min_index_rev_get_temp(t_dt *dt, t_link *head);
 
-/*Better sort*/
+/* Better sort */
 
 void			better_sort(t_dt *dt);
 unsigned int	find_best_range(t_dt *dt);
@@ -119,7 +129,7 @@ void			b_rotation(t_dt *dt, unsigned int forward_pos);
 void			b_rev_rotation(t_dt *dt, unsigned int backward_pos);
 void			merge_and_sort_to_a(t_dt *dt, int test_run);
 
-/*K-sort*/
+/* K-sort */
 
 void			k_sort(t_dt *dt);
 

@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 20:03:38 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/26 21:27:11 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/26 22:39:31 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,28 +63,10 @@ static void	arg_check(const char *arg, t_dt *dt)
 /// @param dt main data struct
 static void	int_min_max_check(const char *arg, t_dt *dt)
 {
-	int	strlen;
+	long	number;
 
-	strlen = 0;
-	while (arg[strlen]!= '\0')
-		strlen++;
-	if (arg[0] == '-')
-	{
-		if (strlen > 11)
-			error(dt);
-	}
-	else
-	{
-		if (strlen > 10)
-			error(dt);
-	}
-	if (arg[0] == '-' && arg[1] >= '2' && arg[2] >= '1' && arg[3] >= '4'
-		&& arg[4] >= '7' && arg[5] >= '4' && arg[6] >= '8' && arg[7] >= '3'
-		&& arg[8] >= '6' && arg[9] >= '4' && arg[10] > '8')
-		error(dt);
-	else if ((((((((((arg[0] != '-' && arg[0] > '2') && arg[1] > '1') && arg[2] > '4') && arg[3] > '7')
-		&& arg[4] > '4') && arg[5] > '8') && arg[6] > '3') && arg[7] > '6')
-		&& arg[8] > '4') && arg[9] > '7')
+	number = ft_atol(arg);
+	if ((INT_MIN > number) || (number > INT_MAX))
 		error(dt);
 }
 

@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 18:46:39 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/26 20:12:48 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/26 22:25:07 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,15 @@ static void	merge_and_sort_to_a_loop(t_dt *dt)
 	unsigned int	forward_pos;
 	unsigned int	backward_pos;
 
-	forward_pos = 4294967295;
-	backward_pos = 4294967295;
+	forward_pos = UINT_MAX;
+	backward_pos = UINT_MAX;
 	while (dt->b_length)
 	{
 		min_index(dt, dt->head_b, 0, 1);
 		forward_pos = find_min_index(dt, dt->head_b, 0);
 		backward_pos = find_min_index_rev(dt, dt->head_b, 0);
 		if (forward_pos == backward_pos)
-			backward_pos = 4294967295;
+			backward_pos = UINT_MAX;
 		if ((forward_pos < backward_pos)
 			&& (dt->head_b->next->index != dt->min_index))
 			b_rotation(dt, forward_pos);
