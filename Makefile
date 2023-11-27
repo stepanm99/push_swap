@@ -8,7 +8,7 @@ SRC = push_swap.c src/arg_pars.c src/error.c src/linked_list.c \
 	src/better_sort.c src/simple_sort_find_min_index_rev.c \
 	src/simple_sort_find_min_index.c src/better_sort_rangefinder.c \
 	src/better_sort_to_a.c src/data_init_and_free.c \
-	src/arg_pars_utils.c
+	src/arg_pars_utils.c src/ft_split.c
 
 CC = cc
 

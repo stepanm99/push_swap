@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 22:12:12 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/26 22:41:00 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/27 20:44:46 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,23 @@ long	ft_atol(const char *str)
 		i++;
 	}
 	return (n * (long)negflag);
+}
+void	*ft_memcpy(void *dest, const void *src, size_t l)
+{
+	char		*destination;
+	const char	*source;
+	size_t		i;
+
+	i = 0;
+	source = src;
+	destination = dest;
+	if (destination == NULL && source == NULL)
+		return (NULL);
+	while (l > 0)
+	{
+		destination[i] = source[i];
+		l--;
+		i++;
+	}
+	return (dest);
 }

@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/27 16:25:02 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/27 21:11:45 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,21 +67,58 @@ void	indexer(t_dt *dt)
 	}
 }
 
+void	check_single_argument(const char *arg, t_dt *dt)
+{
+	int	i;
+
+	i = 0;
+	while (arg[i])
+	{
+		if ((arg[i] > '9' || arg[i] < '0') && (arg[i] != '-' && arg[i] != ' '))
+			error(dt);
+		i++;
+	}
+	dt->single_arg_flag = 1;
+}
+
+void	free_arg(char **arg)
+{
+	int	i;
+
+	i = 0;
+	while (arg[i])
+	{
+		free(arg[i]);
+		arg[i] = NULL;
+		i++;
+	}
+	free(arg);
+}
+
 int	main(int argc, const char *argv[])
 {
 	t_dt	*dt;
+	char	**arg;
 
 	dt = NULL;
-	if (argc == 1)
-		return (0);
+	arg = NULL;
 	dt = malloc(sizeof(t_dt));
 	if (!dt)
 		return (-1);
 	data_init(dt);
-	arg_pars(argv, dt);
+	if (argc == 1)
+		return (0);
+	else if (argc == 2)
+	{
+		check_single_argument(argv[1], dt);
+		arg = ft_split(argv[1], ' ');
+	}
+	if (!arg)
+		arg_pars(argv, dt);
+	else
+		arg_pars((const char**)arg, dt);
 	indexer(dt);
 	duplicate_list_a_to_c(dt);
 	sort(dt);
-	free_data(dt);
-	return (0);
+	return (free_data(dt), free_arg(arg), 0);
 }
