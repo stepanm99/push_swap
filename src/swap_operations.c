@@ -6,12 +6,14 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 21:14:25 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/03 17:48:12 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/26 19:41:51 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/push_swap.h"
 
+/// @brief Handles swap operation in case of stack holding only two values
+/// @param address arranged array of link adresses affected by the operation
 static void	swap_two(t_link *address[])
 {
 	address[0]->next = address[2];
@@ -22,6 +24,8 @@ static void	swap_two(t_link *address[])
 	address[2]->prev = address[0];
 }
 
+/// @brief Performs swap operation on stack a
+/// @param dt main data struct
 void	swap_a(t_dt *dt)
 {
 	t_link	*address[4];
@@ -51,6 +55,8 @@ void	swap_a(t_dt *dt)
 	}
 }
 
+/// @brief Performs swap operation on stack b
+/// @param dt main data struct
 void	swap_b(t_dt *dt)
 {
 	t_link	*address[4];
@@ -61,10 +67,7 @@ void	swap_b(t_dt *dt)
 	address[1] = dt->head_b->next;
 	address[2] = dt->head_b->next->next;
 	if (dt->b_length == 2)
-	{
-		swap_two(address);
-		return ;
-	}
+		return (swap_two(address));
 	address[3] = dt->head_b->next->next->next;
 	address[0]->next = address[2];
 	address[1]->next = address[3];
@@ -81,6 +84,8 @@ void	swap_b(t_dt *dt)
 	dt->ab_flag = 0;
 }
 
+/// @brief Performs swap operation on both stacks
+/// @param dt main data struct
 void	swap_ab(t_dt *dt)
 {
 	dt->ab_flag = 1;

@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   rotate_operations_utils.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smelicha <smelicha@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 16:22:41 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/19 22:25:41 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/26 18:12:09 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/push_swap.h"
 
+/// @brief RRotation in case of three elemnts in stack a
+/// @param dt main data struct
 void	rotate_three_a(t_dt *dt)
 {
 	t_link	*address[4];
@@ -30,6 +32,8 @@ void	rotate_three_a(t_dt *dt)
 	address[3]->prev = address[2];
 }
 
+/// @brief Rotation in case of three elemnts in stack b
+/// @param dt main data struct
 void	rotate_three_b(t_dt *dt)
 {
 	t_link	*address[4];

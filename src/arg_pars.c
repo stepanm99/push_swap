@@ -6,13 +6,16 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 20:03:38 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/03 17:18:26 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/26 22:39:31 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/push_swap.h"
 
-int	ft_atoi(const char *str)
+/// @brief Converts array of numerical characters to integer
+/// @param str input array of numerical characters
+/// @return type int number
+static int	ft_atoi(const char *str)
 {
 	size_t	i;
 	int		negflag;
@@ -39,7 +42,10 @@ int	ft_atoi(const char *str)
 	return (n * negflag);
 }
 
-void	arg_check(const char *arg, t_dt *dt)
+/// @brief Checks if the string contains only numerical characters
+/// @param arg string to check
+/// @param dt main data struct; is passed to error() in case of error
+static void	arg_check(const char *arg, t_dt *dt)
 {
 	int	i;
 
@@ -52,7 +58,40 @@ void	arg_check(const char *arg, t_dt *dt)
 	}
 }
 
-/*Parses and checks program argument ans saves the data to list a*/
+/// @brief Checks if the number overflows 32-bit integer
+/// @param arg argument to check
+/// @param dt main data struct
+static void	int_min_max_check(const char *arg, t_dt *dt)
+{
+	long	number;
+
+	number = ft_atol(arg);
+	if ((INT_MIN > number) || (number > INT_MAX))
+		error(dt);
+}
+
+/// @brief Checks if the new_val already is in the stack
+/// @param new_val new valued to be saved to the stack
+/// @param dt main data struct
+static void	duplicate_check(int new_val, t_dt *dt)
+{
+	t_link	*temp;
+
+	if (dt->head_a->next)
+		temp = dt->head_a->next;
+	else
+		return ;
+	while (temp)
+	{
+		if (temp->val == new_val)
+			error(dt);
+		temp = temp->next;
+	}
+}
+
+/// @brief Parses and checks program argument ans saves the data to stack a
+/// @param argv array of arguments
+/// @param dt main data struct
 void	arg_pars(const char *argv[], t_dt *dt)
 {
 	int	i;
@@ -62,7 +101,9 @@ void	arg_pars(const char *argv[], t_dt *dt)
 	{
 		while (argv[i])
 		{
+			int_min_max_check(argv[i], dt);
 			arg_check(argv[i], dt);
+			duplicate_check(ft_atoi(argv[i]), dt);
 			dt->a = list_add_link_a(ft_atoi(argv[i]), 0, dt);
 			i++;
 		}

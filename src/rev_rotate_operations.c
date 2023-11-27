@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   rev_rotate_operations.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stepan <stepan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 21:20:47 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/05 00:53:53 by stepan           ###   ########.fr       */
+/*   Updated: 2023/11/26 18:11:14 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/push_swap.h"
 
+/// @brief Address operations to perform reverse rotation
+/// @param address ordered array of adresses affected by rev. rot. operation
 static void	rev_rotate_many(t_link *address[])
 {
 	address[0]->next = address[2];
@@ -22,6 +24,8 @@ static void	rev_rotate_many(t_link *address[])
 	address[3]->prev = address[2];
 }
 
+/// @brief Address operations to perform rev. rot. of two elements in stack
+/// @param address ordered array of adresses affected by rev. rot. operation
 static void	rev_rotate_two(t_link *address[])
 {
 	address[0]->next = address[2];
@@ -32,6 +36,8 @@ static void	rev_rotate_two(t_link *address[])
 	address[2]->prev = address[0];
 }
 
+/// @brief Reverse rotate operation on stack a
+/// @param dt main data struct
 void	rev_rotate_a(t_dt *dt)
 {
 	t_link	*address[4];
@@ -56,6 +62,8 @@ void	rev_rotate_a(t_dt *dt)
 	}
 }
 
+/// @brief Reverse rotate operation on stack b
+/// @param dt main data struct
 void	rev_rotate_b(t_dt *dt)
 {
 	t_link	*address[4];
@@ -81,6 +89,8 @@ void	rev_rotate_b(t_dt *dt)
 	dt->ab_flag = 0;
 }
 
+/// @brief Reverse rotate operation on stack a and b
+/// @param dt main data struct
 void	rev_rotate_ab(t_dt *dt)
 {
 	dt->ab_flag = 1;
