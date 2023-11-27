@@ -10,7 +10,7 @@ SRC = push_swap.c src/arg_pars.c src/error.c src/linked_list.c \
 	src/better_sort_to_a.c src/data_init_and_free.c \
 	src/arg_pars_utils.c
 
-CC = gcc
+CC = cc
 
 FLAGS = -Wall -Wextra -Werror -O3
 
@@ -34,11 +34,6 @@ debug: $(OBJ)
 	@$(CC) $(OBJ) -Wall -Wextra -Werror -g -o $(NAME)
 	@echo "Done!"
 
-leak: $(OBJ)
-	@echo "Leak compiling"
-	@$(CC) $(SRC) leakcheck.c $(FLAGS) -o $(NAME)
-	@echo "Done!"
-
 sanitize: $(OBJ)
 	@echo "Sanitize compiling"
 	@$(CC) $(OBJ) $(DFLAGS) -o $(NAME)
@@ -52,4 +47,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re test
+.PHONY: all debug sanitize clean fclean re
