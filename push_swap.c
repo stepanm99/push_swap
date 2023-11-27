@@ -6,16 +6,16 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/27 21:14:15 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/27 21:20:07 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "incl/push_swap.h"
 
-/// @brief 
-/// @param dt 
-/// @return 
-int	find_min_val(t_dt *dt)
+/// @brief Finds minimal value present in the stack a
+/// @param dt main data struct
+/// @return minimal value of the stack a
+static int	find_min_val(t_dt *dt)
 {
 	t_link	*temp;
 	int		min_val;
@@ -31,14 +31,9 @@ int	find_min_val(t_dt *dt)
 	return (min_val);
 }
 
-/*Checks the values of the list and indexes them with unsigned integer
-	called by:	main()
-	calls:		find_min_val()
-*/
-
-/// @brief 
-/// @param dt 
-void	indexer(t_dt *dt)
+/// @brief Checks the values of the list and indexes them with unsigned integer
+/// @param dt main data struct
+static void	indexer(t_dt *dt)
 {
 	t_link			*temp;
 	t_link			*min;
@@ -67,6 +62,9 @@ void	indexer(t_dt *dt)
 	}
 }
 
+/// @brief Checks if the argument string contains only numbers
+/// @param arg argument string
+/// @param dt main data struct
 void	check_single_argument(const char *arg, t_dt *dt)
 {
 	int	i;
@@ -81,6 +79,8 @@ void	check_single_argument(const char *arg, t_dt *dt)
 	dt->single_arg_flag = 1;
 }
 
+/// @brief Routine to free double pointer
+/// @param arg double pointer to be freed
 void	free_arg(char **arg)
 {
 	int	i;
@@ -119,7 +119,7 @@ int	main(int argc, const char *argv[])
 	if (!arg)
 		arg_pars(argv, dt);
 	else
-		arg_pars((const char**)arg, dt);
+		arg_pars((const char **) arg, dt);
 	indexer(dt);
 	duplicate_list_a_to_c(dt);
 	sort(dt);
