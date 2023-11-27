@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/27 00:29:11 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/27 16:25:02 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	find_min_val(t_dt *dt)
 	int		min_val;
 
 	temp = dt->head_a->next;
-	min_val = INT_MAX;
+	min_val = INT32_MAX;
 	while (temp)
 	{
 		if (temp->val < min_val && !temp->index)

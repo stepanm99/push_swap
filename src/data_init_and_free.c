@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 19:00:44 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/26 20:08:17 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/27 16:32:01 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ static void	data_init_continuum(t_dt *dt)
 	dt->min_operations = 0;
 	dt->alg_flag = 0;
 	dt->print_flag = 0;
-	dt->stack_div = 1;
 	dt->a_sorted_flag = 0;
 	dt->min_index = 0;
 }

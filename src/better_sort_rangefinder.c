@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 18:47:59 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/26 22:24:33 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/27 16:23:07 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static unsigned int	min_range(t_dt *dt, unsigned int *range_operations)
 	unsigned int	range;
 
 	range = dt->a_length / 2U;
-	min_operations = UINT_MAX;
+	min_operations = UINT32_MAX;
 	while (range >= 2)
 	{
 		if (range_operations[range] < min_operations)
