@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:26 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/27 00:24:31 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/27 16:32:05 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# ifndef INT_MAX
-#  define INT_MAX 2147483647
+# ifndef INT32_MAX
+#  define INT32_MAX 2147483647
 # endif
-# ifndef INT_MIN
-#  define INT_MIN -2147483648
+# ifndef INT32_MIN
+#  define INT32_MIN -2147483648
 # endif
-# ifndef UINT_MAX
-#  define UINT_MAX 4294967295U
+# ifndef UINT32_MAX
+#  define UINT32_MAX 4294967295U
 # endif
 
 typedef struct s_link	t_link;
@@ -49,7 +49,6 @@ typedef struct dt {
 	unsigned int	min_index;
 	unsigned int	operations;
 	unsigned int	min_operations;
-	int				stack_div;
 	int				ab_flag;
 	int				a_sorted_flag;
 	int				alg_flag;
