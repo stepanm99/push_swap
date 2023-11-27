@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/27 21:11:45 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/27 21:14:15 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,13 +86,16 @@ void	free_arg(char **arg)
 	int	i;
 
 	i = 0;
-	while (arg[i])
+	if (arg)
 	{
-		free(arg[i]);
-		arg[i] = NULL;
-		i++;
+		while (arg[i])
+		{
+			free(arg[i]);
+			arg[i] = NULL;
+			i++;
+		}
+		free(arg);
 	}
-	free(arg);
 }
 
 int	main(int argc, const char *argv[])
