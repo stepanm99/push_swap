@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:26 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/27 16:32:05 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/27 20:21:34 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void			free_data(t_dt *dt);
 
 void			arg_pars(const char *argv[], t_dt *dt);
 long			ft_atol(const char *str);
+char			**ft_split(char const *s, char c);
 
 /*-----List manipulating functions-----*/
 
