@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 20:03:38 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/26 22:39:31 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/27 16:22:22 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,15 @@ static void	arg_check(const char *arg, t_dt *dt)
 static void	int_min_max_check(const char *arg, t_dt *dt)
 {
 	long	number;
+	int		arg_length;
 
+	arg_length = 0;
 	number = ft_atol(arg);
-	if ((INT_MIN > number) || (number > INT_MAX))
+	while (arg[arg_length])
+		arg_length++;
+	if (arg_length > 12)
+		error(dt);
+	if ((INT32_MIN > number) || (number > INT32_MAX))
 		error(dt);
 }
 

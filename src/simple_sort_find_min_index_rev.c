@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 16:54:08 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/26 22:25:47 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/27 16:24:09 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,5 @@ unsigned int	find_min_index_rev(t_dt *dt, t_link *head, int range)
 		i++;
 		limit--;
 	}
-	return (UINT_MAX);
+	return (UINT32_MAX);
 }
