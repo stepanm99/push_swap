@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 20:03:38 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/27 16:22:22 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/27 20:49:10 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,10 @@ void	arg_pars(const char *argv[], t_dt *dt)
 {
 	int	i;
 
-	i = 1;
+	if (dt->single_arg_flag == 1)
+		i = 0;
+	else
+		i = 1;
 	if (argv[i])
 	{
 		while (argv[i])

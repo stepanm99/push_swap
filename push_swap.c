@@ -6,16 +6,16 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/27 16:25:02 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/28 17:20:02 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "incl/push_swap.h"
 
-/// @brief 
-/// @param dt 
-/// @return 
-int	find_min_val(t_dt *dt)
+/// @brief Finds minimal value present in the stack a
+/// @param dt main data struct
+/// @return minimal value of the stack a
+static int	find_min_val(t_dt *dt)
 {
 	t_link	*temp;
 	int		min_val;
@@ -31,14 +31,9 @@ int	find_min_val(t_dt *dt)
 	return (min_val);
 }
 
-/*Checks the values of the list and indexes them with unsigned integer
-	called by:	main()
-	calls:		find_min_val()
-*/
-
-/// @brief 
-/// @param dt 
-void	indexer(t_dt *dt)
+/// @brief Checks the values of the list and indexes them with unsigned integer
+/// @param dt main data struct
+static void	indexer(t_dt *dt)
 {
 	t_link			*temp;
 	t_link			*min;
@@ -67,18 +62,43 @@ void	indexer(t_dt *dt)
 	}
 }
 
+/// @brief Checks if the argument string contains only numbers
+/// @param arg argument string
+/// @param dt main data struct
+void	check_single_argument(const char *arg, t_dt *dt)
+{
+	int	i;
+
+	i = 0;
+	while (arg[i])
+	{
+		if ((arg[i] > '9' || arg[i] < '0') && (arg[i] != '-' && arg[i] != ' '))
+			error(dt);
+		i++;
+	}
+	dt->single_arg_flag = 1;
+}
+
 int	main(int argc, const char *argv[])
 {
 	t_dt	*dt;
 
 	dt = NULL;
-	if (argc == 1)
-		return (0);
 	dt = malloc(sizeof(t_dt));
 	if (!dt)
 		return (-1);
 	data_init(dt);
-	arg_pars(argv, dt);
+	if (argc == 1)
+		return (0);
+	else if (argc == 2)
+	{
+		check_single_argument(argv[1], dt);
+		dt->arg = ft_split(argv[1], ' ');
+	}
+	if (!dt->arg)
+		arg_pars(argv, dt);
+	else
+		arg_pars((const char **)dt->arg, dt);
 	indexer(dt);
 	duplicate_list_a_to_c(dt);
 	sort(dt);

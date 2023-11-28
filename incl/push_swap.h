@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:26 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/27 20:21:34 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/28 17:12:53 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdio.h>
 
 # ifndef INT32_MAX
 #  define INT32_MAX 2147483647
@@ -49,6 +50,7 @@ typedef struct dt {
 	unsigned int	min_index;
 	unsigned int	operations;
 	unsigned int	min_operations;
+	int				single_arg_flag;
 	int				ab_flag;
 	int				a_sorted_flag;
 	int				alg_flag;
@@ -59,6 +61,7 @@ typedef struct dt {
 	t_link			*b;
 	t_link			*head_c;
 	t_link			*c;
+	char			**arg;
 }	t_dt;
 
 /*-----Data-----*/
@@ -71,6 +74,7 @@ void			free_data(t_dt *dt);
 void			arg_pars(const char *argv[], t_dt *dt);
 long			ft_atol(const char *str);
 char			**ft_split(char const *s, char c);
+void			*ft_memcpy(void *dest, const void *src, size_t l);
 
 /*-----List manipulating functions-----*/
 

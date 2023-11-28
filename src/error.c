@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 20:14:10 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/26 17:07:50 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/28 17:18:48 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,6 @@ void	error(t_dt *dt)
 {
 	write(2, "Error\n", 6);
 	free_data(dt);
+	system("leaks push_swap");
 	exit(-1);
 }

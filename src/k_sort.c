@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 17:29:30 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/27 16:28:40 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/27 21:28:04 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ void	k_sort(t_dt *dt)
 	int	range;
 
 	i = 0;
-	range = babylonian_sqrt(dt->a_length);
+	range = babylonian_sqrt(dt->a_length) * 16 / 10;
 	prepare_sorted(dt);
 	while (dt->a_length)
 	{

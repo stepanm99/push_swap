@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 19:00:44 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/27 16:32:01 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/28 17:16:24 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,12 @@ static void	data_init_continuum(t_dt *dt)
 	dt->ab_flag = 0;
 	dt->operations = 0;
 	dt->min_operations = 0;
+	dt->single_arg_flag = 0;
 	dt->alg_flag = 0;
 	dt->print_flag = 0;
 	dt->a_sorted_flag = 0;
 	dt->min_index = 0;
+	dt->arg = NULL;
 }
 
 /// @brief Initialization of variables in main data struct
@@ -59,6 +61,25 @@ void	data_init(t_dt *dt)
 	data_init_continuum(dt);
 }
 
+/// @brief Routine to free double pointer
+/// @param arg double pointer to be freed
+static void	free_arg(char **arg)
+{
+	int	i;
+
+	i = 0;
+	if (arg)
+	{
+		while (arg[i])
+		{
+			free(arg[i]);
+			arg[i] = NULL;
+			i++;
+		}
+		free(arg);
+	}
+}
+
 /// @brief Routine to free all allocated memory
 /// @param dt main data struct
 void	free_data(t_dt *dt)
@@ -69,6 +90,8 @@ void	free_data(t_dt *dt)
 		list_free(dt->head_b, dt);
 	if (dt->head_c)
 		list_free(dt->head_c, dt);
+	if (dt->arg)
+		free_arg(dt->arg);
 	free(dt);
 	dt = NULL;
 }
