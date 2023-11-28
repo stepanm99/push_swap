@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:26 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/28 17:12:53 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/28 17:47:09 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,6 @@ t_link			*list_add_link_a(int val, unsigned int index, t_dt *dt);
 t_link			*list_add_link_b(int val, unsigned int index, t_dt *dt);
 t_link			*list_add_link_c(int val, unsigned int index, t_dt *dt);
 void			duplicate_list_a_to_c(t_dt	*dt);
-void			duplicate_list_a_to_b(t_dt *dt);
-void			duplicate_list_b_to_c(t_dt *dt);
 void			duplicate_list_c_to_a(t_dt	*dt);
 
 /*----Push, swap, rotate operations-----*/

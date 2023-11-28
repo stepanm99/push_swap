@@ -6,18 +6,11 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 22:36:45 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/26 17:46:26 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/28 17:46:51 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/push_swap.h"
-
-/*Duplicates list a to list c to save initial state for testing
-	multiple algorithms without need for new parsing
-	called by:	main()
-
-	calss:		list_add_link_c()
-*/
 
 /// @brief Duplicates stack a to stack c to save initial state for testing
 ///		multiple algorithms without need for new parsing
@@ -65,55 +58,5 @@ void	duplicate_list_c_to_a(t_dt	*dt)
 	{
 		list_add_link_a(c_temp->val, c_temp->index, dt);
 		c_temp = c_temp->next;
-	}
-}
-
-/// @brief Duplicates list a to list b
-/// @param dt main data struct
-void	duplicate_list_a_to_b(t_dt *dt)
-{
-	t_link	*a_temp;
-
-	if (!dt->head_a->next)
-		return ;
-	if (!dt->head_b)
-	{
-		dt->head_b = malloc(sizeof(t_link));
-		if (!dt->head_b)
-			error(dt);
-		dt->head_b->next = NULL;
-		dt->head_b->prev = NULL;
-		dt->b = dt->head_b;
-	}
-	a_temp = dt->head_a->next;
-	while (a_temp)
-	{
-		list_add_link_b(a_temp->val, a_temp->index, dt);
-		a_temp = a_temp->next;
-	}
-}
-
-/// @brief Duplicates list b to list c
-/// @param dt main data struct
-void	duplicate_list_b_to_c(t_dt *dt)
-{
-	t_link	*b_temp;
-
-	if (!dt->head_b->next)
-		return ;
-	if (!dt->head_c)
-	{
-		dt->head_c = malloc(sizeof(t_link));
-		if (!dt->head_c)
-			error(dt);
-		dt->head_c->next = NULL;
-		dt->head_c->prev = NULL;
-		dt->c = dt->head_c;
-	}
-	b_temp = dt->head_b->next;
-	while (b_temp)
-	{
-		list_add_link_c(b_temp->val, b_temp->index, dt);
-		b_temp = b_temp->next;
 	}
 }
