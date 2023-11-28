@@ -1,0 +1,450 @@
+out: n: 11
+out: average:30
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 12
+out: average:35
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 13
+out: average:39
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 14
+out: average:43
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 15
+out: average:50
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 16
+out: average:52
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 17
+out: average:57
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 18
+out: average:61
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 19
+out: average:66
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 20
+out: average:71
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 21
+out: average:75
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 22
+out: average:80
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 23
+out: average:83
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 24
+out: average:93
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 25
+out: average:90
+out: samples: 10
+out: OK: 9
+out: KO: 0
+out: n: 26
+out: average:102
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 27
+out: average:104
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 28
+out: average:110
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 29
+out: average:117
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 30
+out: average:119
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 31
+out: average:120
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 32
+out: average:127
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 33
+out: average:134
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 34
+out: average:138
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 35
+out: average:147
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 36
+out: average:149
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 37
+out: average:155
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 38
+out: average:158
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 39
+out: average:164
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 40
+out: average:157
+out: samples: 10
+out: OK: 9
+out: KO: 0
+out: n: 41
+out: average:181
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 42
+out: average:184
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 43
+out: average:170
+out: samples: 10
+out: OK: 9
+out: KO: 0
+out: n: 44
+out: average:188
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 45
+out: average:181
+out: samples: 10
+out: OK: 9
+out: KO: 0
+out: n: 46
+out: average:210
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 47
+out: average:216
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 48
+out: average:196
+out: samples: 10
+out: OK: 9
+out: KO: 0
+out: n: 49
+out: average:203
+out: samples: 10
+out: OK: 9
+out: KO: 0
+out: n: 50
+out: average:232
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 51
+out: average:211
+out: samples: 10
+out: OK: 9
+out: KO: 0
+out: n: 52
+out: average:243
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 53
+out: average:222
+out: samples: 10
+out: OK: 9
+out: KO: 0
+out: n: 54
+out: average:250
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 55
+out: average:258
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 56
+out: average:266
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 57
+out: average:267
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 58
+out: average:281
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 59
+out: average:257
+out: samples: 10
+out: OK: 9
+out: KO: 0
+out: n: 60
+out: average:290
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 61
+out: average:262
+out: samples: 10
+out: OK: 9
+out: KO: 0
+out: n: 62
+out: average:301
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 63
+out: average:254
+out: samples: 10
+out: OK: 8
+out: KO: 0
+out: n: 64
+out: average:315
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 65
+out: average:291
+out: samples: 10
+out: OK: 9
+out: KO: 0
+out: n: 66
+out: average:329
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 67
+out: average:302
+out: samples: 10
+out: OK: 9
+out: KO: 0
+out: n: 68
+out: average:343
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 69
+out: average:343
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 70
+out: average:323
+out: samples: 10
+out: OK: 9
+out: KO: 0
+out: n: 71
+out: average:357
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 72
+out: average:306
+out: samples: 10
+out: OK: 8
+out: KO: 0
+out: n: 73
+out: average:337
+out: samples: 10
+out: OK: 9
+out: KO: 0
+out: n: 74
+out: average:347
+out: samples: 10
+out: OK: 9
+out: KO: 0
+out: n: 75
+out: average:391
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 76
+out: average:399
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 77
+out: average:333
+out: samples: 10
+out: OK: 8
+out: KO: 0
+out: n: 78
+out: average:330
+out: samples: 10
+out: OK: 8
+out: KO: 0
+out: n: 79
+out: average:378
+out: samples: 10
+out: OK: 9
+out: KO: 0
+out: n: 80
+out: average:416
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 81
+out: average:431
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 82
+out: average:436
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 83
+out: average:444
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 84
+out: average:445
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 85
+out: average:456
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 86
+out: average:420
+out: samples: 10
+out: OK: 9
+out: KO: 0
+out: n: 87
+out: average:338
+out: samples: 10
+out: OK: 7
+out: KO: 0
+out: n: 88
+out: average:484
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 89
+out: average:397
+out: samples: 10
+out: OK: 8
+out: KO: 0
+out: n: 90
+out: average:438
+out: samples: 10
+out: OK: 9
+out: KO: 0
+out: n: 91
+out: average:449
+out: samples: 10
+out: OK: 9
+out: KO: 0
+out: n: 92
+out: average:359
+out: samples: 10
+out: OK: 7
+out: KO: 0
+out: n: 93
+out: average:422
+out: samples: 10
+out: OK: 8
+out: KO: 0
+out: n: 94
+out: average:515
+out: samples: 10
+out: OK: 10
+out: KO: 0
+out: n: 95
+out: average:429
+out: samples: 10
+out: OK: 8
+out: KO: 0
+out: n: 96
+out: average:440
+out: samples: 10
+out: OK: 8
+out: KO: 0
+out: n: 97
+out: average:490
+out: samples: 10
+out: OK: 9
+out: KO: 0
+out: n: 98
+out: average:400
+out: samples: 10
+out: OK: 7
+out: KO: 0
+out: n: 99
+out: average:502
+out: samples: 10
+out: OK: 9
+out: KO: 0
+out: n: 100
+out: average:457
+out: samples: 10
+out: OK: 8
+out: KO: 0

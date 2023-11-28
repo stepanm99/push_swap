@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 17:29:30 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/28 17:48:57 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/28 19:58:31 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,20 @@
 /// @return aproximate integer value of the number n
 static int	babylonian_sqrt(int n)
 {
-	int	temp;
-	int	diff;
-	int	guess;
+	float	temp;
+	float	diff;
+	float	guess;
 
-	temp = 0;
-	diff = 1;
-	guess = n / 2;
-	while (diff)
+	temp = 0.0;
+	diff = 1.0;
+	guess = (float)n / 2.0;
+	while (diff > 0.5 || diff < -0.5)
 	{
 		temp = guess;
-		guess = (guess + (n / guess)) / 2;
+		guess = (guess + ((float)n / guess)) / 2.0;
 		diff = guess - temp;
 	}
-	return (guess);
+	return ((int)guess);
 }
 
 /// @brief Function to find particular index in the stack

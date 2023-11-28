@@ -12,7 +12,7 @@ SRC = push_swap.c src/arg_pars.c src/error.c src/linked_list.c \
 
 CC = cc
 
-FLAGS = -Wall -Wextra -Werror -O3
+FLAGS = -Wall -Wextra -Werror -g
 
 DFLAGS = -Wall -Wextra -Werror -g -fsanitize=address -static-libsan
 
