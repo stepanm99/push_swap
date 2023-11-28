@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/27 21:20:07 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/28 17:20:02 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,32 +79,11 @@ void	check_single_argument(const char *arg, t_dt *dt)
 	dt->single_arg_flag = 1;
 }
 
-/// @brief Routine to free double pointer
-/// @param arg double pointer to be freed
-void	free_arg(char **arg)
-{
-	int	i;
-
-	i = 0;
-	if (arg)
-	{
-		while (arg[i])
-		{
-			free(arg[i]);
-			arg[i] = NULL;
-			i++;
-		}
-		free(arg);
-	}
-}
-
 int	main(int argc, const char *argv[])
 {
 	t_dt	*dt;
-	char	**arg;
 
 	dt = NULL;
-	arg = NULL;
 	dt = malloc(sizeof(t_dt));
 	if (!dt)
 		return (-1);
@@ -114,14 +93,15 @@ int	main(int argc, const char *argv[])
 	else if (argc == 2)
 	{
 		check_single_argument(argv[1], dt);
-		arg = ft_split(argv[1], ' ');
+		dt->arg = ft_split(argv[1], ' ');
 	}
-	if (!arg)
+	if (!dt->arg)
 		arg_pars(argv, dt);
 	else
-		arg_pars((const char **) arg, dt);
+		arg_pars((const char **)dt->arg, dt);
 	indexer(dt);
 	duplicate_list_a_to_c(dt);
 	sort(dt);
-	return (free_data(dt), free_arg(arg), 0);
+	free_data(dt);
+	return (0);
 }
