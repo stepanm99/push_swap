@@ -4,7 +4,7 @@
 string=""
 #read -p "Number of numbers: " number
 #read -p "Maximum number: " max
-i=10
+i=50
 j=0
 number=10
 k=$number
@@ -18,7 +18,7 @@ checker_output=""
 OK=0
 KO=0
 
-while [[ "$number" != "100" ]]
+while [[ "$number" != "500" ]]
 do
 	while [[ "$i" != '0' ]];
 	do
@@ -63,7 +63,7 @@ do
 	echo out: samples: $j
 	echo out: OK: $OK
 	echo out: KO: $KO
-	i=10
+	i=50
 	j=0
 	max=2147483647
 	result=0
