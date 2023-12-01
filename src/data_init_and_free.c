@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 19:00:44 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/28 17:16:24 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/29 20:26:08 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	data_init_continuum(t_dt *dt)
 	dt->c_length = 0U;
 	dt->ab_flag = 0;
 	dt->operations = 0;
-	dt->min_operations = 0;
+	dt->min_operations = UINT32_MAX;
 	dt->single_arg_flag = 0;
 	dt->alg_flag = 0;
 	dt->print_flag = 0;

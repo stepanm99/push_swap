@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 20:53:18 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/27 00:20:10 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/29 20:30:43 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,25 @@ static void	find_best_algorithm_continuum(t_dt *dt)
 	{
 		better_sort(dt);
 		if (dt->operations < dt->min_operations)
+		{
 			dt->alg_flag = 3;
+			dt->min_operations = dt->operations;
+		}
 		dt->operations = 0;
 		list_free(dt->head_a, dt);
 		duplicate_list_c_to_a(dt);
 		dt->a_sorted_flag = 0;
 	}
-	if (dt->a_length >= 20)
-		dt->alg_flag = 4;
+	if (dt->a_length >= 4)
+	{
+		k_sort(dt);
+		if (dt->operations <= dt->min_operations)
+			dt->alg_flag = 4;
+		dt->operations = 0;
+		list_free(dt->head_a, dt);
+		duplicate_list_c_to_a(dt);
+		dt->a_sorted_flag = 0;
+	}
 	dt->print_flag = 1;
 }
 
