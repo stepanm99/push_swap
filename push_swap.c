@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:42:03 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/29 18:14:18 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/12/01 16:01:29 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,10 +86,10 @@ int	main(int argc, const char *argv[])
 	dt = NULL;
 	dt = malloc(sizeof(t_dt));
 	if (!dt)
-		return (-1);
+			return (-1);
 	data_init(dt);
 	if (argc == 1)
-		return (0);
+		return (free_data(dt), 0);
 	else if (argc == 2)
 	{
 		check_single_argument(argv[1], dt);
@@ -102,6 +102,5 @@ int	main(int argc, const char *argv[])
 	indexer(dt);
 	duplicate_list_a_to_c(dt);
 	sort(dt);
-	free_data(dt);
-	return (0);
+	return (free_data(dt), 0);
 }

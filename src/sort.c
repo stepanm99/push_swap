@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 20:53:18 by smelicha          #+#    #+#             */
-/*   Updated: 2023/11/28 19:46:47 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/11/29 20:30:43 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void	find_best_algorithm_continuum(t_dt *dt)
 	if (dt->a_length >= 4)
 	{
 		k_sort(dt);
-		if (dt->operations < dt->min_operations)
+		if (dt->operations <= dt->min_operations)
 			dt->alg_flag = 4;
 		dt->operations = 0;
 		list_free(dt->head_a, dt);
